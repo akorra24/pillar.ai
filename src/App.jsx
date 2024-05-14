@@ -1,6 +1,6 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import BodyBackground from "../assets/body_background.jpg";
+import BodyBackground from "./assets/body_background.jpg";
 
 function App() {
   return (
