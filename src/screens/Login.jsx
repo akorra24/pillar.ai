@@ -45,14 +45,14 @@ const Login = () => {
             <input
               type="text"
               placeholder="Email"
-              className="border-2 border-white text-center rounded-lg p-2 m-1"
+              className="bg-white opacity-70 rounded-lg py-3 w-[90%] mb-5 pl-3 text-black"
             />
             <input
               type="password"
               placeholder="Password"
-              className="border-2 border-white text-center rounded-lg p-2 m-1"
+              className="bg-white opacity-70 rounded-lg py-3 w-[90%] mb-5 pl-3 text-black"
             />
-            <button className="border-2 border-white text-center rounded-lg p-2 m-1">
+            <button className=" bg-green-500 opacity-70 rounded py-3 w-[90%]">
               Login
             </button>
           </div>
