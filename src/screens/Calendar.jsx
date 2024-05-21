@@ -20,7 +20,7 @@ const Calendar = () => {
   }, []);
 
   return (
-    <div className="container mx-auto">
+    <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-2xl font-bold mb-4">Calendar ID: {id}</h1>
       {calendarData ? (
         <div>{/* Render calendar data here */}</div>

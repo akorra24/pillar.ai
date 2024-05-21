@@ -1,6 +1,6 @@
 const Dashboard = () => {
   return (
-    <div className="p-4">
+    <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       <table className="min-w-full bg-white border border-gray-200">
         <thead>

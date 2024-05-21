@@ -13,7 +13,7 @@ const FormOverview = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-2xl font-bold mb-4">Form Overview</h1>
       {Object.entries(formValues).map(([field, value]) => (
         <div key={field} className="flex items-center mb-2">
