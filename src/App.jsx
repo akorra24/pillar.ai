@@ -6,16 +6,17 @@ import Question from "./screens/Question";
 import Calendar from "./screens/Calendar";
 import FormOverview from "./screens/FormOverview";
 import NotFound from "./screens/NotFound";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div
       style={{
         backgroundImage: `url(${BodyBackground})`,
-        backgroundSize: "100% 100%",
       }}
       className="bg-center bg-cover bg-no-repeat flex flex-col px-3 pt-2"
     >
+      <Header />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
