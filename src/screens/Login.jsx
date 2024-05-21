@@ -1,7 +1,7 @@
 const Login = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className="flex flex-row h-[80%] w-[60%] relative">
+      <div className="flex flex-row h-[80%] w-[90%] md:w-[60%] relative">
         <div className="flex flex-col items-start justify-between p-4 text-white bg-black opacity-75 rounded-3xl w-full">
           <h3>Getting Started with Pillar.ai</h3>
           <div className="max-w-[50%]">
@@ -28,7 +28,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col text-white bg-black opacity-100 rounded-3xl absolute right-0 h-full w-[50%]">
+        <div className="flex flex-col text-white bg-black opacity-100 rounded-3xl absolute right-0 h-full w-[100%] md:w-[50%]">
           <h3 className="ml-5">Login</h3>
           <div className="flex flex-row justify-center items-center w-full">
             <button className="border-2 border-white text-center rounded-lg p-2 m-1">
