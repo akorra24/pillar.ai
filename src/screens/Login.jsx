@@ -5,14 +5,50 @@ const Login = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-row h-[80%] w-[90%] md:w-[60%] relative">
-        <div className="flex flex-col items-start justify-between p-4 text-white bg-black opacity-0 md:opacity-75 rounded-3xl w-full">
+        <div className="flex flex-col items-start justify-between p-4 text-white bg-black opacity-0 md:opacity-100 bg-opacity-75 rounded-3xl w-full">
           <h3 className="text-3xl ml-10 mt-10 max-w-[50%]">
             Getting
             <br /> Started with Pillar.ai
           </h3>
           <div className="max-w-[50%]">
-            <h2 className="p-5">Our Friends</h2>
+            <h2 className="p-5 text-3xl">Our Friends</h2>
             <div className="flex flex-row flex-wrap">
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
+              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
+                Mike tyson
+              </p>
               <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
                 Mike tyson
               </p>
@@ -34,7 +70,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center text-white bg-black opacity-80 rounded-3xl absolute right-0 h-full w-[100%] md:w-[50%]">
+        <div className="flex flex-col justify-center text-white bg-black bg-opacity-80 rounded-3xl absolute right-0 h-full w-[100%] md:w-[50%]">
           <h3 className="ml-10 mb-10 text-2xl font-bold">Login</h3>
           <div className="flex flex-row justify-evenly items-center w-full">
             <button className="border-2 border-white text-center rounded-lg px-2 py-3 m-1 flex flex-row items-center">

@@ -3,9 +3,9 @@ const Header = () => {
     <div>
       <div className="flex flex-row justify-between items-center">
         <img src="/logo.png" alt="logo" className="w-40" />:
-        <button className="px-3 py-1 rounded-full text-black bg-transparent border border-black border-solid hover:bg-black hover:text-white focus:outline-none md:px-6 md:py-2">
+        {/* <button className="px-3 py-1 rounded-full text-black bg-transparent border border-black border-solid hover:bg-black hover:text-white focus:outline-none md:px-6 md:py-2">
           Log Out
-        </button>
+        </button> */}
       </div>
     </div>
   );
