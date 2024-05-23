@@ -8,8 +8,10 @@ import FormOverview from "./screens/FormOverview";
 import NotFound from "./screens/NotFound";
 import Header from "./components/Header";
 import SignUp from "./screens/SignUp";
+import { getUserData } from "./services/saveLogin";
 
 function App() {
+  const userData = getUserData();
   return (
     <div
       style={{
@@ -19,7 +21,7 @@ function App() {
     >
       <Header />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={userData ? <Dashboard /> : <Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />

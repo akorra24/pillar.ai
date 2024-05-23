@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, facebook, google } from "../firebase/firebase";
+import { saveUserData } from "../services/saveLogin";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -15,6 +16,11 @@ const SignUp = () => {
   const handleSignUp = async () => {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password);
+      saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      navigate("/dashboard");
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
@@ -26,6 +32,11 @@ const SignUp = () => {
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, google);
+      saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      navigate("/dashboard");
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
@@ -37,6 +48,11 @@ const SignUp = () => {
   const handleFacebookLogin = async () => {
     try {
       const result = await signInWithPopup(auth, facebook);
+      saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      navigate("/dashboard");
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")

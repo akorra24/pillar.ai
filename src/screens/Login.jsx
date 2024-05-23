@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, facebook, google } from "../firebase/firebase";
+import { saveUserData } from "../services/saveLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +16,11 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
+      saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      navigate("/dashboard");
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
@@ -26,6 +32,11 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, google);
+      saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      navigate("/dashboard");
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
@@ -37,6 +48,11 @@ const Login = () => {
   const handleFacebookLogin = async () => {
     try {
       const result = await signInWithPopup(auth, facebook);
+      saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      navigate("/dashboard");
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
@@ -161,7 +177,12 @@ const Login = () => {
           </div>
           <div className="flex flex-row items-center mt-10 ml-10">
             <p>Don't have an account?</p>
-            <NavLink to="/sign-up" className="text-green-500 ml-2 cursor-pointer">Sign up</NavLink>
+            <NavLink
+              to="/sign-up"
+              className="text-green-500 ml-2 cursor-pointer"
+            >
+              Sign up
+            </NavLink>
           </div>
           <div className="flex flex-row items-center ml-10">
             <p>Forgot your password?</p>

@@ -3,8 +3,18 @@ import CalendarIcon from "../assets/calendar.svg";
 import PlusIcon from "../assets/plus.svg";
 import ArchiveIcon from "../assets/trash.svg";
 import EditIcon from "../assets/edit.svg";
+import { clearUserData } from "../services/saveLogin";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const [showLogout, setShowLogout] = useState(false);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    clearUserData();
+    setShowLogout(false);
+    navigate("/login");
+  };
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-white">
@@ -19,7 +29,23 @@ const Dashboard = () => {
               <img src={ArchiveIcon} className="w-3 mr-2" />
               Archive
             </button>
-            <img src={UserIcon} className="w-10" />
+            <div className="relative">
+              <img
+                src={UserIcon}
+                className="w-10 cursor-pointer"
+                onClick={() => setShowLogout(!showLogout)}
+              />
+              {showLogout && (
+                <div className="absolute top-full right-0 bg-white p-2 rounded-lg shadow-lg">
+                  <button
+                    className="text-white bg-red-500 hover:bg-red-700 px-4 py-2 rounded transition duration-200 ease-in-out"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-center justify-center w-full p-2 text-center overflow-auto hide-scrollbar">
