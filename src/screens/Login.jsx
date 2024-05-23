@@ -6,7 +6,10 @@ const Login = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-row h-[80%] w-[90%] md:w-[60%] relative">
         <div className="flex flex-col items-start justify-between p-4 text-white bg-black opacity-0 md:opacity-75 rounded-3xl w-full">
-          <h3>Getting Started with Pillar.ai</h3>
+          <h3 className="text-3xl ml-10 mt-10 max-w-[50%]">
+            Getting
+            <br /> Started with Pillar.ai
+          </h3>
           <div className="max-w-[50%]">
             <h2 className="p-5">Our Friends</h2>
             <div className="flex flex-row flex-wrap">
