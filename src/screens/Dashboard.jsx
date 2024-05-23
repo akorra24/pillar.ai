@@ -50,92 +50,96 @@ const Dashboard = () => {
         </div>
         <div className="flex flex-col items-center justify-center w-full p-2 text-center overflow-auto hide-scrollbar">
           <table className="w-full">
-            <tr>
-              <th className="flex flex-row items-center justify-center py-10">
-                <img src={CalendarIcon} className="w-10 mr-2" /> Calendar
-              </th>
-              <th>Month</th>
-              <th>Brand</th>
-              <th className="md:w-[30%]">Action</th>
-            </tr>
-            <tr>
-              <td className="flex flex-row items-center justify-center py-5">
-                <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                  View Calender 1
-                </button>
-              </td>
-              <td>April</td>
-              <td>OpenAsphalt</td>
-              <td className="flex flex-row items-center justify-center">
-                <img src={EditIcon} className="w-5 mr-2" />
-                <img src={ArchiveIcon} className="w-5" />
-              </td>
-            </tr>
-            <tr>
-              <td className="flex flex-row items-center justify-center py-5">
-                <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                  View Calender 1
-                </button>
-              </td>
-              <td>April</td>
-              <td>OpenAsphalt</td>
-              <td className="flex flex-row items-center justify-center">
-                <img src={EditIcon} className="w-5 mr-2" />
-                <img src={ArchiveIcon} className="w-5" />
-              </td>
-            </tr>
-            <tr>
-              <td className="flex flex-row items-center justify-center py-5">
-                <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                  View Calender 1
-                </button>
-              </td>
-              <td>April</td>
-              <td>OpenAsphalt</td>
-              <td className="flex flex-row items-center justify-center">
-                <img src={EditIcon} className="w-5 mr-2" />
-                <img src={ArchiveIcon} className="w-5" />
-              </td>
-            </tr>
-            <tr>
-              <td className="flex flex-row items-center justify-center py-5">
-                <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                  View Calender 1
-                </button>
-              </td>
-              <td>April</td>
-              <td>OpenAsphalt</td>
-              <td className="flex flex-row items-center justify-center">
-                <img src={EditIcon} className="w-5 mr-2" />
-                <img src={ArchiveIcon} className="w-5" />
-              </td>
-            </tr>
-            <tr>
-              <td className="flex flex-row items-center justify-center py-5">
-                <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                  View Calender 1
-                </button>
-              </td>
-              <td>April</td>
-              <td>OpenAsphalt</td>
-              <td className="flex flex-row items-center justify-center">
-                <img src={EditIcon} className="w-5 mr-2" />
-                <img src={ArchiveIcon} className="w-5" />
-              </td>
-            </tr>
-            <tr>
-              <td className="flex flex-row items-center justify-center py-5">
-                <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                  View Calender 1
-                </button>
-              </td>
-              <td>April</td>
-              <td>OpenAsphalt</td>
-              <td className="flex flex-row items-center justify-center">
-                <img src={EditIcon} className="w-5 mr-2" />
-                <img src={ArchiveIcon} className="w-5" />
-              </td>
-            </tr>
+            <thead>
+              <tr>
+                <th className="flex flex-row items-center justify-center py-10">
+                  <img src={CalendarIcon} className="w-10 mr-2" /> Calendar
+                </th>
+                <th>Month</th>
+                <th>Brand</th>
+                <th className="md:w-[30%]">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="flex flex-row items-center justify-center py-5">
+                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
+                    View Calender 1
+                  </button>
+                </td>
+                <td>April</td>
+                <td>OpenAsphalt</td>
+                <td className="flex flex-row items-center justify-center">
+                  <img src={EditIcon} className="w-5 mr-2" />
+                  <img src={ArchiveIcon} className="w-5" />
+                </td>
+              </tr>
+              <tr>
+                <td className="flex flex-row items-center justify-center py-5">
+                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
+                    View Calender 1
+                  </button>
+                </td>
+                <td>April</td>
+                <td>OpenAsphalt</td>
+                <td className="flex flex-row items-center justify-center">
+                  <img src={EditIcon} className="w-5 mr-2" />
+                  <img src={ArchiveIcon} className="w-5" />
+                </td>
+              </tr>
+              <tr>
+                <td className="flex flex-row items-center justify-center py-5">
+                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
+                    View Calender 1
+                  </button>
+                </td>
+                <td>April</td>
+                <td>OpenAsphalt</td>
+                <td className="flex flex-row items-center justify-center">
+                  <img src={EditIcon} className="w-5 mr-2" />
+                  <img src={ArchiveIcon} className="w-5" />
+                </td>
+              </tr>
+              <tr>
+                <td className="flex flex-row items-center justify-center py-5">
+                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
+                    View Calender 1
+                  </button>
+                </td>
+                <td>April</td>
+                <td>OpenAsphalt</td>
+                <td className="flex flex-row items-center justify-center">
+                  <img src={EditIcon} className="w-5 mr-2" />
+                  <img src={ArchiveIcon} className="w-5" />
+                </td>
+              </tr>
+              <tr>
+                <td className="flex flex-row items-center justify-center py-5">
+                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
+                    View Calender 1
+                  </button>
+                </td>
+                <td>April</td>
+                <td>OpenAsphalt</td>
+                <td className="flex flex-row items-center justify-center">
+                  <img src={EditIcon} className="w-5 mr-2" />
+                  <img src={ArchiveIcon} className="w-5" />
+                </td>
+              </tr>
+              <tr>
+                <td className="flex flex-row items-center justify-center py-5">
+                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
+                    View Calender 1
+                  </button>
+                </td>
+                <td>April</td>
+                <td>OpenAsphalt</td>
+                <td className="flex flex-row items-center justify-center">
+                  <img src={EditIcon} className="w-5 mr-2" />
+                  <img src={ArchiveIcon} className="w-5" />
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import BodyBackground from "./assets/body_background.jpg";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./screens/Login";
 import Dashboard from "./screens/Dashboard";
 import Question from "./screens/Question";
@@ -24,10 +24,22 @@ function App() {
         <Route path="/" element={userData ? <Dashboard /> : <Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/calendar/:id" element={<Calendar />} />
-        <Route path="/question/:id" element={<Question />} />
-        <Route path="/form-overview" element={<FormOverview />} />
+        <Route
+          path="/dashboard"
+          element={userData ? <Dashboard /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/calendar/:id"
+          element={userData ? <Calendar /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/question/:id"
+          element={userData ? <Question /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/form-overview"
+          element={userData ? <FormOverview /> : <Navigate to="/login" />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
