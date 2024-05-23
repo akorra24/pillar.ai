@@ -10,27 +10,41 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
-    const result = await signInWithEmailAndPassword(auth, email, password);
-    console.log("====================================");
-    console.log(result);
-    console.log("====================================");
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      const errorMessage = error?.message
+        ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
+        : "An error occured";
+      setError(errorMessage);
+    }
   };
 
   const handleGoogleLogin = async () => {
-    const result = await signInWithPopup(auth, google);
-    console.log("====================================");
-    console.log(result);
-    console.log("====================================");
+    try {
+      const result = await signInWithPopup(auth, google);
+    } catch (error) {
+      const errorMessage = error?.message
+        ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
+        : "An error occured";
+      setError(errorMessage);
+    }
   };
 
   const handleFacebookLogin = async () => {
-    const result = await signInWithPopup(auth, facebook);
-    console.log("====================================");
-    console.log(result);
-    console.log("====================================");
+    try {
+      const result = await signInWithPopup(auth, facebook);
+    } catch (error) {
+      const errorMessage = error?.message
+        ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
+        : "An error occured";
+      setError(errorMessage);
+    }
   };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-row h-[80%] w-[90%] md:w-[60%] relative">
@@ -141,6 +155,9 @@ const Login = () => {
             >
               Login
             </button>
+          </div>
+          <div className="flex flex-row items-center justify-center mt-5">
+            <p className="text-red-500">{error}</p>
           </div>
           <div className="flex flex-row items-center mt-10 ml-10">
             <p>Don't have an account?</p>
