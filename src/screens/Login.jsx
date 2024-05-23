@@ -1,5 +1,5 @@
 import GoogleIcon from "../assets/google.svg";
-import FacebookIcon from "../assets/facebook.svg"
+import FacebookIcon from "../assets/facebook.svg";
 
 const Login = () => {
   return (
@@ -39,7 +39,7 @@ const Login = () => {
               Login with Google
             </button>
             <button className="border-2 border-white text-center rounded-lg px-2 py-3 m-1 flex flex-row items-center">
-            <img src={FacebookIcon} className="w-5 mr-2" />
+              <img src={FacebookIcon} className="w-5 mr-2" />
               Login with Facebook
             </button>
           </div>
@@ -60,6 +60,14 @@ const Login = () => {
             <button className=" bg-green-500 opacity-70 rounded py-3 w-[90%]">
               Login
             </button>
+          </div>
+          <div className="flex flex-row items-center mt-10 ml-10">
+            <p>Don't have an account?</p>
+            <p className="text-green-500 ml-2 cursor-pointer">Sign up</p>
+          </div>
+          <div className="flex flex-row items-center ml-10">
+            <p>Forgot your password?</p>
+            <p className="text-green-500 ml-2 cursor-pointer">Reset Password</p>
           </div>
         </div>
       </div>

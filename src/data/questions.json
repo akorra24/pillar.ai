@@ -1,24 +1,40 @@
 [
-    {
+  {
+    "id": "1",
+    "description": "We are excited for you to join the Pillar family. Before we begin it's important we gather as much information about you/your brand as possible.",
+    "optionalInput": false,
+    "questions": [
+      {
         "id": "1",
-        "questionType": "multipleChoice",
-        "questionText": "What is the capital of France?",
-        "options": [
-            "Paris",
-            "London",
-            "Berlin",
-            "Madrid"
-        ]
-    },
-    {
+        "questionType": "text",
+        "question": "First name",
+        "placeholder": "Jane"
+      },
+      {
         "id": "2",
-        "questionType": "multipleChoice",
-        "questionText": "What is the capital of England?",
-        "options": [
-            "Paris",
-            "London",
-            "Berlin",
-            "Madrid"
-        ]
-    }
+        "questionType": "text",
+        "question": "Last name",
+        "placeholder": "Smith"
+      },
+      {
+        "id": "3",
+        "questionType": "phone",
+        "question": "Phone number",
+        "placeholder": "(201) 555-0123"
+      },
+      {
+        "id": "4",
+        "questionType": "email",
+        "question": "Email",
+        "placeholder": "name@example.com"
+      },
+      {
+        "id": "5",
+        "questionType": "text",
+        "question": "Company",
+        "placeholder": "Acme Corporation"
+      }
+    ]
+  },
+  {}
 ]
