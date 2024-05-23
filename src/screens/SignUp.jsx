@@ -2,19 +2,19 @@ import GoogleIcon from "../assets/google.svg";
 import FacebookIcon from "../assets/facebook.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, facebook, google } from "../firebase/firebase";
 
-const Login = () => {
+const SignUp = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async () => {
+  const handleSignUp = async () => {
     try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
+      const result = await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
@@ -114,21 +114,21 @@ const Login = () => {
           </div>
         </div>
         <div className="flex flex-col justify-center text-white bg-black bg-opacity-80 rounded-3xl absolute right-0 h-full w-[100%] md:w-[50%]">
-          <h3 className="ml-10 mb-10 text-2xl font-bold">Login</h3>
+          <h3 className="ml-10 mb-10 text-2xl font-bold">Sign Up</h3>
           <div className="flex flex-row justify-evenly items-center w-full">
             <button
               className="border-2 border-white text-center rounded-lg px-2 py-3 m-1 flex flex-row items-center"
               onClick={handleGoogleLogin}
             >
               <img src={GoogleIcon} className="w-5 mr-2" />
-              Login with Google
+              Sign Up with Google
             </button>
             <button
               className="border-2 border-white text-center rounded-lg px-2 py-3 m-1 flex flex-row items-center"
               onClick={handleFacebookLogin}
             >
               <img src={FacebookIcon} className="w-5 mr-2" />
-              Login with Facebook
+              Sign Up with Facebook
             </button>
           </div>
           <div className="flex flex-col items-center justify-center my-10">
@@ -151,9 +151,9 @@ const Login = () => {
             />
             <button
               className=" bg-green-500 opacity-70 rounded py-3 w-[90%]"
-              onClick={handleLogin}
+              onClick={handleSignUp}
             >
-              Login
+              Sign Up
             </button>
           </div>
           <div className="flex flex-row items-center justify-center mt-5">
@@ -161,7 +161,7 @@ const Login = () => {
           </div>
           <div className="flex flex-row items-center mt-10 ml-10">
             <p>Don't have an account?</p>
-            <NavLink to="/sign-up" className="text-green-500 ml-2 cursor-pointer">Sign up</NavLink>
+            <NavLink to="/login"  className="text-green-500 ml-2 cursor-pointer">Login</NavLink>
           </div>
           <div className="flex flex-row items-center ml-10">
             <p>Forgot your password?</p>
@@ -173,4 +173,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

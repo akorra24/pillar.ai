@@ -7,6 +7,7 @@ import Calendar from "./screens/Calendar";
 import FormOverview from "./screens/FormOverview";
 import NotFound from "./screens/NotFound";
 import Header from "./components/Header";
+import SignUp from "./screens/SignUp";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/calendar/:id" element={<Calendar />} />
         <Route path="/question/:id" element={<Question />} />
