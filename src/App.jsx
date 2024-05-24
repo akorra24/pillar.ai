@@ -10,9 +10,16 @@ import Header from "./components/Header";
 import SignUp from "./screens/SignUp";
 import { getUserData } from "./services/saveLogin";
 import Archived from "./screens/Archived";
+import { useEffect, useState } from "react";
 
 function App() {
-  const userData = getUserData();
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const data = getUserData();
+    setUserData(data);
+  }, []);
+
   return (
     <div
       style={{
@@ -23,8 +30,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={userData ? <Dashboard /> : <Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/login" element={<Login setUserData={setUserData} />} />
+        <Route path="/sign-up" element={<SignUp setUserData={setUserData} />} />
         <Route
           path="/dashboard"
           element={userData ? <Dashboard /> : <Navigate to="/login" />}

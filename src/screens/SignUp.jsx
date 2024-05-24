@@ -4,14 +4,13 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { auth, facebook, google } from "../firebase/firebase";
 import { saveUserData } from "../services/saveLogin";
 import FriendBox from "../components/FriendBox";
 
-const SignUp = () => {
+const SignUp = ({ setUserData }) => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -26,6 +25,10 @@ const SignUp = () => {
         password
       );
       saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      setUserData({
         uid: result.user.uid,
         email: result.user.email,
       });
@@ -45,6 +48,10 @@ const SignUp = () => {
         uid: result.user.uid,
         email: result.user.email,
       });
+      setUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
       navigate("/dashboard");
     } catch (error) {
       const errorMessage = error?.message
@@ -58,6 +65,10 @@ const SignUp = () => {
     try {
       const result = await signInWithPopup(auth, facebook);
       saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      setUserData({
         uid: result.user.uid,
         email: result.user.email,
       });

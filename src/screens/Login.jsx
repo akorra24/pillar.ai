@@ -7,7 +7,7 @@ import { auth, facebook, google } from "../firebase/firebase";
 import { saveUserData } from "../services/saveLogin";
 import FriendBox from "../components/FriendBox";
 
-const Login = () => {
+const Login = ({ setUserData }) => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -18,6 +18,10 @@ const Login = () => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      setUserData({
         uid: result.user.uid,
         email: result.user.email,
       });
@@ -37,6 +41,10 @@ const Login = () => {
         uid: result.user.uid,
         email: result.user.email,
       });
+      setUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
       navigate("/dashboard");
     } catch (error) {
       const errorMessage = error?.message
@@ -50,6 +58,10 @@ const Login = () => {
     try {
       const result = await signInWithPopup(auth, facebook);
       saveUserData({
+        uid: result.user.uid,
+        email: result.user.email,
+      });
+      setUserData({
         uid: result.user.uid,
         email: result.user.email,
       });
