@@ -5,6 +5,7 @@ import { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, facebook, google } from "../firebase/firebase";
 import { saveUserData } from "../services/saveLogin";
+import FriendBox from "../components/FriendBox";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -72,60 +73,20 @@ const Login = () => {
           <div className="max-w-[50%]">
             <h2 className="p-5 text-3xl">Our Friends</h2>
             <div className="flex flex-row flex-wrap">
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
-              <p className="border-2 border-white text-center rounded-lg p-2 m-1 ">
-                Mike tyson
-              </p>
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" />
             </div>
           </div>
         </div>
