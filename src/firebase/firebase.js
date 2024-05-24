@@ -6,12 +6,12 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDL-IdHwF70A-QfkVT1f-hrnFfcE-vTfDk",
-  authDomain: "pillar-data.firebaseapp.com",
-  projectId: "pillar-data",
-  storageBucket: "pillar-data.appspot.com",
-  messagingSenderId: "681447102479",
-  appId: "1:681447102479:web:7a999b26ce107a2f5c2b7a",
+  apiKey: import.meta.env.VITE_APP_API_KEY,
+  authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_APP_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_APP_ID,
 };
 
 // Initialize Firebase
