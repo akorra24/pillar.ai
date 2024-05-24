@@ -13,7 +13,8 @@ import Archived from "./screens/Archived";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [userData, setUserData] = useState(null);
+  const localData = getUserData();
+  const [userData, setUserData] = useState(localData);
 
   useEffect(() => {
     const data = getUserData();
