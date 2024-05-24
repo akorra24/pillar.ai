@@ -1,11 +1,8 @@
 import GoogleIcon from "../assets/google.svg";
 import FacebookIcon from "../assets/facebook.svg";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, facebook, google } from "../firebase/firebase";
 import { saveUserData } from "../services/saveLogin";
 import FriendBox from "../components/FriendBox";
@@ -36,7 +33,7 @@ const SignUp = ({ setUserData }) => {
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
-        : "An error occured";
+        : "An error occurred";
       setError(errorMessage);
     }
   };
@@ -56,7 +53,7 @@ const SignUp = ({ setUserData }) => {
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
-        : "An error occured";
+        : "An error occurred";
       setError(errorMessage);
     }
   };
@@ -76,7 +73,7 @@ const SignUp = ({ setUserData }) => {
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
-        : "An error occured";
+        : "An error occurred";
       setError(errorMessage);
     }
   };

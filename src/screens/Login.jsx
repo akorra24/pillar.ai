@@ -29,7 +29,7 @@ const Login = ({ setUserData }) => {
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
-        : "An error occured";
+        : "An error occurred";
       setError(errorMessage);
     }
   };
@@ -49,7 +49,7 @@ const Login = ({ setUserData }) => {
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
-        : "An error occured";
+        : "An error occurred";
       setError(errorMessage);
     }
   };
@@ -69,7 +69,7 @@ const Login = ({ setUserData }) => {
     } catch (error) {
       const errorMessage = error?.message
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
-        : "An error occured";
+        : "An error occurred";
       setError(errorMessage);
     }
   };
