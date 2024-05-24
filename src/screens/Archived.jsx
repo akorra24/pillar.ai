@@ -3,6 +3,7 @@ import CalendarIcon from "../assets/calendar.svg";
 import PlusIcon from "../assets/plus.svg";
 import ArchiveIcon from "../assets/trash.svg";
 import EditIcon from "../assets/edit.svg";
+import BackIcon from "../assets/left.svg";
 import { clearUserData } from "../services/saveLogin";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +12,9 @@ import Question from "./Question";
 import { uid } from "uid";
 import LogoutContainer from "../components/LogoutContainer";
 
-const Dashboard = () => {
+const Archived = () => {
   const navigate = useNavigate();
+
   const handleCalendarClick = () => {
     navigate("/calendar/1");
   };
@@ -45,7 +47,7 @@ const Dashboard = () => {
       calendar: [
         ["Date", "Platform", "Content", "Caption", "Visual", "Hashtags"],
       ],
-      progress: 0, 
+      progress: 0,
     };
     localStorage.setItem("currentForm", JSON.stringify(newForm));
     navigate("/question/1");
@@ -54,17 +56,22 @@ const Dashboard = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-white">
         <div className="flex flex-row items-start justify-between p-4 flex-wrap">
-          <h3 className="text-3xl md:ml-10">Welcome</h3>
+          <div className="flex flex-row">
+            <img
+              src={BackIcon}
+              className="w-10 mr-2 cursor-pointer"
+              onClick={() => navigate("/dashboard")}
+            />
+            <div className="flex flex-col ml-5">
+              <h3 className="text-3xl">Archived</h3>
+              <p className="text-sm">Deleted Calendars</p>
+            </div>
+          </div>
           <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">
             <IconButton
               icon={PlusIcon}
               text="start New"
               onClick={createNewForm}
-            />
-            <IconButton
-              icon={ArchiveIcon}
-              text="Archive"
-              onClick={() => navigate("/archived")}
             />
             <LogoutContainer />
           </div>
@@ -174,4 +181,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Archived;

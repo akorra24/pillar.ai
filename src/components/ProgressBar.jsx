@@ -1,5 +1,13 @@
-const ProgressBar = () => {
-  return <div className="flex flex-col pt-5 mt-20">Progress Bar</div>;
+import ProgressBar from "@ramonak/react-progress-bar";
+
+const ProgressBarContainer = () => {
+  const currentForm = JSON.parse(localStorage.getItem("currentForm"));
+  const progress = currentForm ? currentForm?.progress : 0;
+  return (
+    <div className="absolute bottom-0 w-full">
+      <ProgressBar completed={progress} bgColor="#49FB34" />
+    </div>
+  );
 };
 
-export default ProgressBar;
+export default ProgressBarContainer;

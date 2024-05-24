@@ -6,18 +6,13 @@ import ReGenerateIcon from "../assets/re-generate.svg";
 import BackIcon from "../assets/left.svg";
 import EditIcon from "../assets/edit.svg";
 import { clearUserData } from "../services/saveLogin";
+import LogoutContainer from "../components/LogoutContainer";
 
 const Calendar = () => {
   const { id } = useParams();
   const [calendarData, setCalendarData] = useState(null);
 
-  const [showLogout, setShowLogout] = useState(false);
   const navigate = useNavigate();
-  const handleLogout = () => {
-    clearUserData();
-    setShowLogout(false);
-    navigate("/login");
-  };
 
   useEffect(() => {
     const fetchCalendarData = async () => {
@@ -45,29 +40,13 @@ const Calendar = () => {
             />
             <div className="flex flex-col ml-5">
               <h3 className="text-3xl">OpenAsphalt</h3>
-              <p className="text-sm">Calender 1 April</p>
+              <p className="text-sm">Calendar 1 April</p>
             </div>
           </div>
           <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">
             <IconButton icon={ReGenerateIcon} text="Generate next month" />
             <IconButton icon={EditIcon} text="Edit" />
-            <div className="relative">
-              <img
-                src={UserIcon}
-                className="w-10 cursor-pointer"
-                onClick={() => setShowLogout(!showLogout)}
-              />
-              {showLogout && (
-                <div className="absolute top-full right-0 bg-white p-2 rounded-lg shadow-lg">
-                  <button
-                    className="text-white bg-red-500 hover:bg-red-700 px-4 py-2 rounded transition duration-200 ease-in-out"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
+            <LogoutContainer />
           </div>
         </div>
         <div className="flex flex-col items-center justify-center w-full p-2 text-center overflow-auto hide-scrollbar">

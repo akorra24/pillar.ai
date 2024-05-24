@@ -9,6 +9,7 @@ import NotFound from "./screens/NotFound";
 import Header from "./components/Header";
 import SignUp from "./screens/SignUp";
 import { getUserData } from "./services/saveLogin";
+import Archived from "./screens/Archived";
 
 function App() {
   const userData = getUserData();
@@ -17,7 +18,7 @@ function App() {
       style={{
         backgroundImage: `url(${BodyBackground})`,
       }}
-      className="bg-center bg-cover bg-no-repeat flex flex-col px-3 pt-2"
+      className="bg-center bg-cover bg-no-repeat flex flex-col px-3"
     >
       <Header />
       <Routes>
@@ -27,6 +28,10 @@ function App() {
         <Route
           path="/dashboard"
           element={userData ? <Dashboard /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/archived"
+          element={userData ? <Archived /> : <Navigate to="/login" />}
         />
         <Route
           path="/calendar/:id"

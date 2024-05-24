@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import questionsData from "../data/questions.json";
-import ProgressBar from "../components/ProgressBar";
+import ProgressBarContainer from "../components/ProgressBar";
 
 const Question = () => {
   const { id } = useParams();
@@ -56,7 +56,7 @@ const Question = () => {
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Next
       </button>
-      <ProgressBar />
+      <ProgressBarContainer />
     </div>
   );
 };
