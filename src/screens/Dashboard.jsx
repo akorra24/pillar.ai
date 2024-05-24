@@ -16,6 +16,10 @@ const Dashboard = () => {
     setShowLogout(false);
     navigate("/login");
   };
+
+  const handleCalendarClick = () => {
+    navigate("/calendar/1");
+  };
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-white">
@@ -58,7 +62,10 @@ const Dashboard = () => {
             <tbody>
               <tr>
                 <td className="flex flex-row items-center justify-center py-5">
-                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
+                  <button
+                    className="border-2 border-green-500 text-center rounded-lg p-2 m-1"
+                    onClick={handleCalendarClick}
+                  >
                     View Calender 1
                   </button>
                 </td>
@@ -71,7 +78,10 @@ const Dashboard = () => {
               </tr>
               <tr>
                 <td className="flex flex-row items-center justify-center py-5">
-                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
+                  <button
+                    className="border-2 border-green-500 text-center rounded-lg p-2 m-1"
+                    onClick={handleCalendarClick}
+                  >
                     View Calender 1
                   </button>
                 </td>
