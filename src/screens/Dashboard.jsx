@@ -6,6 +6,7 @@ import EditIcon from "../assets/edit.svg";
 import { clearUserData } from "../services/saveLogin";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import IconButton from "../components/IconButton";
 
 const Dashboard = () => {
   const [showLogout, setShowLogout] = useState(false);
@@ -21,14 +22,8 @@ const Dashboard = () => {
         <div className="flex flex-row items-start justify-between p-4 flex-wrap">
           <h3 className="text-3xl md:ml-10">Welcome</h3>
           <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">
-            <button className="bg-black text-center rounded-xl flex flex-row items-center px-2">
-              <img src={PlusIcon} className="w-3 mr-2" />
-              start New
-            </button>
-            <button className="bg-black text-center rounded-xl flex flex-row items-center px-2">
-              <img src={ArchiveIcon} className="w-3 mr-2" />
-              Archive
-            </button>
+            <IconButton icon={PlusIcon} text="start New" />
+            <IconButton icon={ArchiveIcon} text="Archive" />
             <div className="relative">
               <img
                 src={UserIcon}
