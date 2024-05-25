@@ -40,14 +40,13 @@ const Question = () => {
       return (
         <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
           <h3 className="text-3xl flex flex-row items-start">
-            1
-            <img src={RightArrowIcon} className="w-7 mx-3" />
-            What category best describes your business?This question is
-            required.*
+            {question?.id}
+            <img src={RightArrowIcon} className="w-7 mx-3 mt-1" />
+           {question?.title}
           </h3>
-          <div className="flex flex-col items-center justify-center px-10">
+          <div className="flex flex-col justify-center px-10">
             <label className="text-xl font-thin mt-5">
-              Choose as many as you like
+              {question?.label}
             </label>
             <div className="flex flex-col items-start justify-center w-full">
               <MultipleChoiceInput options={question?.options} />
@@ -59,14 +58,13 @@ const Question = () => {
       return (
         <div className="flex flex-col items-start justify-center py-10 px-10 overflow-y-scroll hide-scrollbar h-screen">
           <h3 className="text-3xl flex flex-row items-start">
-            1
-            <img src={RightArrowIcon} className="w-7 mx-3" />
-            Which platforms do you currently distribute content on?
+          {question?.id}
+            <img src={RightArrowIcon} className="w-7 mx-3 mt-2" />
+            {question?.title}
           </h3>
-          <div className="flex flex-col items-center justify-center px-10">
+          <div className="flex flex-col justify-center px-10 w-full">
             <p className="text-xl font-thin my-5">
-              Only include which ones you currently distribute content on
-              currently!
+            {question?.subtitle}
             </p>
             <input
               type="text"
@@ -78,15 +76,14 @@ const Question = () => {
       );
     } else if (question?.type === "titlePage") {
       return (
-        <div className="flex flex-col items-center justify-center py-10 px-10 h-screen">
+        <div className="flex flex-col justify-center py-10 px-10 h-screen">
           <h3 className="text-3xl flex flex-row items-start">
-            1
-            <img src={RightArrowIcon} className="w-7 mx-3" />
-            Which platforms do you currently distribute content on?
+          {question?.id}
+            <img src={RightArrowIcon} className="w-7 mx-3 mt-1" />
+            {question?.title}
           </h3>
-          <p className="text-xl font-thin my-5">
-            Only include which ones you currently distribute content on
-            currently!
+          <p className="text-xl font-thin my-5 mx-10">
+          {question?.subtitle}
           </p>
         </div>
       );
