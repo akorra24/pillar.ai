@@ -54,62 +54,37 @@ const Question = () => {
       );
     } else if (question?.type === "textInput") {
       return (
-        <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
-          <h3 className="text-3xl flex flex-row">
+        <div className="flex flex-col items-start justify-center py-10 px-10 overflow-y-scroll hide-scrollbar h-screen">
+          <h3 className="text-3xl flex flex-row items-start">
             1
             <img src={RightArrowIcon} className="w-7 mx-3" />
-            ...
+            Which platforms do you currently distribute content on?
           </h3>
           <div className="flex flex-col items-center justify-center px-10">
             <p className="text-xl font-thin my-5">
-              We are excited for you to join the Pillar family. Before we begin
-              it's important we gather as much information about you/your brand
-              as possible.
+              Only include which ones you currently distribute content on
+              currently!
             </p>
-            <TextInput label="First name" placeholder="Jane" />
-            <TextInput label="Last name" placeholder="Smith" />
-            <TextInput
-              label="Phone number"
-              placeholder="(201) 555-0123"
-              type="phone"
+            <input
+              type="text"
+              className="w-full border-b-2 border-green-500 bg-transparent text-green-500 placeholder-green-800 focus:border-b-4 focus:outline-none text-2xl"
+              placeholder="Type your answer here"
             />
-            <TextInput
-              label="Email"
-              placeholder="name@example.com"
-              type="email"
-            />
-            <TextInput label="Company" placeholder="Acme Corporation" />
           </div>
         </div>
       );
     } else if (question?.type === "titlePage") {
       return (
-        <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
-          <h3 className="text-3xl flex flex-row">
+        <div className="flex flex-col items-center justify-center py-10 px-10 h-screen">
+          <h3 className="text-3xl flex flex-row items-start">
             1
             <img src={RightArrowIcon} className="w-7 mx-3" />
-            ...
+            Which platforms do you currently distribute content on?
           </h3>
-          <div className="flex flex-col items-center justify-center px-10">
-            <p className="text-xl font-thin my-5">
-              We are excited for you to join the Pillar family. Before we begin
-              it's important we gather as much information about you/your brand
-              as possible.
-            </p>
-            <TextInput label="First name" placeholder="Jane" />
-            <TextInput label="Last name" placeholder="Smith" />
-            <TextInput
-              label="Phone number"
-              placeholder="(201) 555-0123"
-              type="phone"
-            />
-            <TextInput
-              label="Email"
-              placeholder="name@example.com"
-              type="email"
-            />
-            <TextInput label="Company" placeholder="Acme Corporation" />
-          </div>
+          <p className="text-xl font-thin my-5">
+            Only include which ones you currently distribute content on
+            currently!
+          </p>
         </div>
       );
     } else {
