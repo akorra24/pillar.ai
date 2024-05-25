@@ -8,35 +8,35 @@
     "options": [
       {
         "id": "A",
-        "option": "Influencer"
+        "value": "Influencer"
       },
       {
         "id": "B",
-        "option": "Brand"
+        "value": "Brand"
       },
       {
         "id": "C",
-        "option": "Artist/Musician"
+        "value": "Artist/Musician"
       },
       {
         "id": "D",
-        "option": "Athlete"
+        "value": "Athlete"
       },
       {
         "id": "E",
-        "option": "Actor/Actress"
+        "value": "Actor/Actress"
       },
       {
         "id": "F",
-        "option": "Comedian"
+        "value": "Comedian"
       },
       {
         "id": "G",
-        "option": "Gamer"
+        "value": "Gamer"
       },
       {
         "id": "H",
-        "option": "Other"
+        "value": "Other"
       }
     ],
     "required": true

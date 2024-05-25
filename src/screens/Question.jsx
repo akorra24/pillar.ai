@@ -6,6 +6,7 @@ import UpIcon from "../assets/up.svg";
 import DownIcon from "../assets/down.svg";
 import RightArrowIcon from "../assets/right-arrow.svg";
 import TextInput from "../components/TextInput";
+import MultipleChoiceInput from "../components/MultipleChoiceInput";
 //TODO: We will custom make the first question screen others are from json
 const Question = () => {
   const { id } = useParams();
@@ -28,27 +29,16 @@ const Question = () => {
           <h3 className="text-3xl flex flex-row">
             1
             <img src={RightArrowIcon} className="w-7 mx-3" />
-            ...
+            What category best describes your business?This question is
+            required.*
           </h3>
           <div className="flex flex-col items-center justify-center px-10">
-            <p className="text-xl font-thin my-5">
-              We are excited for you to join the Pillar family. Before we begin
-              it's important we gather as much information about you/your brand
-              as possible.
-            </p>
-            <TextInput label="First name" placeholder="Jane" />
-            <TextInput label="Last name" placeholder="Smith" />
-            <TextInput
-              label="Phone number"
-              placeholder="(201) 555-0123"
-              type="phone"
-            />
-            <TextInput
-              label="Email"
-              placeholder="name@example.com"
-              type="email"
-            />
-            <TextInput label="Company" placeholder="Acme Corporation" />
+            <label className="text-xl font-thin my-5">
+              Choose as many as you like
+            </label>
+            <div className="flex flex-col items-start justify-center w-full">
+              <MultipleChoiceInput options={question?.options} />
+            </div>
           </div>
         </div>
       );
