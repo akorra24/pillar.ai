@@ -33,7 +33,7 @@ const Question = () => {
             required.*
           </h3>
           <div className="flex flex-col items-center justify-center px-10">
-            <label className="text-xl font-thin my-5">
+            <label className="text-xl font-thin mt-5">
               Choose as many as you like
             </label>
             <div className="flex flex-col items-start justify-center w-full">
