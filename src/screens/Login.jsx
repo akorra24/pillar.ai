@@ -76,7 +76,7 @@ const Login = ({ setUserData }) => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className="flex flex-row h-[80%] w-[90%] md:w-[60%] relative">
+      <div className="flex flex-row h-[80%] w-[95%] 2xl:w-[60%] relative">
         <div className="flex flex-col items-start justify-between p-4 text-white bg-black opacity-0 md:opacity-100 bg-opacity-75 rounded-3xl w-full">
           <h3 className="text-3xl ml-10 mt-10 max-w-[50%]">
             Getting
