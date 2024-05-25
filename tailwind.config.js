@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        courier: ["Courier Prime", "monospace"],
+        courier: ["Courier", "monospace"],
         poppins: ["Poppins", "sans-serif"],
+        Minecraft: ["Minecraft", "sans-serif"],
       },
     },
   },

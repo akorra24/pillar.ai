@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face { 
+  font-family: "poppins"; 
+  src: url("./assets/Poppins-Regular.ttf"); 
+} 
+
+@font-face { 
+  font-family: "Courier"; 
+  src: url("./assets/cour.ttf");
+} 
+
+@font-face { 
+  font-family: "Minecraft"; 
+  src: url("./assets/Minecraft.ttf"); 
+} 
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -10,3 +26,5 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+
