@@ -1,5 +1,11 @@
 [
   {
+    "id": "1",
+    "type": "startPage",
+    "nextPage": "2",
+    "previousPage": "1"
+  },
+  {
     "id": "2",
     "title": "What category best describes your business?This question is required.*",
     "subtitle": "",
@@ -39,7 +45,9 @@
         "value": "Other"
       }
     ],
-    "required": true
+    "required": true,
+    "nextPage": "4a",
+    "previousPage": "1"
   },
   {
     "id": "4a",
@@ -48,7 +56,9 @@
     "type": "textInput",
     "label": "",
     "placeholder": "Type your answer here...",
-    "required": false
+    "required": false,
+    "nextPage": "7a",
+    "previousPage": "2"
   },
   {
     "id": "7a",
@@ -57,13 +67,17 @@
     "type": "textInput",
     "label": "",
     "placeholder": "Type your answer here...",
-    "required": true
+    "required": true,
+    "nextPage": "8",
+    "previousPage": "4a"
   },
   {
     "id": "8",
     "title": "Which platforms do you currently distribute content on?",
     "subtitle": "Only include which ones you currently distribute content on currently!",
     "type": "titlePage",
-    "required": false
+    "required": false,
+    "nextPage": "end",
+    "previousPage": "7a"
   }
 ]

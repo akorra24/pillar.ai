@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import questionsData from "../data/questions.json";
 import ProgressBarContainer from "../components/ProgressBar";
 import UpIcon from "../assets/up.svg";
@@ -9,6 +9,7 @@ import TextInput from "../components/TextInput";
 import MultipleChoiceInput from "../components/MultipleChoiceInput";
 //TODO: We will custom make the first question screen others are from json
 const Question = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [question, setQuestion] = useState(null);
 
@@ -21,6 +22,18 @@ const Question = () => {
 
     fetchQuestion();
   }, [id]);
+
+  const handleNextQuestion = () => {
+    if (question.nextPage === "end") {
+      navigate("/form-overview");
+    } else {
+      navigate(`/question/${question.nextPage}`);
+    }
+  };
+
+  const handlePreviousQuestion = () => {
+    navigate(`/question/${question.previousPage}`);
+  };
 
   const renderQuestion = () => {
     if (question?.type === "multipleChoice") {
@@ -112,13 +125,19 @@ const Question = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-green-500 relative font-courier ">
+      <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-green-500 relative font-courier">
         {renderQuestion()}
         <div className="flex flex-row right-0 bottom-0 mr-10 mb-10 absolute">
-          <button className="bg-green-500 border-r-2 p-2 rounded-l-lg">
+          <button
+            className="bg-green-500 border-r-2 p-2 rounded-l-lg transition-colors duration-300 ease-in-out hover:bg-green-700"
+            onClick={handlePreviousQuestion}
+          >
             <img src={UpIcon} className="w-7" />
           </button>
-          <button className="bg-green-500 p-2 rounded-r-lg">
+          <button
+            className="bg-green-500 p-2 rounded-r-lg transition-colors duration-300 ease-in-out hover:bg-green-700"
+            onClick={handleNextQuestion}
+          >
             <img src={DownIcon} className="w-7" />
           </button>
         </div>
