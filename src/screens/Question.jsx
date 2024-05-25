@@ -4,6 +4,7 @@ import questionsData from "../data/questions.json";
 import ProgressBarContainer from "../components/ProgressBar";
 import UpIcon from "../assets/up.svg";
 import DownIcon from "../assets/down.svg";
+import RightArrowIcon from "../assets/right-arrow.svg";
 import TextInput from "../components/TextInput";
 //TODO: We will custom make the first question screen others are from json
 const Question = () => {
@@ -52,25 +53,35 @@ const Question = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className="flex flex-col h-[80%] w-[90%] bg-black bg-opacity-75 rounded-3xl text-green-500 relative font-courier ">
-        <div className="flex flex-col items-start justify-between py-5 px-10 overflow-y-scroll hide-scrollbar">
-          <h3 className="text-2xl">
-            1 -&gt; We are excited for you to join the Pillar family. Before we
-            begin it's important we gather as much information about you/your
-            brand as possible.
+      <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-green-500 relative font-courier ">
+        <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
+          <h3 className="text-3xl flex flex-row">
+            1
+            <img src={RightArrowIcon} className="w-7 mx-3" />
+            ...
           </h3>
-          <TextInput label="First name" placeholder="Jane" />
-          <TextInput label="Last name" placeholder="Smith" />
-          <TextInput label="Email" placeholder="abc@aabc.lk" type="email" />
-          <TextInput label="Phone number" placeholder="0712345678" />
-          <TextInput label="Instagram handle" placeholder="@jane.smith" />
-          <TextInput label="First name" placeholder="Jane" />
-          <TextInput label="Last name" placeholder="Smith" />
-          <TextInput label="Email" placeholder="abc@aabc.lk" type="email" />
-          <TextInput label="Phone number" placeholder="0712345678" />
-          <TextInput label="Instagram handle" placeholder="@jane.smith" />
+          <div className="flex flex-col items-center justify-center px-10">
+            <p className="text-xl font-thin my-5">
+              We are excited for you to join the Pillar family. Before we begin
+              it's important we gather as much information about you/your brand
+              as possible.
+            </p>
+            <TextInput label="First name" placeholder="Jane" />
+            <TextInput label="Last name" placeholder="Smith" />
+            <TextInput
+              label="Phone number"
+              placeholder="(201) 555-0123"
+              type="phone"
+            />
+            <TextInput
+              label="Email"
+              placeholder="name@example.com"
+              type="email"
+            />
+            <TextInput label="Company" placeholder="Acme Corporation" />
+          </div>
         </div>
-        <div className="flex flex-row right-0 bottom-0 mr-5 mb-10 absolute">
+        <div className="flex flex-row right-0 bottom-0 mr-10 mb-10 absolute">
           <button className="bg-green-500 border-r-2 p-2 rounded-l-lg">
             <img src={UpIcon} className="w-7" />
           </button>
