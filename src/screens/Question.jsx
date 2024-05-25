@@ -21,39 +21,9 @@ const Question = () => {
     fetchQuestion();
   }, [id]);
 
-  if (!question) {
-    return <div>Loading...</div>;
-  }
-
-  const { questionType, questionText, options } = question;
-
   const renderQuestion = () => {
-    if (questionType === "multipleChoice") {
+    if (question?.type === "multipleChoice") {
       return (
-        <div>
-          <h2>{questionText}</h2>
-          <ul>
-            {options.map((option, index) => (
-              <li key={index}>{option}</li>
-            ))}
-          </ul>
-        </div>
-      );
-    } else if (questionType === "textInput") {
-      return (
-        <div>
-          <h2>{questionText}</h2>
-          <input type="text" />
-        </div>
-      );
-    } else {
-      return <div>Invalid question type</div>;
-    }
-  };
-
-  return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-green-500 relative font-courier ">
         <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
           <h3 className="text-3xl flex flex-row">
             1
@@ -81,6 +51,104 @@ const Question = () => {
             <TextInput label="Company" placeholder="Acme Corporation" />
           </div>
         </div>
+      );
+    } else if (question?.type === "textInput") {
+      return (
+        <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
+          <h3 className="text-3xl flex flex-row">
+            1
+            <img src={RightArrowIcon} className="w-7 mx-3" />
+            ...
+          </h3>
+          <div className="flex flex-col items-center justify-center px-10">
+            <p className="text-xl font-thin my-5">
+              We are excited for you to join the Pillar family. Before we begin
+              it's important we gather as much information about you/your brand
+              as possible.
+            </p>
+            <TextInput label="First name" placeholder="Jane" />
+            <TextInput label="Last name" placeholder="Smith" />
+            <TextInput
+              label="Phone number"
+              placeholder="(201) 555-0123"
+              type="phone"
+            />
+            <TextInput
+              label="Email"
+              placeholder="name@example.com"
+              type="email"
+            />
+            <TextInput label="Company" placeholder="Acme Corporation" />
+          </div>
+        </div>
+      );
+    } else if (question?.type === "titlePage") {
+      return (
+        <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
+          <h3 className="text-3xl flex flex-row">
+            1
+            <img src={RightArrowIcon} className="w-7 mx-3" />
+            ...
+          </h3>
+          <div className="flex flex-col items-center justify-center px-10">
+            <p className="text-xl font-thin my-5">
+              We are excited for you to join the Pillar family. Before we begin
+              it's important we gather as much information about you/your brand
+              as possible.
+            </p>
+            <TextInput label="First name" placeholder="Jane" />
+            <TextInput label="Last name" placeholder="Smith" />
+            <TextInput
+              label="Phone number"
+              placeholder="(201) 555-0123"
+              type="phone"
+            />
+            <TextInput
+              label="Email"
+              placeholder="name@example.com"
+              type="email"
+            />
+            <TextInput label="Company" placeholder="Acme Corporation" />
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
+          <h3 className="text-3xl flex flex-row">
+            1
+            <img src={RightArrowIcon} className="w-7 mx-3" />
+            ...
+          </h3>
+          <div className="flex flex-col items-center justify-center px-10">
+            <p className="text-xl font-thin my-5">
+              We are excited for you to join the Pillar family. Before we begin
+              it's important we gather as much information about you/your brand
+              as possible.
+            </p>
+            <TextInput label="First name" placeholder="Jane" />
+            <TextInput label="Last name" placeholder="Smith" />
+            <TextInput
+              label="Phone number"
+              placeholder="(201) 555-0123"
+              type="phone"
+            />
+            <TextInput
+              label="Email"
+              placeholder="name@example.com"
+              type="email"
+            />
+            <TextInput label="Company" placeholder="Acme Corporation" />
+          </div>
+        </div>
+      );
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-green-500 relative font-courier ">
+        {renderQuestion()}
         <div className="flex flex-row right-0 bottom-0 mr-10 mb-10 absolute">
           <button className="bg-green-500 border-r-2 p-2 rounded-l-lg">
             <img src={UpIcon} className="w-7" />

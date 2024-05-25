@@ -1,12 +1,9 @@
 [
   {
-    "id": "1"
-  },
-  {
     "id": "2",
     "title": "What category best describes your business?This question is required.*",
     "subtitle": "",
-    "type": "checkbox",
+    "type": "multipleChoice",
     "label": "Choose as many as you like",
     "options": [
       {
@@ -48,7 +45,7 @@
     "id": "4a",
     "title": "Snapchat Handle",
     "subtitle": "",
-    "type": "text",
+    "type": "textInput",
     "label": "",
     "placeholder": "Type your answer here...",
     "required": false
@@ -57,7 +54,7 @@
     "id": "7a",
     "title": "Copy and paste your last 10 instagram post caption copies hereThis question is required.*",
     "subtitle": "Don't worry, you only have to do this once!",
-    "type": "text",
+    "type": "textInput",
     "label": "",
     "placeholder": "Type your answer here...",
     "required": true
@@ -66,7 +63,7 @@
     "id": "8",
     "title": "Which platforms do you currently distribute content on?",
     "subtitle": "Only include which ones you currently distribute content on currently!",
-    "type": "title",
+    "type": "titlePage",
     "required": false
   }
 ]
