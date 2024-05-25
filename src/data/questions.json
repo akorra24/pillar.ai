@@ -1,40 +1,69 @@
 [
   {
-    "id": "1",
-    "description": "We are excited for you to join the Pillar family. Before we begin it's important we gather as much information about you/your brand as possible.",
-    "optionalInput": false,
-    "questions": [
+    "id": "2",
+    "title": "What category best describes your business?This question is required.*",
+    "subtitle": "",
+    "type": "checkbox",
+    "label": "Choose as many as you like",
+    "options": [
       {
-        "id": "1",
-        "questionType": "text",
-        "question": "First name",
-        "placeholder": "Jane"
+        "id": "A",
+        "option": "Influencer"
       },
       {
-        "id": "2",
-        "questionType": "text",
-        "question": "Last name",
-        "placeholder": "Smith"
+        "id": "B",
+        "option": "Brand"
       },
       {
-        "id": "3",
-        "questionType": "phone",
-        "question": "Phone number",
-        "placeholder": "(201) 555-0123"
+        "id": "C",
+        "option": "Artist/Musician"
       },
       {
-        "id": "4",
-        "questionType": "email",
-        "question": "Email",
-        "placeholder": "name@example.com"
+        "id": "D",
+        "option": "Athlete"
       },
       {
-        "id": "5",
-        "questionType": "text",
-        "question": "Company",
-        "placeholder": "Acme Corporation"
+        "id": "E",
+        "option": "Actor/Actress"
+      },
+      {
+        "id": "F",
+        "option": "Comedian"
+      },
+      {
+        "id": "G",
+        "option": "Gamer"
+      },
+      {
+        "id": "H",
+        "option": "Other"
       }
-    ]
+    ],
+    "required": true
   },
-  {}
+  {
+    "id": "4a",
+    "title": "Snapchat Handle",
+    "subtitle": "",
+    "type": "text",
+    "label": "",
+    "placeholder": "Type your answer here...",
+    "required": false
+  },
+  {
+    "id": "7a",
+    "title": "Copy and paste your last 10 instagram post caption copies hereThis question is required.*",
+    "subtitle": "Don't worry, you only have to do this once!",
+    "type": "text",
+    "label": "",
+    "placeholder": "Type your answer here...",
+    "required": true
+  },
+  {
+    "id": "8",
+    "title": "Which platforms do you currently distribute content on?",
+    "subtitle": "Only include which ones you currently distribute content on currently!",
+    "type": "title",
+    "required": false
+  }
 ]

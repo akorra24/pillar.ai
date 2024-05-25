@@ -5,7 +5,7 @@ import ProgressBarContainer from "../components/ProgressBar";
 import UpIcon from "../assets/up.svg";
 import DownIcon from "../assets/down.svg";
 import TextInput from "../components/TextInput";
-
+//TODO: We will custom make the first question screen others are from json
 const Question = () => {
   const { id } = useParams();
   const [question, setQuestion] = useState(null);
