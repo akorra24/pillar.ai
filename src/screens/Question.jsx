@@ -26,7 +26,7 @@ const Question = () => {
     if (question?.type === "multipleChoice") {
       return (
         <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
-          <h3 className="text-3xl flex flex-row">
+          <h3 className="text-3xl flex flex-row items-start">
             1
             <img src={RightArrowIcon} className="w-7 mx-3" />
             What category best describes your business?This question is

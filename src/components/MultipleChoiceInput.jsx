@@ -19,10 +19,10 @@ const MultipleChoiceInput = ({ options }) => {
         <button
           key={option?.value}
           onClick={() => handleOptionClick(option?.value)}
-          className={`w-80 text-xl font-thin my-1 px-4 py-2 border-2 rounded-md ${
+          className={`w-80 text-xl font-thin my-1 px-4 py-2 border-2 rounded-md text-white bg-green-500 border-green-500 hover:bg-opacity-100 ${
             selectedOptions.includes(option?.value)
-              ? "bg-green-500 text-white border-green-500"
-              : "bg-transparent text-green-500 border-green-500 hover:border-green-400"
+              ? "bg-opacity-100"
+              : "bg-opacity-10"
           }`}
         >
           {option?.key} {option?.value}
