@@ -2,9 +2,7 @@
   {
     "id": "1",
     "type": "startPage",
-    "categoryTitle": "Client Information",
-    "nextPage": "2",
-    "previousPage": "1"
+    "categoryTitle": "Client Information"
   },
   {
     "id": "2",
@@ -48,9 +46,7 @@
         "value": "Other"
       }
     ],
-    "required": true,
-    "nextPage": "4a",
-    "previousPage": "1"
+    "required": true
   },
   {
     "id": "4a",
@@ -61,9 +57,7 @@
     "categoryTitle": "Social Media",
     "fieldTitle": "Snapchat",
     "placeholder": "Type your answer here...",
-    "required": false,
-    "nextPage": "7a",
-    "previousPage": "2"
+    "required": false
   },
   {
     "id": "7a",
@@ -74,17 +68,13 @@
     "categoryTitle": "Content",
     "fieldTitle": "Instagram Captions",
     "placeholder": "Type your answer here...",
-    "required": true,
-    "nextPage": "8",
-    "previousPage": "4a"
+    "required": true
   },
   {
     "id": "8",
     "title": "Which platforms do you currently distribute content on?",
     "subtitle": "Only include which ones you currently distribute content on currently!",
     "type": "titlePage",
-    "required": false,
-    "nextPage": "end",
-    "previousPage": "7a"
+    "required": false
   }
 ]

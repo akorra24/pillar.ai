@@ -1,4 +1,9 @@
 import { useState } from "react";
+import IconButton from "../components/IconButton";
+import LogoutContainer from "../components/LogoutContainer";
+import { useNavigate } from "react-router-dom";
+import BackIcon from "../assets/left.svg";
+import EditIcon from "../assets/edit.svg";
 
 const FormOverview = () => {
   const [formValues, setFormValues] = useState({
@@ -12,22 +17,79 @@ const FormOverview = () => {
     console.log(`Editing ${field}`);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-2xl font-bold mb-4">Form Overview</h1>
-      {Object.entries(formValues).map(([field, value]) => (
-        <div key={field} className="flex items-center mb-2">
-          <span className="mr-2">{field}:</span>
-          <span className="mr-2">{value}</span>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => handleEdit(field)}
-          >
-            Edit
-          </button>
+    <div className="flex flex-col h-[80%] w-[90%] bg-black bg-opacity-75 rounded-3xl text-white">
+      <div className="flex flex-row items-start justify-between p-4 flex-wrap">
+        <div className="flex flex-row">
+          <img
+            src={BackIcon}
+            className="w-10 mr-2 cursor-pointer"
+            onClick={() => navigate("/dashboard")}
+          />
+          <div className="flex flex-col ml-5">
+            <h3 className="text-3xl">OpenAsphalt</h3>
+            <p className="text-sm">Calendar 1 April</p>
+          </div>
         </div>
-      ))}
+        <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">
+          <IconButton icon={EditIcon} text="Edit" />
+          <LogoutContainer />
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center w-full p-2 text-center overflow-auto hide-scrollbar">
+        <table className="w-full text-xl">
+          <thead>
+            <tr>
+              <th className="text-center align-middle border-2 border-black py-4">
+                Date
+              </th>
+              <th className="text-center align-middle border-2 border-black py-4">
+                Platform
+              </th>
+              <th className="text-center align-middle border-2 border-black py-4">
+                Content
+              </th>
+              <th className="text-center align-middle border-2 border-black py-4">
+                Caption
+              </th>
+              <th className="text-center align-middle border-2 border-black py-4">
+                Visual
+              </th>
+              <th className="text-center align-middle border-2 border-black py-4">
+                Hashtags
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="text-center align-middle border-2 border-black py-5 px-2">
+                06/01/2024
+              </td>
+              <td className="text-center align-middle border-2 border-black py-5 px-2">
+                Instagram
+              </td>
+              <td className="text-center align-middle border-2 border-black py-5 px-2">
+                Travel
+              </td>
+              <td className="text-center align-middle border-2 border-black py-5 px-2">
+                Beat the traffic and park stress-free near SoFi Stadium 🌟🚗🅿️
+                Here's how!
+              </td>
+              <td className="text-center align-middle border-2 border-black py-5 px-2">
+                Short clip showcasing easy parking reservations on the website
+              </td>
+              <td className="text-center align-middle border-2 border-black py-5 px-2">
+                #Travel #ParkingHacks #SoFiStadium
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
   );
 };
 

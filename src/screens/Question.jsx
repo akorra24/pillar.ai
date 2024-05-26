@@ -121,21 +121,21 @@ const Question = () => {
       });
     }
     setAnswers([]);
-    currentForm.progress =
-      ((questionsData.findIndex((q) => q.id === id) + 1) /
-        questionsData.length) *
-      100;
+    const questionIndex = questionsData.findIndex((q) => q.id === id);
+    currentForm.progress = ((questionIndex + 1) / questionsData.length) * 100;
     localStorage.setItem("currentForm", JSON.stringify(currentForm));
 
-    if (question.nextPage === "end") {
+    if (questionIndex === questionsData.length - 1) {
       navigate("/form-overview");
     } else {
-      navigate(`/question/${question.nextPage}`);
+      navigate(`/question/${questionsData[questionIndex + 1].id}`);
     }
   };
 
   const handlePreviousQuestion = () => {
-    navigate(`/question/${question.previousPage}`);
+    const questionIndex = questionsData.findIndex((q) => q.id === id);
+    if (questionIndex === 0) return;
+    navigate(`/question/${questionsData[questionIndex - 1].id}`);
   };
 
   const renderQuestion = () => {
