@@ -123,6 +123,7 @@ const Question = () => {
     setAnswers([]);
     const questionIndex = questionsData.findIndex((q) => q.id === id);
     currentForm.progress = ((questionIndex + 1) / questionsData.length) * 100;
+    currentForm.lastIndex = questionIndex;
     localStorage.setItem("currentForm", JSON.stringify(currentForm));
 
     if (questionIndex === questionsData.length - 1) {
