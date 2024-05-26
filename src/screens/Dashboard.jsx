@@ -23,7 +23,7 @@ const Dashboard = () => {
     //   id: Math.floor(Math.random() * 1000),
     //   date: new Date().toISOString(),
     //   brand: "OpenAsphalt",
-    //   questions: [],
+    //   answers: [],
     //   calendar: [
     //     ["Date", "Platform", "Content", "Caption", "Visual", "Hashtags"],
     //     [

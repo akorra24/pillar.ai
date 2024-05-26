@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CheckIcon from "../assets/done.svg";
-const MultipleChoiceInput = ({ options }) => {
+const MultipleChoiceInput = ({ options, setAnswers }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleOptionClick = (option) => {
@@ -9,6 +9,13 @@ const MultipleChoiceInput = ({ options }) => {
         return prevSelectedOptions.filter((o) => o !== option);
       } else {
         return [...prevSelectedOptions, option];
+      }
+    });
+    setAnswers((prevAnswers) => {
+      if (prevAnswers.includes(option)) {
+        return prevAnswers.filter((o) => o !== option);
+      } else {
+        return [...prevAnswers, option];
       }
     });
   };

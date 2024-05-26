@@ -2,6 +2,7 @@
   {
     "id": "1",
     "type": "startPage",
+    "categoryTitle": "Client Information",
     "nextPage": "2",
     "previousPage": "1"
   },
@@ -11,6 +12,8 @@
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
     "options": [
       {
         "id": "A",
@@ -55,6 +58,8 @@
     "subtitle": "",
     "type": "textInput",
     "label": "",
+    "categoryTitle": "Social Media",
+    "fieldTitle": "Snapchat",
     "placeholder": "Type your answer here...",
     "required": false,
     "nextPage": "7a",
@@ -66,6 +71,8 @@
     "subtitle": "Don't worry, you only have to do this once!",
     "type": "textInput",
     "label": "",
+    "categoryTitle": "Content",
+    "fieldTitle": "Instagram Captions",
     "placeholder": "Type your answer here...",
     "required": true,
     "nextPage": "8",
