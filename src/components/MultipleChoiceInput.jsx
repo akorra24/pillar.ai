@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CheckIcon from "../assets/done.svg";
-const MultipleChoiceInput = ({ options, setAnswers }) => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
+  const [selectedOptions, setSelectedOptions] = useState(selected || []);
 
   const handleOptionClick = (option) => {
     setSelectedOptions((prevSelectedOptions) => {
@@ -19,7 +19,7 @@ const MultipleChoiceInput = ({ options, setAnswers }) => {
       }
     });
   };
-
+//TODO: if option value is other show input box inside to input the value
   return (
     <div className="flex flex-col items-start justify-center w-full">
       {options.map((option) => (

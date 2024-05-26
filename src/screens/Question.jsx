@@ -52,6 +52,7 @@ const Question = () => {
       } else {
         currentForm.answers.push({
           id: question.id,
+          type: question.type,
           categoryTitle: question.categoryTitle,
           fields: [
             {
@@ -81,6 +82,7 @@ const Question = () => {
       } else {
         currentForm.answers.push({
           id: question.id,
+          type: question.type,
           categoryTitle: question.categoryTitle,
           fields: [
             {
@@ -95,6 +97,7 @@ const Question = () => {
       currentForm.brand = company;
       currentForm.answers.push({
         id: question.id,
+        type: "textInput",
         categoryTitle: question.categoryTitle,
         fields: [
           {

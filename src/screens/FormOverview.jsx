@@ -5,10 +5,13 @@ import { useNavigate } from "react-router-dom";
 import BackIcon from "../assets/left.svg";
 import EditIcon from "../assets/edit.svg";
 import SubmitIcon from "../assets/submit.svg";
+import MultipleChoiceInput from "../components/MultipleChoiceInput";
+import questionsData from "../data/questions.json";
 
 const FormOverview = () => {
   const [currentForm, setCurrentForm] = useState();
   const [editData, setEditData] = useState();
+  const [editAnswers, setEditAnswers] = useState([]);
 
   useEffect(() => {
     const form = JSON.parse(localStorage.getItem("currentForm"));
@@ -16,7 +19,7 @@ const FormOverview = () => {
   }, []);
 
   const navigate = useNavigate();
-
+  //TODO: when selecting or deselecting a business categories add or remove answers
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
@@ -57,21 +60,26 @@ const FormOverview = () => {
                       <img
                         src={EditIcon}
                         className="w-5 mr-2 cursor-pointer"
-                        onClick={() =>
+                        onClick={() => {
                           setEditData({
+                            questionId: answer.id,
                             categoryIndex: answerIndex,
                             fieldIndex: fieldIndex,
                             categoryTitle: answer.categoryTitle,
                             fieldTitle: field.fieldTitle,
                             fieldValue: field.fieldValue,
-                          })
-                        }
+                            type: answer.type,
+                          });
+                          setEditAnswers(field.fieldValue);
+                        }}
                       />
                       <p className="text-lg">
                         <span className="font-semibold">
                           {field.fieldTitle}:
                         </span>{" "}
-                        {field.fieldValue}
+                        {answer.type == "multipleChoice"
+                          ? field.fieldValue.join(", ")
+                          : field.fieldValue}
                       </p>
                     </div>
                   ))}
@@ -80,7 +88,67 @@ const FormOverview = () => {
           </div>
         </div>
       </div>
-      {}
+      {editData && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-black p-5 rounded-lg">
+            <h3 className="text-2xl font-bold mb-5 text-green-500">
+              {editData.categoryTitle} - {editData.fieldTitle}
+            </h3>
+            {editData.type === "textInput" ? (
+              <input
+                type="text"
+                className="w-full border-b-2 border-green-500 bg-transparent text-green-500 placeholder-green-800 focus:border-b-4 focus:outline-none text-2xl"
+                placeholder="Type your answer here"
+                value={editData.fieldValue}
+                onChange={(e) =>
+                  setEditData({
+                    ...editData,
+                    fieldValue: e.target.value,
+                  })
+                }
+              />
+            ) : editData.type === "multipleChoice" ? (
+              <MultipleChoiceInput
+                options={
+                  questionsData.find((q) => q.id === editData.questionId)
+                    .options
+                }
+                selected={editAnswers}
+                setAnswers={setEditAnswers}
+              />
+            ) : editData.type === "titlePage" ? (
+              <></>
+            ) : (
+              <></>
+            )}
+            <div className="flex justify-end mt-5">
+              <button
+                className="border-2 border-green-500 text-green-500 px-4 py-2 rounded-lg"
+                onClick={() => setEditData(null)}
+              >
+                Cancel
+              </button>
+              <button
+                className="border-2 border-green-500 text-white bg-green-500 px-4 py-2 rounded-lg ml-2"
+                onClick={() => {
+                  const updatedForm = currentForm;
+                  updatedForm.answers[editData.categoryIndex].fields[
+                    editData.fieldIndex
+                  ].fieldValue = editAnswers;
+                  localStorage.setItem(
+                    "currentForm",
+                    JSON.stringify(updatedForm)
+                  );
+                  setCurrentForm(updatedForm);
+                  setEditData(null);
+                }}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
