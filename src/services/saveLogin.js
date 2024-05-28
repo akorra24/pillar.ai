@@ -1,12 +1,12 @@
 import { getFireStoreData, newUserData } from "./firebaseServices";
 
 // Function to save user data to local storage
-export function saveUserData(userData) {
-  let user = getFireStoreData(userData.uid);
+export async function saveUserData(userData) {
+  let user = await getFireStoreData(userData.uid);
   if (user) {
     localStorage.setItem("userData", JSON.stringify(user));
   } else {
-    newUserData(userData);
+    await newUserData(userData);
     localStorage.setItem("userData", JSON.stringify(userData));
   }
 }

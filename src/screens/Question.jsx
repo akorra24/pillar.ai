@@ -8,6 +8,7 @@ import RightArrowIcon from "../assets/right-arrow.svg";
 import TextInput from "../components/TextInput";
 import MultipleChoiceInput from "../components/MultipleChoiceInput";
 import { set } from "firebase/database";
+import { updateCurrentForm } from "../services/firebaseServices";
 //TODO: We will custom make the first question screen others are from json
 const Question = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Question = () => {
     fetchQuestion();
   }, [id]);
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
     let currentForm = JSON.parse(localStorage.getItem("currentForm"));
     if (question?.type === "multipleChoice") {
       const existingAnswer = currentForm.answers.findIndex(
@@ -128,6 +129,8 @@ const Question = () => {
     currentForm.progress = ((questionIndex + 1) / questionsData.length) * 100;
     currentForm.lastIndex = questionIndex;
     localStorage.setItem("currentForm", JSON.stringify(currentForm));
+
+    await updateCurrentForm(currentForm);
 
     if (questionIndex === questionsData.length - 1) {
       navigate("/form-overview");
