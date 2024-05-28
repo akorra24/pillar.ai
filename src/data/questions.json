@@ -5,8 +5,8 @@
     "categoryTitle": "Client Information"
   },
   {
-    "id": "2",
-    "title": "What category best describes your business?This question is required.*",
+    "id": "3",
+    "title": "What category best describes your business?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
@@ -49,7 +49,294 @@
     "required": true
   },
   {
-    "id": "4a",
+    "id": "4",
+    "title": "What content categories do you create as an influencer?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Fashion/Beauty"
+      },
+      {
+        "id": "B",
+        "value": "Gaming"
+      },
+      {
+        "id": "C",
+        "value": "Comedy"
+      },
+      {
+        "id": "D",
+        "value": "Business/Finance"
+      },
+      {
+        "id": "E",
+        "value": "Diy/Crafts"
+      },
+      {
+        "id": "F",
+        "value": "Travel"
+      },
+      {
+        "id": "G",
+        "value": "Art/Design"
+      },
+      {
+        "id": "H",
+        "value": "Food/Cooking"
+      },
+      {
+        "id": "I",
+        "value": "Fitness/Health"
+      },
+      {
+        "id": "J",
+        "value": "Parenting/family"
+      },
+      {
+        "id": "K",
+        "value": "Other"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "5",
+    "title": "What category best describes your brand?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Cannabis/CBD"
+      },
+      {
+        "id": "B",
+        "value": "CPG"
+      },
+      {
+        "id": "C",
+        "value": "Food/Bev"
+      },
+      {
+        "id": "D",
+        "value": "Marketing Consulting"
+      },
+      {
+        "id": "E",
+        "value": "Podcast"
+      },
+      {
+        "id": "F",
+        "value": "Service Industry"
+      },
+      {
+        "id": "G",
+        "value": "Apparel"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "6",
+    "title": "What Genre of Music do you make?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Hip Hop/Rap"
+      },
+      {
+        "id": "B",
+        "value": "RnB"
+      },
+      {
+        "id": "C",
+        "value": "Rock"
+      },
+      {
+        "id": "D",
+        "value": "Gospel"
+      },
+      {
+        "id": "E",
+        "value": "Alternative"
+      },
+      {
+        "id": "F",
+        "value": "Reggae"
+      },
+      {
+        "id": "G",
+        "value": "Soul"
+      },
+      {
+        "id": "H",
+        "value": "Classical/Vocal"
+      },
+      {
+        "id": "I",
+        "value": "Other"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "7",
+    "title": "Which sport do you compete in?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "American Football"
+      },
+      {
+        "id": "B",
+        "value": "Basketball"
+      },
+      {
+        "id": "C",
+        "value": "Boxing"
+      },
+      {
+        "id": "D",
+        "value": "MMA"
+      },
+      {
+        "id": "E",
+        "value": "Track/Field"
+      },
+      {
+        "id": "F",
+        "value": "Baseball"
+      },
+      {
+        "id": "G",
+        "value": "Golf"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "8",
+    "title": "What type of cannabis/CBD business are you?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Brand"
+      },
+      {
+        "id": "B",
+        "value": "Cultivator"
+      },
+      {
+        "id": "C",
+        "value": "Retail/Dispensary"
+      },
+      {
+        "id": "D",
+        "value": "Wholesale Seller"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "9",
+    "title": "What category best describes your Apparel business?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Athletic/Athleisure wear"
+      },
+      {
+        "id": "B",
+        "value": "General merchandise"
+      },
+      {
+        "id": "C",
+        "value": "Womens Fashion"
+      },
+      {
+        "id": "D",
+        "value": "Mens Fashion"
+      },
+      {
+        "id": "E",
+        "value": "Print on Demand"
+      },
+      {
+        "id": "F",
+        "value": "Retail Seller"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "10",
+    "title": "What contract services do you offer?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Marketing"
+      },
+      {
+        "id": "B",
+        "value": "Consulting"
+      },
+      {
+        "id": "C",
+        "value": "Contract Services (Plumber, Mechanic, Etc)"
+      },
+      {
+        "id": "D",
+        "value": "Law"
+      },
+      {
+        "id": "E",
+        "value": "Other"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "11",
+    "title": "Let's gather information all your channels",
+    "subtitle": "",
+    "type": "titlePage",
+    "required": false
+  },
+  {
+    "id": "11a",
     "title": "Snapchat Handle",
     "subtitle": "",
     "type": "textInput",
@@ -60,8 +347,128 @@
     "required": false
   },
   {
-    "id": "7a",
-    "title": "Copy and paste your last 10 instagram post caption copies hereThis question is required.*",
+    "id": "11b",
+    "title": "Facebook URL",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Social Media",
+    "fieldTitle": "Facebook",
+    "placeholder": "Type your answer here...",
+    "required": false
+  },
+  {
+    "id": "11c",
+    "title": "Tik Tok Handle",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Social Media",
+    "fieldTitle": "Tik Tok",
+    "placeholder": "Type your answer here...",
+    "required": false
+  },
+  {
+    "id": "11d",
+    "title": "Instagram Handle",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Social Media",
+    "fieldTitle": "Instagram",
+    "placeholder": "Type your answer here...",
+    "required": false
+  },
+  {
+    "id": "11e",
+    "title": "Twitter Handle",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Social Media",
+    "fieldTitle": "Twitter",
+    "placeholder": "Type your answer here...",
+    "required": false
+  },
+  {
+    "id": "11f",
+    "title": "Website URL",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Social Media",
+    "fieldTitle": "website",
+    "placeholder": "Type your answer here...",
+    "required": false
+  },
+  {
+    "id": "12",
+    "title": "Spotify/Apple Music/DSP URL",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Social Media",
+    "fieldTitle": "website",
+    "placeholder": "Type your answer here...",
+    "required": false
+  },
+  {
+    "id": "13",
+    "title": "What are your goals for your brand/business?",
+    "subtitle": "",
+    "type": "titlePage",
+    "required": false
+  },
+  {
+    "id": "13a",
+    "title": "GrowPick all that apply*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Grow my follower count"
+      },
+      {
+        "id": "B",
+        "value": "Drive website traffic"
+      },
+      {
+        "id": "C",
+        "value": "Generate online sales"
+      },
+      {
+        "id": "D",
+        "value": "Gather leads"
+      },
+      {
+        "id": "E",
+        "value": "Drive retail foot traffic"
+      },
+      {
+        "id": "F",
+        "value": "Increase my streams/listens"
+      },
+      {
+        "id": "G",
+        "value": "Other"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "14",
+    "title": "Help us understand your brand voice",
+    "subtitle": "",
+    "type": "titlePage",
+    "required": false
+  },
+  {
+    "id": "14a",
+    "title": "Copy and paste your last 10 instagram post caption copies here*",
     "subtitle": "Don't worry, you only have to do this once!",
     "type": "textInput",
     "label": "",
@@ -71,10 +478,591 @@
     "required": true
   },
   {
-    "id": "8",
+    "id": "14b",
+    "title": "Which Emojis do you use in your captions?*",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Content",
+    "fieldTitle": "Instagram Captions",
+    "placeholder": "Type your answer here...",
+    "required": true
+  },
+  {
+    "id": "14c",
+    "title": "Which phrases/words/emojis should be avoided?",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Content",
+    "fieldTitle": "Instagram Captions",
+    "placeholder": "Type your answer here...",
+    "required": false
+  },
+  {
+    "id": "15",
     "title": "Which platforms do you currently distribute content on?",
     "subtitle": "Only include which ones you currently distribute content on currently!",
     "type": "titlePage",
     "required": false
+  },
+  {
+    "id": "15a",
+    "title": "Choose all platforms you currently distribute content on.*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Instagram"
+      },
+      {
+        "id": "B",
+        "value": "Facebook"
+      },
+      {
+        "id": "C",
+        "value": "Tik Tok"
+      },
+      {
+        "id": "D",
+        "value": "Snapchat"
+      },
+      {
+        "id": "E",
+        "value": "YouTube"
+      },
+      {
+        "id": "F",
+        "value": "Twitter"
+      },
+      {
+        "id": "G",
+        "value": "DSP/Streaming Platforms"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "15b",
+    "title": "Which platforms do you want to branch out to?*",
+    "subtitle": "Are you looking to start a podcast? Launch a TikTok channel? Let us know",
+    "type": "multipleChoice",
+    "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Instagram"
+      },
+      {
+        "id": "B",
+        "value": "Facebook"
+      },
+      {
+        "id": "C",
+        "value": "YouTube"
+      },
+      {
+        "id": "D",
+        "value": "Tik Tok"
+      },
+      {
+        "id": "E",
+        "value": "DSP/Audio Plaforms"
+      },
+      {
+        "id": "F",
+        "value": "Snapchat"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "16",
+    "title": "How many times would you like to post across each platform?",
+    "subtitle": "",
+    "type": "titlePage",
+    "required": false
+  },
+  {
+    "id": "16a",
+    "title": "YouTube*",
+    "subtitle": "How many times per week do you want to post to this platform?",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": 0
+      },
+      {
+        "id": "B",
+        "value": 1
+      },
+      {
+        "id": "C",
+        "value": 2
+      },
+      {
+        "id": "D",
+        "value": 3
+      },
+      {
+        "id": "E",
+        "value": 4
+      },
+      {
+        "id": "F",
+        "value": 5
+      },
+      {
+        "id": "G",
+        "value": 6
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "16b",
+    "title": "Instagram*",
+    "subtitle": "How many times per week do you want to post to this platform?",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": 0
+      },
+      {
+        "id": "B",
+        "value": 1
+      },
+      {
+        "id": "C",
+        "value": 2
+      },
+      {
+        "id": "D",
+        "value": 3
+      },
+      {
+        "id": "E",
+        "value": 4
+      },
+      {
+        "id": "F",
+        "value": 5
+      },
+      {
+        "id": "G",
+        "value": 6
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "16c",
+    "title": "Facebook*",
+    "subtitle": "How many times per week do you want to post to this platform?",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": 0
+      },
+      {
+        "id": "B",
+        "value": 1
+      },
+      {
+        "id": "C",
+        "value": 2
+      },
+      {
+        "id": "D",
+        "value": 3
+      },
+      {
+        "id": "E",
+        "value": 4
+      },
+      {
+        "id": "F",
+        "value": 5
+      },
+      {
+        "id": "G",
+        "value": 6
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "16d",
+    "title": "Tik Tok*",
+    "subtitle": "How many times per week do you want to post to this platform?",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": 0
+      },
+      {
+        "id": "B",
+        "value": 1
+      },
+      {
+        "id": "C",
+        "value": 2
+      },
+      {
+        "id": "D",
+        "value": 3
+      },
+      {
+        "id": "E",
+        "value": 4
+      },
+      {
+        "id": "F",
+        "value": 5
+      },
+      {
+        "id": "G",
+        "value": 6
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "16e",
+    "title": "Snapchat*",
+    "subtitle": "How many times per week do you want to post to this platform?",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": 0
+      },
+      {
+        "id": "B",
+        "value": 1
+      },
+      {
+        "id": "C",
+        "value": 2
+      },
+      {
+        "id": "D",
+        "value": 3
+      },
+      {
+        "id": "E",
+        "value": 4
+      },
+      {
+        "id": "F",
+        "value": 5
+      },
+      {
+        "id": "G",
+        "value": 6
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "16f",
+    "title": "Twitter*",
+    "subtitle": "How many times per week do you want to post to this platform?",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": 0
+      },
+      {
+        "id": "B",
+        "value": 1
+      },
+      {
+        "id": "C",
+        "value": 2
+      },
+      {
+        "id": "D",
+        "value": 3
+      },
+      {
+        "id": "E",
+        "value": 4
+      },
+      {
+        "id": "F",
+        "value": 5
+      },
+      {
+        "id": "G",
+        "value": 6
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "17",
+    "title": "Tell us about your audience/followers",
+    "subtitle": "",
+    "type": "titlePage",
+    "required": false
+  },
+  {
+    "id": "17a",
+    "title": "What is the average age of your fans/consumers?*",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Content",
+    "fieldTitle": "Instagram Captions",
+    "placeholder": "Type your answer here...",
+    "required": true
+  },
+  {
+    "id": "17b",
+    "title": "Which gender are your followers predominately?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Male"
+      },
+      {
+        "id": "B",
+        "value": "Female"
+      },
+      {
+        "id": "C",
+        "value": "Both"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "17c",
+    "title": "Where are your followers/target consumers located?*",
+    "subtitle": "Be as specific as possible",
+    "type": "textInput",
+    "label": "Shift ⇧ + Enter ↵ to make a line break",
+    "categoryTitle": "Content",
+    "fieldTitle": "Instagram Captions",
+    "placeholder": "Type your answer here...",
+    "required": true
+  },
+  {
+    "id": "17d",
+    "title": "What are your followers interested in?*",
+    "subtitle": "Be as specific as possible. Where they shop, what brands they like, include as many behavioral and psychographic details as you can think of.",
+    "type": "textInput",
+    "label": "Shift ⇧ + Enter ↵ to make a line break",
+    "categoryTitle": "Content",
+    "fieldTitle": "Instagram Captions",
+    "placeholder": "Type your answer here...",
+    "required": true
+  },
+  {
+    "id": "17e",
+    "title": "Which languages do your consumers speak?*",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "Shift ⇧ + Enter ↵ to make a line break",
+    "categoryTitle": "Content",
+    "fieldTitle": "Instagram Captions",
+    "placeholder": "Type your answer here...",
+    "required": true
+  },
+  {
+    "id": "18",
+    "title": "Lets understand better what type of content you create and what content your audience resonates with",
+    "subtitle": "",
+    "type": "titlePage",
+    "required": false
+  },
+  {
+    "id": "18a",
+    "title": "What type of content categories best describe the content you usually create?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Memes/Humor"
+      },
+      {
+        "id": "B",
+        "value": "Skits"
+      },
+      {
+        "id": "C",
+        "value": "Lifestyle"
+      },
+      {
+        "id": "D",
+        "value": "Fashion/Beauty"
+      },
+      {
+        "id": "E",
+        "value": "DIY/Education"
+      },
+      {
+        "id": "F",
+        "value": "Music Videos"
+      },
+      {
+        "id": "G",
+        "value": "Podcast Episodes/Clips"
+      },
+      {
+        "id": "H",
+        "value": "Lifestyle"
+      },
+      {
+        "id": "I",
+        "value": "Buisness/Finance"
+      },
+      {
+        "id": "J",
+        "value": "Gaming"
+      },
+      {
+        "id": "K",
+        "value": "Food/Cooking"
+      },
+      {
+        "id": "L",
+        "value": "Parenting/Family"
+      },
+      {
+        "id": "M",
+        "value": "Travel"
+      },
+      {
+        "id": "N",
+        "value": "Art/Design"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "18b",
+    "title": "Historically, what type of content drives the results for you/your brand?*",
+    "subtitle": "",
+    "type": "multipleChoice",
+    "label": "Choose as many as you like",
+    "categoryTitle": "Business Category",
+    "fieldTitle": "Category",
+    "options": [
+      {
+        "id": "A",
+        "value": "Memes/Humor"
+      },
+      {
+        "id": "B",
+        "value": "Skits"
+      },
+      {
+        "id": "C",
+        "value": "Lifestyle"
+      },
+      {
+        "id": "D",
+        "value": "Fashion/Beauty"
+      },
+      {
+        "id": "E",
+        "value": "DIY/Education"
+      },
+      {
+        "id": "F",
+        "value": "Music Videos"
+      },
+      {
+        "id": "G",
+        "value": "Podcast Episodes/Clips"
+      },
+      {
+        "id": "H",
+        "value": "Lifestyle"
+      },
+      {
+        "id": "I",
+        "value": "Buisness/Finance"
+      },
+      {
+        "id": "J",
+        "value": "Gaming"
+      },
+      {
+        "id": "K",
+        "value": "Food/Cooking"
+      },
+      {
+        "id": "L",
+        "value": "Parenting/Family"
+      },
+      {
+        "id": "M",
+        "value": "Travel"
+      },
+      {
+        "id": "N",
+        "value": "Art/Design"
+      }
+    ],
+    "required": true
+  },
+  {
+    "id": "19",
+    "title": "To complete the process, we require knowledge of your/your company's plans for the following year.",
+    "subtitle": "",
+    "type": "titlePage",
+    "required": false
+  },
+  {
+    "id": "19a",
+    "title": "What big announcements/marketing pushes do you have upcoming in the next 3-12 months*",
+    "subtitle": "",
+    "type": "textInput",
+    "label": "",
+    "categoryTitle": "Content",
+    "fieldTitle": "Instagram Captions",
+    "placeholder": "Type your answer here...",
+    "required": true
   }
 ]

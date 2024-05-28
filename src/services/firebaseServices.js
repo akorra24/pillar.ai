@@ -16,6 +16,16 @@ export function getFireStoreData(uid) {
   }
 }
 
+export function newUserData(userData) {
+  try {
+    const userDoc = doc(firestore, "users", userData.uid);
+    userDoc.set(userData);
+  } catch (error) {
+    console.error("Error creating new user data in Firestore:", error);
+  }
+
+}
+
 export function updateCurrentForm(currentForm) {
   try {
     const userData = getUserData();

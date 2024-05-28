@@ -132,7 +132,21 @@ const Question = () => {
     if (questionIndex === questionsData.length - 1) {
       navigate("/form-overview");
     } else {
-      navigate(`/question/${questionsData[questionIndex + 1].id}`);
+      if (question.id == 3) {
+        if (answers.includes("Influencer")) {
+          navigate("/question/4");
+        } else if (answers.includes("Brand")) {
+          navigate("/question/5");
+        } else if (answers.includes("Artist/Musician")) {
+          navigate("/question/6");
+        } else if (answers.includes("Athlete")) {
+          navigate("/question/7");
+        } else {
+          navigate("/question/11");
+        }
+      } else {
+        navigate(`/question/${questionsData[questionIndex + 1].id}`);
+      }
     }
   };
 
