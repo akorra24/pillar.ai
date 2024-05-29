@@ -260,6 +260,12 @@ const Question = () => {
           setAnswers(currentAnswer.fields[0].fieldValue);
         } else if (question?.type === "textInput") {
           setAnswers([currentAnswer.fields[0].fieldValue]);
+        } else if (question?.type === "startPage") {
+          setFirstName(currentAnswer.fields[0].fieldValue);
+          setLastName(currentAnswer.fields[1].fieldValue);
+          setPhoneNumber(currentAnswer.fields[2].fieldValue);
+          setEmail(currentAnswer.fields[3].fieldValue);
+          setCompany(currentAnswer.fields[4].fieldValue);
         }
       }
     }

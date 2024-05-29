@@ -48,7 +48,7 @@ const Dashboard = () => {
       id: uid(),
       date: new Date().toDateString(),
       isArchived: false,
-      questions: [],
+      answers: [],
       calendar: [
         ["Date", "Platform", "Content", "Caption", "Visual", "Hashtags"],
       ],
@@ -61,11 +61,13 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const userData = await getFireStoreData(getUserData().uid);
+      const userData = await getFireStoreData(getUserData()?.uid);
       if (userData) {
         const userForms = userData.forms
-          .map((form) => JSON.parse(form))
-          .filter((form) => !form.isArchived);
+          ? userData.forms
+              .map((form) => JSON.parse(form))
+              .filter((form) => !form.isArchived)
+          : [];
         setForms(userForms);
       }
     };
@@ -135,7 +137,7 @@ const Dashboard = () => {
                     <td>{form.date && form.date.split(" ")[1]}</td>
                     <td>
                       {form.answers &&
-                        form.answers.find((a) => (a.id = "2"))?.fields[4]
+                        form.answers.find((a) => a.id == "1")?.fields[4]
                           .fieldValue}
                     </td>
                     <td className="flex flex-row items-center justify-center">
