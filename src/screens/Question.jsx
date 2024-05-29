@@ -135,23 +135,98 @@ const Question = () => {
     if (questionIndex === questionsData.length - 1) {
       navigate("/form-overview");
     } else {
-      if (question.id == 3) {
+      if (question.id == 2) {
         if (answers.includes("Influencer")) {
-          navigate("/question/4");
+          navigate("/question/3");
         } else if (answers.includes("Brand")) {
-          navigate("/question/5");
+          navigate("/question/4");
         } else if (answers.includes("Artist/Musician")) {
-          navigate("/question/6");
+          navigate("/question/5");
         } else if (answers.includes("Athlete")) {
-          navigate("/question/7");
+          navigate("/question/6");
         } else {
-          navigate("/question/11");
+          navigate("/question/10");
+        }
+      } else if (question.id == 4) {
+        if (answers.includes("Cannabis/CBD")) {
+          navigate("/question/7");
+        } else if (answers.includes("Apparel")) {
+          navigate("/question/8");
+        } else if (answers.includes("Service Industry")) {
+          navigate("/question/9");
+        } else {
+          navigate("/question/10");
         }
       } else {
         navigate(`/question/${questionsData[questionIndex + 1].id}`);
       }
     }
   };
+
+  useEffect(() => {
+    if (question?.id == 10) {
+      const currentForm = JSON.parse(localStorage.getItem("currentForm"));
+      const businessTypes = currentForm.answers.find((a) => a.id === 2)
+        ?.fields[0].fieldValue;
+      const brandTypes = currentForm.answers.find((a) => a.id === 4)?.fields[0]
+        .fieldValue;
+      //iterate through the business types check if there is a answer if not redirect to the question
+      if (businessTypes) {
+        businessTypes.forEach((type) => {
+          if (type === "Influencer") {
+            if (currentForm.answers.find((a) => a.id === 3) === undefined) {
+              navigate("/question/3");
+            }
+          } else if (type === "Brand") {
+            if (currentForm.answers.find((a) => a.id === 4) === undefined) {
+              navigate("/question/4");
+            }
+          } else if (type === "Artist/Musician") {
+            if (currentForm.answers.find((a) => a.id === 5) === undefined) {
+              navigate("/question/5");
+            }
+          } else if (type === "Athlete") {
+            if (currentForm.answers.find((a) => a.id === 6) === undefined) {
+              navigate("/question/6");
+            }
+          }
+        });
+      }
+      //iterate through the brand types check if there is a answer if not redirect to the question
+      if (brandTypes) {
+        brandTypes.forEach((type) => {
+          if (type === "Cannabis/CBD") {
+            if (currentForm.answers.find((a) => a.id === 7) === undefined) {
+              navigate("/question/7");
+            }
+          } else if (type === "Apparel") {
+            if (currentForm.answers.find((a) => a.id === 8) === undefined) {
+              navigate("/question/8");
+            }
+          } else if (type === "Service Industry") {
+            if (currentForm.answers.find((a) => a.id === 9) === undefined) {
+              navigate("/question/9");
+            }
+          }
+        });
+      }
+    }
+  }, [navigate, question]);
+
+  //if the current question has answers set the answers
+  useEffect(() => {
+    const currentForm = JSON.parse(localStorage.getItem("currentForm"));
+    const currentAnswer = currentForm.answers.find(
+      (a) => a.id === question?.id
+    );
+    if (currentAnswer) {
+      if (question?.type === "multipleChoice") {
+        setAnswers(currentAnswer.fields[0].fieldValue);
+      } else if (question?.type === "textInput") {
+        setAnswers([currentAnswer.fields[0].fieldValue]);
+      }
+    }
+  }, [question]);
 
   const handlePreviousQuestion = () => {
     const questionIndex = questionsData.findIndex((q) => q.id === id);
@@ -173,6 +248,7 @@ const Question = () => {
             <div className="flex flex-col items-start justify-center w-full">
               <MultipleChoiceInput
                 options={question?.options}
+                selected={answers}
                 setAnswers={setAnswers}
               />
             </div>

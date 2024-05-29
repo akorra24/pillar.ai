@@ -5,13 +5,13 @@
     "categoryTitle": "Client Information"
   },
   {
-    "id": "3",
+    "id": "2",
     "title": "What category best describes your business?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
     "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "fieldTitle": "Business Type",
     "options": [
       {
         "id": "A",
@@ -49,13 +49,13 @@
     "required": true
   },
   {
-    "id": "4",
+    "id": "3",
     "title": "What content categories do you create as an influencer?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Content Creation",
+    "fieldTitle": "Content Type",
     "options": [
       {
         "id": "A",
@@ -105,13 +105,13 @@
     "required": true
   },
   {
-    "id": "5",
+    "id": "4",
     "title": "What category best describes your brand?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Brand Category",
+    "fieldTitle": "Brand Type",
     "options": [
       {
         "id": "A",
@@ -145,13 +145,13 @@
     "required": true
   },
   {
-    "id": "6",
+    "id": "5",
     "title": "What Genre of Music do you make?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Music Genre",
+    "fieldTitle": "Music Type",
     "options": [
       {
         "id": "A",
@@ -193,13 +193,13 @@
     "required": true
   },
   {
-    "id": "7",
+    "id": "6",
     "title": "Which sport do you compete in?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Sports Category",
+    "fieldTitle": "Sport Type",
     "options": [
       {
         "id": "A",
@@ -233,13 +233,13 @@
     "required": true
   },
   {
-    "id": "8",
+    "id": "7",
     "title": "What type of cannabis/CBD business are you?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Cannabis/CBD Category",
+    "fieldTitle": "Business Type",
     "options": [
       {
         "id": "A",
@@ -261,13 +261,13 @@
     "required": true
   },
   {
-    "id": "9",
+    "id": "8",
     "title": "What category best describes your Apparel business?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Apparel Category",
+    "fieldTitle": "Apparel Type",
     "options": [
       {
         "id": "A",
@@ -297,13 +297,13 @@
     "required": true
   },
   {
-    "id": "10",
+    "id": "9",
     "title": "What contract services do you offer?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Service Category",
+    "fieldTitle": "Service Type",
     "options": [
       {
         "id": "A",
@@ -329,14 +329,14 @@
     "required": true
   },
   {
-    "id": "11",
+    "id": "10",
     "title": "Let's gather information all your channels",
     "subtitle": "",
     "type": "titlePage",
     "required": false
   },
   {
-    "id": "11a",
+    "id": "10a",
     "title": "Snapchat Handle",
     "subtitle": "",
     "type": "textInput",
@@ -347,7 +347,7 @@
     "required": false
   },
   {
-    "id": "11b",
+    "id": "10b",
     "title": "Facebook URL",
     "subtitle": "",
     "type": "textInput",
@@ -358,7 +358,7 @@
     "required": false
   },
   {
-    "id": "11c",
+    "id": "10c",
     "title": "Tik Tok Handle",
     "subtitle": "",
     "type": "textInput",
@@ -369,7 +369,7 @@
     "required": false
   },
   {
-    "id": "11d",
+    "id": "10d",
     "title": "Instagram Handle",
     "subtitle": "",
     "type": "textInput",
@@ -380,7 +380,7 @@
     "required": false
   },
   {
-    "id": "11e",
+    "id": "10e",
     "title": "Twitter Handle",
     "subtitle": "",
     "type": "textInput",
@@ -391,42 +391,42 @@
     "required": false
   },
   {
-    "id": "11f",
+    "id": "10f",
     "title": "Website URL",
     "subtitle": "",
     "type": "textInput",
     "label": "",
     "categoryTitle": "Social Media",
-    "fieldTitle": "website",
+    "fieldTitle": "Website",
     "placeholder": "Type your answer here...",
     "required": false
   },
   {
-    "id": "12",
+    "id": "11",
     "title": "Spotify/Apple Music/DSP URL",
     "subtitle": "",
     "type": "textInput",
     "label": "",
     "categoryTitle": "Social Media",
-    "fieldTitle": "website",
+    "fieldTitle": "Music Platform",
     "placeholder": "Type your answer here...",
     "required": false
   },
   {
-    "id": "13",
+    "id": "12",
     "title": "What are your goals for your brand/business?",
     "subtitle": "",
     "type": "titlePage",
     "required": false
   },
   {
-    "id": "13a",
+    "id": "12a",
     "title": "GrowPick all that apply*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Goals",
+    "fieldTitle": "Growth Goals",
     "options": [
       {
         "id": "A",
@@ -460,14 +460,14 @@
     "required": true
   },
   {
-    "id": "14",
+    "id": "13",
     "title": "Help us understand your brand voice",
     "subtitle": "",
     "type": "titlePage",
     "required": false
   },
   {
-    "id": "14a",
+    "id": "13a",
     "title": "Copy and paste your last 10 instagram post caption copies here*",
     "subtitle": "Don't worry, you only have to do this once!",
     "type": "textInput",
@@ -478,42 +478,42 @@
     "required": true
   },
   {
-    "id": "14b",
+    "id": "13b",
     "title": "Which Emojis do you use in your captions?*",
     "subtitle": "",
     "type": "textInput",
     "label": "",
     "categoryTitle": "Content",
-    "fieldTitle": "Instagram Captions",
+    "fieldTitle": "Emojis",
     "placeholder": "Type your answer here...",
     "required": true
   },
   {
-    "id": "14c",
+    "id": "13c",
     "title": "Which phrases/words/emojis should be avoided?",
     "subtitle": "",
     "type": "textInput",
     "label": "",
     "categoryTitle": "Content",
-    "fieldTitle": "Instagram Captions",
+    "fieldTitle": "Avoided Content",
     "placeholder": "Type your answer here...",
     "required": false
   },
   {
-    "id": "15",
+    "id": "14",
     "title": "Which platforms do you currently distribute content on?",
     "subtitle": "Only include which ones you currently distribute content on currently!",
     "type": "titlePage",
     "required": false
   },
   {
-    "id": "15a",
+    "id": "14a",
     "title": "Choose all platforms you currently distribute content on.*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Content Distribution",
+    "fieldTitle": "Current Platforms",
     "options": [
       {
         "id": "A",
@@ -547,13 +547,13 @@
     "required": true
   },
   {
-    "id": "15b",
+    "id": "14b",
     "title": "Which platforms do you want to branch out to?*",
     "subtitle": "Are you looking to start a podcast? Launch a TikTok channel? Let us know",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Content Distribution",
+    "fieldTitle": "Future Platforms",
     "options": [
       {
         "id": "A",
@@ -583,20 +583,20 @@
     "required": true
   },
   {
-    "id": "16",
+    "id": "15",
     "title": "How many times would you like to post across each platform?",
     "subtitle": "",
     "type": "titlePage",
     "required": false
   },
   {
-    "id": "16a",
+    "id": "15a",
     "title": "YouTube*",
     "subtitle": "How many times per week do you want to post to this platform?",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Posting Frequency",
+    "fieldTitle": "YouTube",
     "options": [
       {
         "id": "A",
@@ -630,13 +630,13 @@
     "required": true
   },
   {
-    "id": "16b",
+    "id": "15b",
     "title": "Instagram*",
     "subtitle": "How many times per week do you want to post to this platform?",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Posting Frequency",
+    "fieldTitle": "Instagram",
     "options": [
       {
         "id": "A",
@@ -670,13 +670,13 @@
     "required": true
   },
   {
-    "id": "16c",
+    "id": "15c",
     "title": "Facebook*",
     "subtitle": "How many times per week do you want to post to this platform?",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Posting Frequency",
+    "fieldTitle": "Facebook",
     "options": [
       {
         "id": "A",
@@ -710,13 +710,13 @@
     "required": true
   },
   {
-    "id": "16d",
+    "id": "15d",
     "title": "Tik Tok*",
     "subtitle": "How many times per week do you want to post to this platform?",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Posting Frequency",
+    "fieldTitle": "TikTok",
     "options": [
       {
         "id": "A",
@@ -750,13 +750,13 @@
     "required": true
   },
   {
-    "id": "16e",
+    "id": "15e",
     "title": "Snapchat*",
     "subtitle": "How many times per week do you want to post to this platform?",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Posting Frequency",
+    "fieldTitle": "Snapchat",
     "options": [
       {
         "id": "A",
@@ -790,13 +790,13 @@
     "required": true
   },
   {
-    "id": "16f",
+    "id": "15f",
     "title": "Twitter*",
     "subtitle": "How many times per week do you want to post to this platform?",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Posting Frequency",
+    "fieldTitle": "Twitter",
     "options": [
       {
         "id": "A",
@@ -830,31 +830,31 @@
     "required": true
   },
   {
-    "id": "17",
+    "id": "16",
     "title": "Tell us about your audience/followers",
     "subtitle": "",
     "type": "titlePage",
     "required": false
   },
   {
-    "id": "17a",
+    "id": "16a",
     "title": "What is the average age of your fans/consumers?*",
     "subtitle": "",
     "type": "textInput",
     "label": "",
-    "categoryTitle": "Content",
-    "fieldTitle": "Instagram Captions",
+    "categoryTitle": "Audience Demographics",
+    "fieldTitle": "Age",
     "placeholder": "Type your answer here...",
     "required": true
   },
   {
-    "id": "17b",
+    "id": "16b",
     "title": "Which gender are your followers predominately?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Audience Demographics",
+    "fieldTitle": "Gender",
     "options": [
       {
         "id": "A",
@@ -872,53 +872,53 @@
     "required": true
   },
   {
-    "id": "17c",
+    "id": "16c",
     "title": "Where are your followers/target consumers located?*",
     "subtitle": "Be as specific as possible",
     "type": "textInput",
     "label": "Shift ⇧ + Enter ↵ to make a line break",
-    "categoryTitle": "Content",
-    "fieldTitle": "Instagram Captions",
+    "categoryTitle": "Audience Demographics",
+    "fieldTitle": "Location",
     "placeholder": "Type your answer here...",
     "required": true
   },
   {
-    "id": "17d",
+    "id": "16d",
     "title": "What are your followers interested in?*",
     "subtitle": "Be as specific as possible. Where they shop, what brands they like, include as many behavioral and psychographic details as you can think of.",
     "type": "textInput",
     "label": "Shift ⇧ + Enter ↵ to make a line break",
-    "categoryTitle": "Content",
-    "fieldTitle": "Instagram Captions",
+    "categoryTitle": "Audience Insights",
+    "fieldTitle": "Interests",
     "placeholder": "Type your answer here...",
     "required": true
   },
   {
-    "id": "17e",
+    "id": "16e",
     "title": "Which languages do your consumers speak?*",
     "subtitle": "",
     "type": "textInput",
     "label": "Shift ⇧ + Enter ↵ to make a line break",
-    "categoryTitle": "Content",
-    "fieldTitle": "Instagram Captions",
+    "categoryTitle": "Audience Demographics",
+    "fieldTitle": "Languages",
     "placeholder": "Type your answer here...",
     "required": true
   },
   {
-    "id": "18",
+    "id": "17",
     "title": "Lets understand better what type of content you create and what content your audience resonates with",
     "subtitle": "",
     "type": "titlePage",
     "required": false
   },
   {
-    "id": "18a",
+    "id": "17a",
     "title": "What type of content categories best describe the content you usually create?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Content Creation",
+    "fieldTitle": "Content Categories",
     "options": [
       {
         "id": "A",
@@ -980,13 +980,13 @@
     "required": true
   },
   {
-    "id": "18b",
+    "id": "17b",
     "title": "Historically, what type of content drives the results for you/your brand?*",
     "subtitle": "",
     "type": "multipleChoice",
     "label": "Choose as many as you like",
-    "categoryTitle": "Business Category",
-    "fieldTitle": "Category",
+    "categoryTitle": "Content Performance",
+    "fieldTitle": "Effective Content",
     "options": [
       {
         "id": "A",
@@ -1048,20 +1048,20 @@
     "required": true
   },
   {
-    "id": "19",
+    "id": "18",
     "title": "To complete the process, we require knowledge of your/your company's plans for the following year.",
     "subtitle": "",
     "type": "titlePage",
     "required": false
   },
   {
-    "id": "19a",
+    "id": "18a",
     "title": "What big announcements/marketing pushes do you have upcoming in the next 3-12 months*",
     "subtitle": "",
     "type": "textInput",
     "label": "",
-    "categoryTitle": "Content",
-    "fieldTitle": "Instagram Captions",
+    "categoryTitle": "Future Plans",
+    "fieldTitle": "Upcoming Campaigns",
     "placeholder": "Type your answer here...",
     "required": true
   }

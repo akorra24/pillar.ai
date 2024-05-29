@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CheckIcon from "../assets/done.svg";
 const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
   const [selectedOptions, setSelectedOptions] = useState(selected || []);
+
+  useEffect(() => {
+    setSelectedOptions(selected);
+  }, [selected]);
 
   const handleOptionClick = (option) => {
     setSelectedOptions((prevSelectedOptions) => {
@@ -19,14 +23,14 @@ const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
       }
     });
   };
-//TODO: if option value is other show input box inside to input the value
+  //TODO: if option value is other show input box inside to input the value
   return (
     <div className="flex flex-col items-start justify-center w-full">
       {options.map((option) => (
         <button
-          key={option?.value}
+          key={`${option?.id}-${option?.value}`}
           onClick={() => handleOptionClick(option?.value)}
-          className={`flex flex-row justify-between w-80 text-xl font-thin my-1 px-4 py-2 rounded-md text-white bg-opacity-10 bg-green-500 border-green-500 hover:bg-opacity-40 ${
+          className={`w-full min-w-80 flex flex-row justify-between text-xl font-thin my-1 px-4 py-2 rounded-md text-white bg-opacity-10 bg-green-500 border-green-500 hover:bg-opacity-40 ${
             selectedOptions.includes(option?.value)
               ? "border-[3px]"
               : "border-[1px]"
