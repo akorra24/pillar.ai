@@ -1,20 +1,17 @@
-import UserIcon from "../assets/user-circle.svg";
 import CalendarIcon from "../assets/calendar.svg";
 import PlusIcon from "../assets/plus.svg";
 import ArchiveIcon from "../assets/trash.svg";
 import EditIcon from "../assets/edit.svg";
-import { clearUserData, getUserData } from "../services/saveLogin";
+import { getUserData } from "../services/saveLogin";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import IconButton from "../components/IconButton";
-import Question from "./Question";
 import { uid } from "uid";
 import LogoutContainer from "../components/LogoutContainer";
 import {
   getFireStoreData,
   updateCurrentForm,
 } from "../services/firebaseServices";
-import { get } from "firebase/database";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -25,7 +22,6 @@ const Dashboard = () => {
   };
 
   const createNewForm = async () => {
-    //TODO: In user we store array of forms, we store current form in the local storage
     // const newForm = {
     //   id: Math.floor(Math.random() * 1000),
     //   date: new Date().toISOString(),
