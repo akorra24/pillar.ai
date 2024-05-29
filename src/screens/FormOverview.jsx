@@ -68,7 +68,6 @@ const FormOverview = () => {
                           onClick={() => {
                             setEditData({
                               questionId: answer.id,
-                              categoryIndex: answerIndex,
                               fieldIndex: fieldIndex,
                               categoryTitle: answer.categoryTitle,
                               fieldTitle: field.fieldTitle,
@@ -105,12 +104,9 @@ const FormOverview = () => {
                 type="text"
                 className="w-full border-b-2 border-green-500 bg-transparent text-green-500 placeholder-green-800 focus:border-b-4 focus:outline-none text-2xl"
                 placeholder="Type your answer here"
-                value={editData.fieldValue}
+                value={editAnswers[0] || ""}
                 onChange={(e) =>
-                  setEditData({
-                    ...editData,
-                    fieldValue: e.target.value,
-                  })
+                  setEditAnswers(e.target.value ? [e.target.value] : [])
                 }
               />
             ) : editData.type === "multipleChoice" ? (
@@ -138,7 +134,10 @@ const FormOverview = () => {
                 className="border-2 border-green-500 text-white bg-green-500 px-4 py-2 rounded-lg ml-2"
                 onClick={() => {
                   const updatedForm = currentForm;
-                  updatedForm.answers[editData.categoryIndex].fields[
+                  const categoryIndex = currentForm.answers.findIndex(
+                    (answer) => answer.id === editData.questionId
+                  );
+                  updatedForm.answers[categoryIndex].fields[
                     editData.fieldIndex
                   ].fieldValue = editAnswers;
                   localStorage.setItem(
