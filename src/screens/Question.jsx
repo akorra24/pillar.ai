@@ -7,13 +7,14 @@ import DownIcon from "../assets/down.svg";
 import RightArrowIcon from "../assets/right-arrow.svg";
 import TextInput from "../components/TextInput";
 import MultipleChoiceInput from "../components/MultipleChoiceInput";
-import { set } from "firebase/database";
 import { updateCurrentForm } from "../services/firebaseServices";
+
 //TODO: We will custom make the first question screen others are from json
 //TODO: Add a loading spinner while the question is being fetched
 
 const Question = () => {
   const navigate = useNavigate();
+
   const { id } = useParams();
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState([]);
@@ -22,6 +23,7 @@ const Question = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // Fetch the question based on the ID from the JSON data
@@ -34,6 +36,7 @@ const Question = () => {
   }, [id]);
 
   const handleNextQuestion = async () => {
+    setLoading(true);
     let currentForm = JSON.parse(localStorage.getItem("currentForm"));
     if (question?.type === "multipleChoice") {
       const existingAnswer = currentForm.answers.findIndex(
@@ -96,13 +99,14 @@ const Question = () => {
         });
       }
     } else if (question?.type === "startPage") {
-      currentForm.answers = [];
-      currentForm.brand = company;
-      currentForm.answers.push({
-        id: question.id,
-        type: "textInput",
-        categoryTitle: question.categoryTitle,
-        fields: [
+      if (!currentForm.answers) {
+        currentForm.answers = [];
+      }
+      const existingAnswer = currentForm.answers.findIndex(
+        (a) => a.id === question.id
+      );
+      if (existingAnswer !== -1) {
+        currentForm.answers[existingAnswer].fields = [
           {
             fieldTitle: "First Name",
             fieldValue: firstName,
@@ -123,8 +127,37 @@ const Question = () => {
             fieldTitle: "Company",
             fieldValue: company,
           },
-        ],
-      });
+        ];
+      } else {
+        currentForm.brand = company;
+        currentForm.answers.push({
+          id: question.id,
+          type: "textInput",
+          categoryTitle: question.categoryTitle,
+          fields: [
+            {
+              fieldTitle: "First Name",
+              fieldValue: firstName,
+            },
+            {
+              fieldTitle: "Last Name",
+              fieldValue: lastName,
+            },
+            {
+              fieldTitle: "Phone Number",
+              fieldValue: phoneNumber,
+            },
+            {
+              fieldTitle: "Email",
+              fieldValue: email,
+            },
+            {
+              fieldTitle: "Company",
+              fieldValue: company,
+            },
+          ],
+        });
+      }
     }
     setAnswers([]);
     const questionIndex = questionsData.findIndex((q) => q.id === id);
@@ -218,22 +251,26 @@ const Question = () => {
   //if the current question has answers set the answers
   useEffect(() => {
     const currentForm = JSON.parse(localStorage.getItem("currentForm"));
-    const currentAnswer = currentForm.answers.find(
-      (a) => a.id === question?.id
-    );
-    if (currentAnswer) {
-      if (question?.type === "multipleChoice") {
-        setAnswers(currentAnswer.fields[0].fieldValue);
-      } else if (question?.type === "textInput") {
-        setAnswers([currentAnswer.fields[0].fieldValue]);
+    if (currentForm?.answers) {
+      const currentAnswer = currentForm.answers.find(
+        (a) => a.id === question?.id
+      );
+      if (currentAnswer) {
+        if (question?.type === "multipleChoice") {
+          setAnswers(currentAnswer.fields[0].fieldValue);
+        } else if (question?.type === "textInput") {
+          setAnswers([currentAnswer.fields[0].fieldValue]);
+        }
       }
     }
+    setLoading(false);
   }, [question]);
 
   const handlePreviousQuestion = () => {
-    const questionIndex = questionsData.findIndex((q) => q.id === id);
-    if (questionIndex === 0) return;
-    navigate(`/question/${questionsData[questionIndex - 1].id}`);
+    // const questionIndex = questionsData.findIndex((q) => q.id === id);
+    // if (questionIndex === 0) return;
+    // navigate(`/question/${questionsData[questionIndex - 1].id}`);
+    window.history.back();
   };
 
   const renderQuestion = () => {
@@ -299,8 +336,8 @@ const Question = () => {
           <div className="flex flex-col items-center justify-center px-10">
             <p className="text-xl font-thin my-5">
               We are excited for you to join the Pillar family. Before we begin
-              it's important we gather as much information about you/your brand
-              as possible.
+              it&apos;s important we gather as much information about you/your
+              brand as possible.
             </p>
             <TextInput
               label="First name"
@@ -360,6 +397,11 @@ const Question = () => {
         </div>
       </div>
       <ProgressBarContainer />
+      {loading && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
+        </div>
+      )}
     </div>
   );
 };
