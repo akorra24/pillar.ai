@@ -10,6 +10,8 @@ import MultipleChoiceInput from "../components/MultipleChoiceInput";
 import { set } from "firebase/database";
 import { updateCurrentForm } from "../services/firebaseServices";
 //TODO: We will custom make the first question screen others are from json
+//TODO: Add a loading spinner while the question is being fetched
+
 const Question = () => {
   const navigate = useNavigate();
   const { id } = useParams();

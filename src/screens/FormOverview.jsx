@@ -47,42 +47,48 @@ const FormOverview = () => {
           </div>
           <div className="flex flex-col items-start w-full p-2 overflow-scroll hide-scrollbar px-10">
             {currentForm &&
-              currentForm.answers.map((answer, answerIndex) => (
-                <div key={answerIndex} className="mb-4">
-                  <h3 className="text-2xl font-bold mb-2">
-                    {answer.categoryTitle}
-                  </h3>
-                  {answer.fields.map((field, fieldIndex) => (
-                    <div
-                      key={`${answerIndex}_${fieldIndex}`}
-                      className="flex items-center my-3 ml-10"
-                    >
-                      <img
-                        src={EditIcon}
-                        className="w-5 mr-2 cursor-pointer"
-                        onClick={() => {
-                          setEditData({
-                            questionId: answer.id,
-                            categoryIndex: answerIndex,
-                            fieldIndex: fieldIndex,
-                            categoryTitle: answer.categoryTitle,
-                            fieldTitle: field.fieldTitle,
-                            fieldValue: field.fieldValue,
-                            type: answer.type,
-                          });
-                          setEditAnswers(field.fieldValue);
-                        }}
-                      />
-                      <p className="text-lg">
-                        <span className="font-semibold">
-                          {field.fieldTitle}:
-                        </span>{" "}
-                        {answer.type == "multipleChoice"
-                          ? field.fieldValue.join(", ")
-                          : field.fieldValue}
-                      </p>
-                    </div>
-                  ))}
+              Object.entries(
+                currentForm.answers.reduce((categories, answer) => {
+                  (categories[answer.categoryTitle] =
+                    categories[answer.categoryTitle] || []).push(answer);
+                  return categories;
+                }, {})
+              ).map(([categoryTitle, answers], categoryIndex) => (
+                <div key={categoryIndex} className="mb-4">
+                  <h3 className="text-2xl font-bold mb-2">{categoryTitle}</h3>
+                  {answers.map((answer, answerIndex) =>
+                    answer.fields.map((field, fieldIndex) => (
+                      <div
+                        key={`${categoryIndex}_${answerIndex}_${fieldIndex}`}
+                        className="flex items-center my-3 ml-10"
+                      >
+                        <img
+                          src={EditIcon}
+                          className="w-5 mr-2 cursor-pointer"
+                          onClick={() => {
+                            setEditData({
+                              questionId: answer.id,
+                              categoryIndex: answerIndex,
+                              fieldIndex: fieldIndex,
+                              categoryTitle: answer.categoryTitle,
+                              fieldTitle: field.fieldTitle,
+                              fieldValue: field.fieldValue,
+                              type: answer.type,
+                            });
+                            setEditAnswers(field.fieldValue);
+                          }}
+                        />
+                        <p className="text-lg">
+                          <span className="font-semibold">
+                            {field.fieldTitle}:
+                          </span>{" "}
+                          {answer.type == "multipleChoice"
+                            ? field.fieldValue.join(", ")
+                            : field.fieldValue}
+                        </p>
+                      </div>
+                    ))
+                  )}
                 </div>
               ))}
           </div>
