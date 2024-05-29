@@ -18,8 +18,10 @@ const FormOverview = () => {
     setCurrentForm(form);
   }, []);
 
+  const handleSubmitForm = async () => {};
+
   const navigate = useNavigate();
-  //TODO: when selecting or deselecting a business categories add or remove answers
+
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
@@ -41,6 +43,7 @@ const FormOverview = () => {
                 icon={SubmitIcon}
                 text="Submit"
                 textColor="text-green-500"
+                onClick={handleSubmitForm}
               />
               <LogoutContainer />
             </div>

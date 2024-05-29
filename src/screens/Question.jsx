@@ -267,10 +267,9 @@ const Question = () => {
   }, [question]);
 
   const handlePreviousQuestion = () => {
-    // const questionIndex = questionsData.findIndex((q) => q.id === id);
-    // if (questionIndex === 0) return;
-    // navigate(`/question/${questionsData[questionIndex - 1].id}`);
-    window.history.back();
+    const questionIndex = questionsData.findIndex((q) => q.id === id);
+    if (questionIndex === 0) return;
+    navigate(`/question/${questionsData[questionIndex - 1].id}`);
   };
 
   const renderQuestion = () => {

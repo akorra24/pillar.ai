@@ -3,21 +3,28 @@ import CalendarIcon from "../assets/calendar.svg";
 import PlusIcon from "../assets/plus.svg";
 import ArchiveIcon from "../assets/trash.svg";
 import EditIcon from "../assets/edit.svg";
-import { clearUserData } from "../services/saveLogin";
-import { useState } from "react";
+import { clearUserData, getUserData } from "../services/saveLogin";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import IconButton from "../components/IconButton";
 import Question from "./Question";
 import { uid } from "uid";
 import LogoutContainer from "../components/LogoutContainer";
+import {
+  getFireStoreData,
+  updateCurrentForm,
+} from "../services/firebaseServices";
+import { get } from "firebase/database";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [forms, setForms] = useState([]);
+
   const handleCalendarClick = () => {
     navigate("/calendar/1");
   };
 
-  const createNewForm = () => {
+  const createNewForm = async () => {
     //TODO: In user we store array of forms, we store current form in the local storage
     // const newForm = {
     //   id: Math.floor(Math.random() * 1000),
@@ -45,13 +52,43 @@ const Dashboard = () => {
       calendar: [
         ["Date", "Platform", "Content", "Caption", "Visual", "Hashtags"],
       ],
-      progress: 0, 
+      progress: 0,
     };
     localStorage.setItem("currentForm", JSON.stringify(newForm));
+    await updateCurrentForm(newForm);
     navigate("/question/1");
   };
 
-  //TODO: Fetch calendars
+  useEffect(() => {
+    const fetchData = async () => {
+      const userData = await getFireStoreData(getUserData().uid);
+      if (userData) {
+        const userForms = userData.forms
+          .map((form) => JSON.parse(form))
+          .filter((form) => !form.isArchived);
+        setForms(userForms);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleEditClick = (form) => {
+    localStorage.setItem("currentForm", JSON.stringify(form));
+    if (form.answers && form.answers.length > 0) {
+      const lastAnswer = form.answers[form.answers.length - 1];
+      navigate(`/question/${lastAnswer.id}`);
+    } else {
+      navigate(`/question/1`);
+    }
+  };
+
+  const handleArchiveClick = async (form) => {
+    form.isArchived = true;
+    await updateCurrentForm(form);
+    setForms(forms.filter((f) => f.id !== form.id));
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-white">
@@ -84,90 +121,37 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="flex flex-row items-center justify-center py-5">
-                  <button
-                    className="border-2 border-green-500 text-center rounded-lg p-2 m-1"
-                    onClick={handleCalendarClick}
-                  >
-                    View Calender 1
-                  </button>
-                </td>
-                <td>April</td>
-                <td>OpenAsphalt</td>
-                <td className="flex flex-row items-center justify-center">
-                  <img src={EditIcon} className="w-5 mr-2" />
-                  <img src={ArchiveIcon} className="w-5" />
-                </td>
-              </tr>
-              <tr>
-                <td className="flex flex-row items-center justify-center py-5">
-                  <button
-                    className="border-2 border-green-500 text-center rounded-lg p-2 m-1"
-                    onClick={handleCalendarClick}
-                  >
-                    View Calender 1
-                  </button>
-                </td>
-                <td>April</td>
-                <td>OpenAsphalt</td>
-                <td className="flex flex-row items-center justify-center">
-                  <img src={EditIcon} className="w-5 mr-2" />
-                  <img src={ArchiveIcon} className="w-5" />
-                </td>
-              </tr>
-              <tr>
-                <td className="flex flex-row items-center justify-center py-5">
-                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                    View Calender 1
-                  </button>
-                </td>
-                <td>April</td>
-                <td>OpenAsphalt</td>
-                <td className="flex flex-row items-center justify-center">
-                  <img src={EditIcon} className="w-5 mr-2" />
-                  <img src={ArchiveIcon} className="w-5" />
-                </td>
-              </tr>
-              <tr>
-                <td className="flex flex-row items-center justify-center py-5">
-                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                    View Calender 1
-                  </button>
-                </td>
-                <td>April</td>
-                <td>OpenAsphalt</td>
-                <td className="flex flex-row items-center justify-center">
-                  <img src={EditIcon} className="w-5 mr-2" />
-                  <img src={ArchiveIcon} className="w-5" />
-                </td>
-              </tr>
-              <tr>
-                <td className="flex flex-row items-center justify-center py-5">
-                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                    View Calender 1
-                  </button>
-                </td>
-                <td>April</td>
-                <td>OpenAsphalt</td>
-                <td className="flex flex-row items-center justify-center">
-                  <img src={EditIcon} className="w-5 mr-2" />
-                  <img src={ArchiveIcon} className="w-5" />
-                </td>
-              </tr>
-              <tr>
-                <td className="flex flex-row items-center justify-center py-5">
-                  <button className="border-2 border-green-500 text-center rounded-lg p-2 m-1">
-                    View Calender 1
-                  </button>
-                </td>
-                <td>April</td>
-                <td>OpenAsphalt</td>
-                <td className="flex flex-row items-center justify-center">
-                  <img src={EditIcon} className="w-5 mr-2" />
-                  <img src={ArchiveIcon} className="w-5" />
-                </td>
-              </tr>
+              {forms &&
+                forms.map((form, index) => (
+                  <tr key={form.id}>
+                    <td className="flex flex-row items-center justify-center py-5">
+                      <button
+                        className="border-2 border-green-500 text-center rounded-lg p-2 m-1"
+                        onClick={handleCalendarClick}
+                      >
+                        View Calender {index + 1}
+                      </button>
+                    </td>
+                    <td>{form.date && form.date.split(" ")[1]}</td>
+                    <td>
+                      {form.answers &&
+                        form.answers.find((a) => (a.id = "2"))?.fields[4]
+                          .fieldValue}
+                    </td>
+                    <td className="flex flex-row items-center justify-center">
+                      <img
+                        src={EditIcon}
+                        className="w-5 mr-5 cursor-pointer"
+                        onClick={() => handleEditClick(form)}
+                      />
+                      <img
+                        src={ArchiveIcon}
+                        className="w-5 cursor-pointer"
+                        onClick={() => handleArchiveClick(form)}
+                      />
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
