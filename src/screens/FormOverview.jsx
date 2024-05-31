@@ -1,26 +1,95 @@
 import { useEffect, useState } from "react";
 import IconButton from "../components/IconButton";
 import LogoutContainer from "../components/LogoutContainer";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import BackIcon from "../assets/left.svg";
 import EditIcon from "../assets/edit.svg";
 import SubmitIcon from "../assets/submit.svg";
 import MultipleChoiceInput from "../components/MultipleChoiceInput";
 import questionsData from "../data/questions.json";
+import axios from "axios";
+import { updateCurrentForm } from "../services/firebaseServices";
 
 const FormOverview = () => {
+  const navigate = useNavigate();
+
   const [currentForm, setCurrentForm] = useState();
   const [editData, setEditData] = useState();
   const [editAnswers, setEditAnswers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const form = JSON.parse(localStorage.getItem("currentForm"));
     setCurrentForm(form);
   }, []);
 
-  const handleSubmitForm = async () => {};
+  const handleSubmitForm = async () => {
+    setLoading(true);
+    const prompt = `Let me start by explaining who you are. You are a thought leader in the digital marketing space. You have decades of experience building social media marketing content strategies that grow followers and drive revenue.
 
-  const navigate = useNavigate();
+    I want you to help me build a content marketing calendar, but first, it is important you understand the basics of human motivation. I want you to study in great detail the following subjects:
+    - The octalysis framework
+    - The Orbit Model
+    - Maslow's Hierarchy of needs
+    
+    Now that you understand these frameworks, I want you to develop a very deep understanding of the best practices of social platforms to understand how to leverage them to grow audiences for creators and brands and drive revenue.
+    
+    Learn other best practices for developing social media strategies.
+    
+    Learn the best posting days, times, and frequency for the following platforms: Twitter, YouTube, TikTok, Snapchat, Facebook, Instagram.
+    
+    Now I need you to use all the knowledge I just told you to build a month-long content calendar once I tell you more about the brand/creator you are building it for.
+    
+    Using all the knowledge you have learned, write out a detailed content calendar specifying only content categories that will be distributed across social channels and within the online community. You only need to use the values provided to you, if some are blank ignore them. 
+   ${JSON.stringify(currentForm.answers)}
+    
+    Calendar Formatting: Please format the content schedule as a json like below. The columns should be Date, Platform, Category, and Content Description in that order. When you spit back the prompt, just give me the prompt and detailed calendar, I don't want you to tell me anything like as an AI model I cannot do this or that. That would look bad when a client reads it. You are talking to a client of mine paying a lot of money, remember that.
+    today date is ${new Date().toLocaleDateString()} and the dates of the Date column must start with first day of next month and end with the last day of the next month. Dates on table need to be for starting on the first of the following month, and only for one month. (for example, if i create table on february 24, the table start on March 1 until March 30)
+    Output Example:
+    {
+    calendar: [
+          ["Date", "Platform", "Content", "Caption", "Visual", "Hashtags"],
+          [
+            "06/01/2024",
+            "Instagram",
+            "Travel",
+            "Beat the traffic and park stress-free near SoFi Stadium 🌟🚗🅿️ Here's how!",
+            "Short clip showcasing easy parking reservations on the website",
+            "#Travel #ParkingHacks #SoFiStadium",
+          ],
+        ],
+    }
+    important: calendar array must have elements for the whole month and output must be in json format without any other text.
+    `;
+    const result = await axios.post(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        model: "gpt-4-0613",
+        messages: [
+          {
+            role: "user",
+            content: prompt,
+          },
+        ],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_APP_OPENAI_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(result.data.choices[0].message.content);
+    const jsonPart = result.data.choices[0].message.content;
+    const calendar = JSON.parse(jsonPart).calendar;
+    let updatedForm = currentForm;
+    updatedForm.calendar = calendar;
+    localStorage.setItem("currentForm", JSON.stringify(updatedForm));
+    setCurrentForm(updatedForm);
+    await updateCurrentForm(updatedForm);
+    setLoading(false);
+    navigate(`/calendar/${updatedForm.id}`);
+  };
 
   return (
     <>
@@ -354,6 +423,11 @@ const FormOverview = () => {
               </button>
             </div>
           </div>
+        </div>
+      )}
+      {loading && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
         </div>
       )}
     </>

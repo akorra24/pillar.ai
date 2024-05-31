@@ -5,28 +5,24 @@ import UserIcon from "../assets/user-circle.svg";
 import ReGenerateIcon from "../assets/re-generate.svg";
 import BackIcon from "../assets/left.svg";
 import EditIcon from "../assets/edit.svg";
-import { clearUserData } from "../services/saveLogin";
+import { clearUserData, getUserData } from "../services/saveLogin";
 import LogoutContainer from "../components/LogoutContainer";
+import { getFireStoreData } from "../services/firebaseServices";
 
 const Calendar = () => {
   const { id } = useParams();
-  const [calendarData, setCalendarData] = useState(null);
+  const [calendarData, setCalendarData] = useState([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCalendarData = async () => {
-      try {
-        const response = await fetch("path/to/calendar-data.json");
-        const data = await response.json();
-        setCalendarData(data);
-      } catch (error) {
-        console.error("Error fetching calendar data:", error);
-      }
-    };
-
+    async function fetchCalendarData() {
+      const userData = await getFireStoreData(getUserData()?.uid);
+      const data = userData?.forms.find((form) => JSON.parse(form).id == id);
+      setCalendarData(JSON.parse(data).calendar);
+    }
     fetchCalendarData();
-  }, []);
+  }, [id]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
@@ -49,9 +45,61 @@ const Calendar = () => {
             <LogoutContainer />
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center w-full p-2 text-center overflow-auto hide-scrollbar">
+        <div className="flex flex-col items-center w-full p-2 text-center overflow-auto hide-scrollbar">
           <table className="w-full text-xl">
             <thead>
+              <tr>
+                <th className="text-center align-middle border-2 border-black py-4">
+                  Date
+                </th>
+                <th className="text-center align-middle border-2 border-black py-4">
+                  Platform
+                </th>
+                <th className="text-center align-middle border-2 border-black py-4">
+                  Content
+                </th>
+                <th className="text-center align-middle border-2 border-black py-4">
+                  Caption
+                </th>
+                <th className="text-center align-middle border-2 border-black py-4">
+                  Visual
+                </th>
+                <th className="text-center align-middle border-2 border-black py-4">
+                  Hashtags
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {calendarData &&
+                calendarData.slice(1).map((data, index) => (
+                  <tr key={`${data[0]}_${index}`}>
+                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                      {data[0]}
+                    </td>
+                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                      {data[1]}
+                    </td>
+                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                      {data[2]}
+                    </td>
+                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                      {data[3]}
+                    </td>
+                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                      {data[4]?.includes("#") && !data[5] ? "" : data[4]}
+                    </td>
+                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                      {data[4]?.includes("#") && !data[5]
+                        ? data[4]
+                        : data[5]
+                        ? data[5]
+                        : ""}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+
+            {/* <thead>
               <tr>
                 <th className="text-center align-middle border-2 border-black py-4">
                   Date
@@ -95,7 +143,7 @@ const Calendar = () => {
                   #Travel #ParkingHacks #SoFiStadium
                 </td>
               </tr>
-            </tbody>
+            </tbody> */}
           </table>
         </div>
       </div>

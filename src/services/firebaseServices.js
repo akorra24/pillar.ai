@@ -23,6 +23,7 @@ export async function newUserData(userData) {
   try {
     const userDoc = doc(firestore, "users", userData.uid);
     await setDoc(userDoc, userData);
+    console.log("New user data created in Firestore");
   } catch (error) {
     console.error("Error creating new user data in Firestore:", error);
   }
@@ -52,6 +53,7 @@ export async function updateCurrentForm(currentForm) {
       //stringify the form data
       userForms = userForms.map((form) => JSON.stringify(form));
       await setDoc(userDoc, { forms: userForms }, { merge: true });
+      console.log("Form updated in Firestore");
     } else {
       console.error("No user document found");
     }
