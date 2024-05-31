@@ -25,7 +25,6 @@ const Archived = () => {
   };
 
   const createNewForm = () => {
-    //TODO: In user we store array of forms, we store current form in the local storage
     // const newForm = {
     //   id: Math.floor(Math.random() * 1000),
     //   date: new Date().toISOString(),
