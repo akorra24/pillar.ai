@@ -176,7 +176,7 @@ const FormOverview = () => {
                 type="text"
                 className="w-full border-b-2 border-green-500 bg-transparent text-green-500 placeholder-green-800 focus:border-b-4 focus:outline-none text-2xl"
                 placeholder="Type your answer here"
-                value={editAnswers[0] || ""}
+                value={editAnswers || ""}
                 onChange={(e) =>
                   setEditAnswers(e.target.value ? [e.target.value] : [])
                 }

@@ -1,10 +1,10 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { firestore } from "../firebase/firebase";
 import { getUserData } from "./saveLogin";
-import { json } from "react-router-dom";
 
 export async function getFireStoreData(uid) {
   try {
+    if (!uid) return null;
     const userDoc = doc(firestore, "users", uid);
     const docSnap = await getDoc(userDoc);
 
