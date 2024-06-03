@@ -10,9 +10,7 @@ import { getFireStoreData } from "../services/firebaseServices";
 
 const Calendar = () => {
   const { id } = useParams();
-  const [calendarData, setCalendarData] = useState([]);
-  const [brand, setBrand] = useState("OpenAsphalt");
-  const [month, setMonth] = useState("April");
+  const [formData, setFormData] = useState({});
 
   const navigate = useNavigate();
 
@@ -22,15 +20,20 @@ const Calendar = () => {
       let data = userData?.forms.find((form) => JSON.parse(form).id == id);
       if (!data) return;
       data = JSON.parse(data);
-      setCalendarData(data.calendar);
-      setBrand(
-        data?.answers &&
-          data?.answers.find((a) => a.id == "1")?.fields[4].fieldValue
-      );
-      setMonth(data.date && data.date.split(" ")[1]);
+      setFormData(data);
     }
     fetchCalendarData();
   }, [id]);
+
+  const handleEditClick = () => {
+    localStorage.setItem("currentForm", JSON.stringify(formData));
+    navigate("/form-overview");
+  };
+
+  const handleGenerateNextMonth = () => {
+    localStorage.setItem("currentForm", JSON.stringify(formData));
+    navigate("/form-overview");
+  };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
@@ -43,13 +46,24 @@ const Calendar = () => {
               onClick={() => navigate("/dashboard")}
             />
             <div className="flex flex-col ml-5">
-              <h3 className="text-3xl">{brand}</h3>
-              <p className="text-sm">{month}</p>
+              <h3 className="text-3xl">
+                {" "}
+                {formData.answers &&
+                  formData.answers.find((a) => a.id == "1")?.fields[4]
+                    .fieldValue}
+              </h3>
+              <p className="text-sm">
+                {formData.date && formData.date.split(" ")[1]}
+              </p>
             </div>
           </div>
           <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">
-            <IconButton icon={ReGenerateIcon} text="Generate next month" />
-            <IconButton icon={EditIcon} text="Edit" />
+            <IconButton
+              icon={ReGenerateIcon}
+              text="Generate next month"
+              onClick={handleGenerateNextMonth}
+            />
+            <IconButton icon={EditIcon} text="Edit" onClick={handleEditClick} />
             <LogoutContainer />
           </div>
         </div>
@@ -78,8 +92,8 @@ const Calendar = () => {
               </tr>
             </thead>
             <tbody>
-              {calendarData &&
-                calendarData.slice(1).map((data, index) => (
+              {formData.calendar &&
+                formData.calendar.slice(1).map((data, index) => (
                   <tr key={`${data[0]}_${index}`}>
                     <td className="text-center align-middle border-2 border-black py-5 px-2">
                       {data[0]}
