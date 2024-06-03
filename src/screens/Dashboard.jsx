@@ -12,10 +12,12 @@ import {
   getFireStoreData,
   updateCurrentForm,
 } from "../services/firebaseServices";
+import { set } from "firebase/database";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [forms, setForms] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleCalendarClick = () => {
     navigate("/calendar/1");
@@ -65,9 +67,10 @@ const Dashboard = () => {
               .filter((form) => !form.isArchived)
           : [];
         setForms(userForms);
+        setLoading(false);
       }
     };
-
+    setLoading(true);
     fetchData();
   }, []);
 
@@ -154,6 +157,11 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
+      {loading && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
+        </div>
+      )}
     </div>
   );
 };
