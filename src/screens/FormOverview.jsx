@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import IconButton from "../components/IconButton";
 import LogoutContainer from "../components/LogoutContainer";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BackIcon from "../assets/left.svg";
 import EditIcon from "../assets/edit.svg";
 import SubmitIcon from "../assets/submit.svg";
@@ -89,6 +89,190 @@ const FormOverview = () => {
     await updateCurrentForm(updatedForm);
     setLoading(false);
     navigate(`/calendar/${updatedForm.id}`);
+  };
+
+  const handleSaveEdit = async () => {
+    const updatedForm = currentForm;
+    const categoryIndex = currentForm.answers.findIndex(
+      (answer) => answer.id === editData.questionId
+    );
+    updatedForm.answers[categoryIndex].fields[editData.fieldIndex].fieldValue =
+      editAnswers;
+
+    // if the edit question is 2 or 4 add new answers or remove unselected answers
+    if (editData.questionId == 2) {
+      if (
+        editAnswers.includes("Influencer") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "3") == -1
+      ) {
+        updatedForm.answers.push({
+          id: "3",
+          type: "multipleChoice",
+          categoryTitle: "Content Creation",
+          fields: [
+            {
+              fieldTitle: "Content Type",
+              fieldValue: [],
+            },
+          ],
+        });
+      } else if (
+        !editAnswers.includes("Influencer") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "3") != -1
+      ) {
+        updatedForm.answers = updatedForm.answers.filter(
+          (answer) => answer.id != "3"
+        );
+      }
+
+      if (
+        editAnswers.includes("Brand") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "4") == -1
+      ) {
+        updatedForm.answers.push({
+          id: "4",
+          type: "multipleChoice",
+          categoryTitle: "Brand Category",
+          fields: [
+            {
+              fieldTitle: "Brand Type",
+              fieldValue: [],
+            },
+          ],
+        });
+      } else if (
+        !editAnswers.includes("Brand") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "4") != -1
+      ) {
+        updatedForm.answers = updatedForm.answers.filter(
+          (answer) => answer.id != "4"
+        );
+      }
+
+      if (
+        editAnswers.includes("Artist/Musician") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "5") == -1
+      ) {
+        updatedForm.answers.push({
+          id: "5",
+          type: "multipleChoice",
+          categoryTitle: "Music Genre",
+          fields: [
+            {
+              fieldTitle: "Music Type",
+              fieldValue: [],
+            },
+          ],
+        });
+      } else if (
+        !editAnswers.includes("Artist/Musician") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "5") != -1
+      ) {
+        updatedForm.answers = updatedForm.answers.filter(
+          (answer) => answer.id != "5"
+        );
+      }
+
+      if (
+        editAnswers.includes("Athlete") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "6") == -1
+      ) {
+        updatedForm.answers.push({
+          id: "6",
+          type: "multipleChoice",
+          categoryTitle: "Sports Category",
+          fields: [
+            {
+              fieldTitle: "Sport Type",
+              fieldValue: [],
+            },
+          ],
+        });
+      } else if (
+        !editAnswers.includes("Athlete") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "6") != -1
+      ) {
+        updatedForm.answers = updatedForm.answers.filter(
+          (answer) => answer.id != "6"
+        );
+      }
+    } else if (editData.questionId == 4) {
+      if (
+        editAnswers.includes("Cannabis/CBD") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "7") == -1
+      ) {
+        updatedForm.answers.push({
+          id: "7",
+          type: "multipleChoice",
+          categoryTitle: "Cannabis/CBD Category",
+          fields: [
+            {
+              fieldTitle: "Business Type",
+              fieldValue: [],
+            },
+          ],
+        });
+      } else if (
+        !editAnswers.includes("Cannabis/CBD") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "7") != -1
+      ) {
+        updatedForm.answers = updatedForm.answers.filter(
+          (answer) => answer.id != "7"
+        );
+      }
+
+      if (
+        editAnswers.includes("Apparel") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "8") == -1
+      ) {
+        updatedForm.answers.push({
+          id: "8",
+          type: "multipleChoice",
+          categoryTitle: "Apparel Category",
+          fields: [
+            {
+              fieldTitle: "Apparel Type",
+              fieldValue: [],
+            },
+          ],
+        });
+      } else if (
+        !editAnswers.includes("Apparel") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "8") != -1
+      ) {
+        updatedForm.answers = updatedForm.answers.filter(
+          (answer) => answer.id != "8"
+        );
+      }
+
+      if (
+        editAnswers.includes("Service Industry") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "9") == -1
+      ) {
+        updatedForm.answers.push({
+          id: "9",
+          type: "multipleChoice",
+          categoryTitle: "Service Category",
+          fields: [
+            {
+              fieldTitle: "Service Type",
+              fieldValue: [],
+            },
+          ],
+        });
+      } else if (
+        !editAnswers.includes("Service Industry") &&
+        updatedForm.answers.findIndex((answer) => answer.id == "9") != -1
+      ) {
+        updatedForm.answers = updatedForm.answers.filter(
+          (answer) => answer.id != "9"
+        );
+      }
+    }
+    localStorage.setItem("currentForm", JSON.stringify(updatedForm));
+    setCurrentForm(updatedForm);
+    await updateCurrentForm(currentForm);
+    setEditData(null);
   };
 
   return (
@@ -204,220 +388,7 @@ const FormOverview = () => {
               </button>
               <button
                 className="border-2 border-green-500 text-white bg-green-500 px-4 py-2 rounded-lg ml-2"
-                onClick={() => {
-                  const updatedForm = currentForm;
-                  const categoryIndex = currentForm.answers.findIndex(
-                    (answer) => answer.id === editData.questionId
-                  );
-                  updatedForm.answers[categoryIndex].fields[
-                    editData.fieldIndex
-                  ].fieldValue = editAnswers;
-
-                  // if the edit question is 2 or 4 add new answers or remove unselected answers
-                  if (editData.questionId == 2) {
-                    if (
-                      editAnswers.includes("Influencer") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "3"
-                      ) == -1
-                    ) {
-                      updatedForm.answers.push({
-                        id: "3",
-                        type: "multipleChoice",
-                        categoryTitle: "Content Creation",
-                        fields: [
-                          {
-                            fieldTitle: "Content Type",
-                            fieldValue: [],
-                          },
-                        ],
-                      });
-                    } else if (
-                      !editAnswers.includes("Influencer") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "3"
-                      ) != -1
-                    ) {
-                      updatedForm.answers = updatedForm.answers.filter(
-                        (answer) => answer.id != "3"
-                      );
-                    }
-
-                    if (
-                      editAnswers.includes("Brand") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "4"
-                      ) == -1
-                    ) {
-                      updatedForm.answers.push({
-                        id: "4",
-                        type: "multipleChoice",
-                        categoryTitle: "Brand Category",
-                        fields: [
-                          {
-                            fieldTitle: "Brand Type",
-                            fieldValue: [],
-                          },
-                        ],
-                      });
-                    } else if (
-                      !editAnswers.includes("Brand") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "4"
-                      ) != -1
-                    ) {
-                      updatedForm.answers = updatedForm.answers.filter(
-                        (answer) => answer.id != "4"
-                      );
-                    }
-
-                    if (
-                      editAnswers.includes("Artist/Musician") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "5"
-                      ) == -1
-                    ) {
-                      updatedForm.answers.push({
-                        id: "5",
-                        type: "multipleChoice",
-                        categoryTitle: "Music Genre",
-                        fields: [
-                          {
-                            fieldTitle: "Music Type",
-                            fieldValue: [],
-                          },
-                        ],
-                      });
-                    } else if (
-                      !editAnswers.includes("Artist/Musician") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "5"
-                      ) != -1
-                    ) {
-                      updatedForm.answers = updatedForm.answers.filter(
-                        (answer) => answer.id != "5"
-                      );
-                    }
-
-                    if (
-                      editAnswers.includes("Athlete") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "6"
-                      ) == -1
-                    ) {
-                      updatedForm.answers.push({
-                        id: "6",
-                        type: "multipleChoice",
-                        categoryTitle: "Sports Category",
-                        fields: [
-                          {
-                            fieldTitle: "Sport Type",
-                            fieldValue: [],
-                          },
-                        ],
-                      });
-                    } else if (
-                      !editAnswers.includes("Athlete") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "6"
-                      ) != -1
-                    ) {
-                      updatedForm.answers = updatedForm.answers.filter(
-                        (answer) => answer.id != "6"
-                      );
-                    }
-                  } else if (editData.questionId == 4) {
-                    if (
-                      editAnswers.includes("Cannabis/CBD") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "7"
-                      ) == -1
-                    ) {
-                      updatedForm.answers.push({
-                        id: "7",
-                        type: "multipleChoice",
-                        categoryTitle: "Cannabis/CBD Category",
-                        fields: [
-                          {
-                            fieldTitle: "Business Type",
-                            fieldValue: [],
-                          },
-                        ],
-                      });
-                    } else if (
-                      !editAnswers.includes("Cannabis/CBD") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "7"
-                      ) != -1
-                    ) {
-                      updatedForm.answers = updatedForm.answers.filter(
-                        (answer) => answer.id != "7"
-                      );
-                    }
-
-                    if (
-                      editAnswers.includes("Apparel") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "8"
-                      ) == -1
-                    ) {
-                      updatedForm.answers.push({
-                        id: "8",
-                        type: "multipleChoice",
-                        categoryTitle: "Apparel Category",
-                        fields: [
-                          {
-                            fieldTitle: "Apparel Type",
-                            fieldValue: [],
-                          },
-                        ],
-                      });
-                    } else if (
-                      !editAnswers.includes("Apparel") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "8"
-                      ) != -1
-                    ) {
-                      updatedForm.answers = updatedForm.answers.filter(
-                        (answer) => answer.id != "8"
-                      );
-                    }
-
-                    if (
-                      editAnswers.includes("Service Industry") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "9"
-                      ) == -1
-                    ) {
-                      updatedForm.answers.push({
-                        id: "9",
-                        type: "multipleChoice",
-                        categoryTitle: "Service Category",
-                        fields: [
-                          {
-                            fieldTitle: "Service Type",
-                            fieldValue: [],
-                          },
-                        ],
-                      });
-                    } else if (
-                      !editAnswers.includes("Service Industry") &&
-                      updatedForm.answers.findIndex(
-                        (answer) => answer.id == "9"
-                      ) != -1
-                    ) {
-                      updatedForm.answers = updatedForm.answers.filter(
-                        (answer) => answer.id != "9"
-                      );
-                    }
-                  }
-                  localStorage.setItem(
-                    "currentForm",
-                    JSON.stringify(updatedForm)
-                  );
-                  setCurrentForm(updatedForm);
-                  setEditData(null);
-                }}
+                onClick={handleSaveEdit}
               >
                 Save
               </button>
