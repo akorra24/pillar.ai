@@ -44,7 +44,7 @@ const FormOverview = () => {
     Using all the knowledge you have learned, write out a detailed content calendar specifying only content categories that will be distributed across social channels and within the online community. You only need to use the values provided to you, if some are blank ignore them. 
    ${JSON.stringify(currentForm.answers)}
     
-    Calendar Formatting: Please format the content schedule as a json like below. The columns should be Date, Platform, Category, and Content Description in that order. When you spit back the prompt, just give me the prompt and detailed calendar, I don't want you to tell me anything like as an AI model I cannot do this or that. That would look bad when a client reads it. You are talking to a client of mine paying a lot of money, remember that.
+   Calendar Formatting: Please format the content schedule as a json like below. The columns should be "Date", "Platform", "Content", "Caption", "Visual", "Hashtags" in that order. When you spit back the prompt, just give me the prompt and detailed calendar, I don't want you to tell me anything like as an AI model I cannot do this or that. That would look bad when a client reads it. You are talking to a client of mine paying a lot of money, remember that.
     today date is ${new Date().toLocaleDateString()} and the dates of the Date column must start with first day of next month and end with the last day of the next month. Dates on table need to be for starting on the first of the following month, and only for one month. (for example, if i create table on february 24, the table start on March 1 until March 30)
     Output Example:
     {
@@ -65,7 +65,7 @@ const FormOverview = () => {
     const result = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-4-0613",
+        model: "gpt-4o",
         messages: [
           {
             role: "user",
@@ -81,7 +81,10 @@ const FormOverview = () => {
       }
     );
     console.log(result.data.choices[0].message.content);
-    const jsonPart = result.data.choices[0].message.content;
+    const jsonPart = result.data.choices[0].message.content
+      .replace("```json", "")
+      .replace("```", "")
+      .trim();
     const calendar = JSON.parse(jsonPart).calendar;
     let updatedForm = currentForm;
     updatedForm.calendar = calendar;
