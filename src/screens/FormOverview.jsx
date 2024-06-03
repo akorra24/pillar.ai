@@ -9,6 +9,7 @@ import MultipleChoiceInput from "../components/MultipleChoiceInput";
 import questionsData from "../data/questions.json";
 import axios from "axios";
 import { updateCurrentForm } from "../services/firebaseServices";
+import { set } from "firebase/database";
 
 const FormOverview = () => {
   const navigate = useNavigate();
@@ -92,6 +93,7 @@ const FormOverview = () => {
   };
 
   const handleSaveEdit = async () => {
+    setLoading(true);
     const updatedForm = currentForm;
     const categoryIndex = currentForm.answers.findIndex(
       (answer) => answer.id === editData.questionId
@@ -273,6 +275,7 @@ const FormOverview = () => {
     setCurrentForm(updatedForm);
     await updateCurrentForm(currentForm);
     setEditData(null);
+    setLoading(false);
   };
 
   return (
@@ -287,8 +290,14 @@ const FormOverview = () => {
                 onClick={() => navigate("/dashboard")}
               />
               <div className="flex flex-col ml-5">
-                <h3 className="text-3xl">OpenAsphalt</h3>
-                <p className="text-sm">Calendar 1 April</p>
+                <h3 className="text-3xl">
+                  {currentForm?.answers &&
+                    currentForm.answers.find((a) => a.id == "1")?.fields[4]
+                      .fieldValue}
+                </h3>
+                <p className="text-sm">
+                  {currentForm?.date && currentForm.date.split(" ")[1]}
+                </p>
               </div>
             </div>
             <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">

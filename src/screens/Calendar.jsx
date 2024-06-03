@@ -1,25 +1,33 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import IconButton from "../components/IconButton";
-import UserIcon from "../assets/user-circle.svg";
 import ReGenerateIcon from "../assets/re-generate.svg";
 import BackIcon from "../assets/left.svg";
 import EditIcon from "../assets/edit.svg";
-import { clearUserData, getUserData } from "../services/saveLogin";
+import { getUserData } from "../services/saveLogin";
 import LogoutContainer from "../components/LogoutContainer";
 import { getFireStoreData } from "../services/firebaseServices";
 
 const Calendar = () => {
   const { id } = useParams();
   const [calendarData, setCalendarData] = useState([]);
+  const [brand, setBrand] = useState("OpenAsphalt");
+  const [month, setMonth] = useState("April");
 
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCalendarData() {
       const userData = await getFireStoreData(getUserData()?.uid);
-      const data = userData?.forms.find((form) => JSON.parse(form).id == id);
-      setCalendarData(JSON.parse(data).calendar);
+      let data = userData?.forms.find((form) => JSON.parse(form).id == id);
+      if (!data) return;
+      data = JSON.parse(data);
+      setCalendarData(data.calendar);
+      setBrand(
+        data?.answers &&
+          data?.answers.find((a) => a.id == "1")?.fields[4].fieldValue
+      );
+      setMonth(data.date && data.date.split(" ")[1]);
     }
     fetchCalendarData();
   }, [id]);
@@ -35,8 +43,8 @@ const Calendar = () => {
               onClick={() => navigate("/dashboard")}
             />
             <div className="flex flex-col ml-5">
-              <h3 className="text-3xl">OpenAsphalt</h3>
-              <p className="text-sm">Calendar 1 April</p>
+              <h3 className="text-3xl">{brand}</h3>
+              <p className="text-sm">{month}</p>
             </div>
           </div>
           <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">

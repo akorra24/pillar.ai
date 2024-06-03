@@ -128,7 +128,7 @@ const Dashboard = () => {
                     <td className="flex flex-row items-center justify-center py-5">
                       <button
                         className="border-2 border-green-500 text-center rounded-lg p-2 m-1"
-                        onClick={handleCalendarClick}
+                        onClick={() => navigate(`/calendar/${form.id}`)}
                       >
                         View Calender {index + 1}
                       </button>
