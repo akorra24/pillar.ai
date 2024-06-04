@@ -1,14 +1,12 @@
-import UserIcon from "../assets/user-circle.svg";
 import CalendarIcon from "../assets/calendar.svg";
 import PlusIcon from "../assets/plus.svg";
 import ArchiveIcon from "../assets/trash.svg";
 import EditIcon from "../assets/edit.svg";
 import BackIcon from "../assets/left.svg";
-import { clearUserData, getUserData } from "../services/saveLogin";
+import { getUserData } from "../services/saveLogin";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import IconButton from "../components/IconButton";
-import Question from "./Question";
 import { uid } from "uid";
 import LogoutContainer from "../components/LogoutContainer";
 import {
@@ -136,7 +134,11 @@ const Archived = () => {
                         View Calender {index + 1}
                       </button>
                     </td>
-                    <td>{form.date && form.date.split(" ")[1]}</td>
+                    <td>
+                      {form?.calendarMonth
+                        ? form?.calendarMonth.split(" ")[1]
+                        : form?.date && form.date.split(" ")[1]}
+                    </td>
                     <td>
                       {form.answers &&
                         form.answers.find((a) => a.id == "1")?.fields[4]

@@ -12,7 +12,6 @@ import {
   getFireStoreData,
   updateCurrentForm,
 } from "../services/firebaseServices";
-import { set } from "firebase/database";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -45,6 +44,11 @@ const Dashboard = () => {
     const newForm = {
       id: uid(),
       date: new Date().toDateString(),
+      calendarMonth: new Date(
+        new Date().getFullYear(),
+        new Date().getMonth() + 1,
+        new Date().getDate()
+      ).toDateString(),
       isArchived: false,
       answers: [],
       calendar: [
@@ -133,7 +137,11 @@ const Dashboard = () => {
                         View Calender {index + 1}
                       </button>
                     </td>
-                    <td>{form.date && form.date.split(" ")[1]}</td>
+                    <td>
+                      {form?.calendarMonth
+                        ? form?.calendarMonth.split(" ")[1]
+                        : form?.date && form.date.split(" ")[1]}
+                    </td>
                     <td>
                       {form.answers &&
                         form.answers.find((a) => a.id == "1")?.fields[4]

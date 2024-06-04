@@ -88,6 +88,7 @@ const FormOverview = () => {
     const calendar = JSON.parse(jsonPart).calendar;
     let updatedForm = currentForm;
     updatedForm.calendar = calendar;
+    updatedForm.calendarMonth = new Date(calendar[1][0]).toDateString();
     localStorage.setItem("currentForm", JSON.stringify(updatedForm));
     setCurrentForm(updatedForm);
     await updateCurrentForm(updatedForm);
@@ -299,7 +300,9 @@ const FormOverview = () => {
                       .fieldValue}
                 </h3>
                 <p className="text-sm">
-                  {currentForm?.date && currentForm.date.split(" ")[1]}
+                  {currentForm?.calendarMonth
+                    ? currentForm?.calendarMonth.split(" ")[1]
+                    : currentForm?.date && currentForm.date.split(" ")[1]}
                 </p>
               </div>
             </div>

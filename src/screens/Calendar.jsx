@@ -53,7 +53,9 @@ const Calendar = () => {
                     .fieldValue}
               </h3>
               <p className="text-sm">
-                {formData.date && formData.date.split(" ")[1]}
+                {formData?.calendarMonth
+                  ? formData?.calendarMonth.split(" ")[1]
+                  : formData?.date && formData.date.split(" ")[1]}
               </p>
             </div>
           </div>
