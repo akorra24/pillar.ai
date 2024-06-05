@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CheckIcon from "../assets/done.svg";
-const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
+const MultipleChoiceInput = ({ options, selected, setAnswers, popup }) => {
   const [selectedOptions, setSelectedOptions] = useState(selected || []);
   const [otherClick, setOtherClick] = useState(false);
   const [otherAnswer, setOtherAnswer] = useState("");
@@ -16,9 +16,11 @@ const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
   }, [selected, options]);
 
   useEffect(() => {
-    setOtherAnswer("");
-    setOtherClick(false);
-  }, [options]);
+    if (!popup) {
+      setOtherAnswer("");
+      setOtherClick(false);
+    }
+  }, [options, popup]);
 
   const handleOptionClick = (option) => {
     setSelectedOptions((prevSelectedOptions) => {

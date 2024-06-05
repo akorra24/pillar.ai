@@ -394,6 +394,7 @@ const FormOverview = () => {
                 }
                 selected={editAnswers}
                 setAnswers={setEditAnswers}
+                popup={true}
               />
             ) : editData.type === "titlePage" ? (
               <></>
