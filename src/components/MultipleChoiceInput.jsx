@@ -9,6 +9,11 @@ const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
     setSelectedOptions(selected);
   }, [selected]);
 
+  useEffect(() => {
+    setOtherAnswer("");
+    setOtherClick(false);
+  }, [options]);
+
   const handleOptionClick = (option) => {
     setSelectedOptions((prevSelectedOptions) => {
       if (prevSelectedOptions.includes(option)) {
@@ -24,9 +29,6 @@ const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
         return [...prevAnswers, option];
       }
     });
-    console.log("====================================");
-    console.log("selectedOptions", selectedOptions);
-    console.log("====================================");
   };
 
   const handleOtherSubmit = () => {
