@@ -9,7 +9,6 @@ import MultipleChoiceInput from "../components/MultipleChoiceInput";
 import questionsData from "../data/questions.json";
 import axios from "axios";
 import { updateCurrentForm } from "../services/firebaseServices";
-import { set } from "firebase/database";
 
 const FormOverview = () => {
   const navigate = useNavigate();
@@ -26,6 +25,11 @@ const FormOverview = () => {
 
   const handleSubmitForm = async () => {
     setLoading(true);
+    //if today > currentForm.date, then use today as the date otherwise use currentForm.date
+    const today = new Date();
+    if (today > new Date(currentForm.date)) {
+      currentForm.date = today.toDateString();
+    }
     const prompt = `Let me start by explaining who you are. You are a thought leader in the digital marketing space. You have decades of experience building social media marketing content strategies that grow followers and drive revenue.
 
     I want you to help me build a content marketing calendar, but first, it is important you understand the basics of human motivation. I want you to study in great detail the following subjects:
@@ -45,7 +49,9 @@ const FormOverview = () => {
    ${JSON.stringify(currentForm.answers)}
     
    Calendar Formatting: Please format the content schedule as a json like below. The columns should be "Date", "Platform", "Content", "Caption", "Visual", "Hashtags" in that order. When you spit back the prompt, just give me the prompt and detailed calendar, I don't want you to tell me anything like as an AI model I cannot do this or that. That would look bad when a client reads it. You are talking to a client of mine paying a lot of money, remember that.
-    today date is ${new Date().toLocaleDateString()} and the dates of the Date column must start with first day of next month and end with the last day of the next month. Dates on table need to be for starting on the first of the following month, and only for one month. (for example, if i create table on february 24, the table start on March 1 until March 30)
+    today date is ${
+      currentForm.date
+    } and the dates of the Date column must start with first day of next month and end with the last day of the next month. Dates on table need to be for starting on the first of the following month, and only for one month. (for example, if i create table on february 24, the table start on March 1 until March 30)
     Output Example:
     {
     calendar: [

@@ -6,21 +6,28 @@ import BackIcon from "../assets/left.svg";
 import EditIcon from "../assets/edit.svg";
 import { getUserData } from "../services/saveLogin";
 import LogoutContainer from "../components/LogoutContainer";
-import { getFireStoreData } from "../services/firebaseServices";
+import {
+  getFireStoreData,
+  updateCurrentForm,
+} from "../services/firebaseServices";
+import { uid } from "uid";
 
 const Calendar = () => {
   const { id } = useParams();
   const [formData, setFormData] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCalendarData() {
+      setLoading(true);
       const userData = await getFireStoreData(getUserData()?.uid);
       let data = userData?.forms.find((form) => JSON.parse(form).id == id);
       if (!data) return;
       data = JSON.parse(data);
       setFormData(data);
+      setLoading(false);
     }
     fetchCalendarData();
   }, [id]);
@@ -30,8 +37,23 @@ const Calendar = () => {
     navigate("/form-overview");
   };
 
-  const handleGenerateNextMonth = () => {
+  const handleGenerateNextMonth = async () => {
+    setLoading(true);
+    let updatedForm = formData;
+    updatedForm.id = uid();
+    updatedForm.date = new Date(formData.calendar[1][0]).toDateString();
+    updatedForm.calendarMonth = new Date(
+      new Date(formData.calendar[1][0]).getFullYear(),
+      new Date(formData.calendar[1][0]).getMonth() + 1,
+      new Date(formData.calendar[1][0]).getDate()
+    ).toDateString();
+    updatedForm.calendar = [
+      ["Date", "Platform", "Content", "Caption", "Visual", "Hashtags"],
+    ];
+    updatedForm.isArchived = false;
     localStorage.setItem("currentForm", JSON.stringify(formData));
+    await updateCurrentForm(updatedForm);
+    setLoading(false);
     navigate("/form-overview");
   };
 
@@ -171,6 +193,11 @@ const Calendar = () => {
           </table>
         </div>
       </div>
+      {loading && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
+        </div>
+      )}
     </div>
   );
 };
