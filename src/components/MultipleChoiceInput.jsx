@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import CheckIcon from "../assets/done.svg";
 const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
   const [selectedOptions, setSelectedOptions] = useState(selected || []);
-  const [otherValue, setOtherValue] = useState("");
+  const [otherClick, setOtherClick] = useState(false);
+  const [otherAnswer, setOtherAnswer] = useState("");
 
   useEffect(() => {
     setSelectedOptions(selected);
@@ -23,8 +24,27 @@ const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
         return [...prevAnswers, option];
       }
     });
+    console.log("====================================");
+    console.log("selectedOptions", selectedOptions);
+    console.log("====================================");
   };
-  //TODO: if option value is other show input box inside to input the value
+
+  const handleOtherSubmit = () => {
+    // intersection of options and selectedOptions
+    let optionAnswers = options
+      .map((o) => o.value)
+      .filter((o) => selectedOptions.includes(o));
+
+    if (otherAnswer) {
+      setSelectedOptions([...optionAnswers, otherAnswer]);
+      setAnswers([...optionAnswers, otherAnswer]);
+    } else {
+      setSelectedOptions(optionAnswers);
+      setAnswers(optionAnswers);
+    }
+    setOtherClick(false);
+  };
+
   return (
     <div className="flex flex-col items-start justify-center w-full">
       {options.map((option) => {
@@ -32,38 +52,41 @@ const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
           return (
             <button
               key={`${option?.id}-${option?.value}`}
-              onClick={() => setOtherValue(option?.value)}
+              onClick={() => !otherClick && setOtherClick(true)}
               className={`w-full min-w-80 flex flex-row justify-between text-xl font-thin my-1 px-4 py-2 rounded-md text-white bg-opacity-10 bg-green-500 border-green-500 hover:bg-opacity-40 ${
-                selectedOptions.includes(option?.value)
-                  ? "border-[3px]"
-                  : "border-[1px]"
+                otherAnswer ? "border-[3px]" : "border-[1px]"
               }`}
             >
-              {otherValue === option?.value ? (
-                <input
-                  type="text"
-                  className="w-full h-10 rounded-md text-white bg-transparent focus:outline-none"
-                  placeholder="Enter other value"
-                  onChange={(e) => handleOptionClick(e.target.value)}
-                />
+              {otherClick === true ? (
+                <>
+                  <input
+                    type="text"
+                    className="w-full h-10 rounded-md text-white bg-transparent focus:outline-none"
+                    placeholder="Enter other value"
+                    value={otherAnswer}
+                    onChange={(e) => setOtherAnswer(e.target.value)}
+                  />
+                  <span
+                    className="mr-2 bg-green-500 p-3 rounded-md"
+                    onClick={handleOtherSubmit}
+                  >
+                    <img src={CheckIcon} width={20} />
+                  </span>
+                </>
               ) : (
                 <>
                   <div>
                     <span
                       className={`border-[1px] border-green-500 px-2 mr-2 ${
-                        selectedOptions.includes(option?.value)
-                          ? "bg-green-500"
-                          : "bg-black"
+                        otherAnswer ? "bg-green-500" : "bg-black"
                       }`}
                     >
                       {option?.id}
                     </span>
-                    {option?.value}
+                    {otherAnswer ? otherAnswer : option?.value}
                   </div>
                   <span className="mr-2">
-                    {selectedOptions.includes(option?.value) && (
-                      <img src={CheckIcon} />
-                    )}
+                    {otherAnswer && <img src={CheckIcon} />}
                   </span>
                 </>
               )}
