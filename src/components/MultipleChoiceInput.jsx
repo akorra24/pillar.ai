@@ -7,7 +7,13 @@ const MultipleChoiceInput = ({ options, selected, setAnswers }) => {
 
   useEffect(() => {
     setSelectedOptions(selected);
-  }, [selected]);
+    const otherValue = selected.filter(
+      (o) => !options.map((o) => o.value).includes(o)
+    )[0];
+    if (otherValue) {
+      setOtherAnswer(otherValue);
+    }
+  }, [selected, options]);
 
   useEffect(() => {
     setOtherAnswer("");
