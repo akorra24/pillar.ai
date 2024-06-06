@@ -156,6 +156,75 @@ const Question = () => {
         });
       }
     }
+    if (id == 2) {
+      if (
+        !answers.includes("Influencer") &&
+        currentForm.answers.findIndex((answer) => answer.id == "3") != -1
+      ) {
+        currentForm.answers = currentForm.answers.filter(
+          (answer) => answer.id != "3"
+        );
+      }
+
+      if (
+        !answers.includes("Brand") &&
+        currentForm.answers.findIndex((answer) => answer.id == "4") != -1
+      ) {
+        currentForm.answers = currentForm.answers.filter(
+          (answer) =>
+            answer.id != "4" &&
+            answer.id != "7" &&
+            answer.id != "8" &&
+            answer.id != "9"
+        );
+      }
+
+      if (
+        !answers.includes("Artist/Musician") &&
+        currentForm.answers.findIndex((answer) => answer.id == "5") != -1
+      ) {
+        currentForm.answers = currentForm.answers.filter(
+          (answer) => answer.id != "5"
+        );
+      }
+
+      if (
+        !answers.includes("Athlete") &&
+        currentForm.answers.findIndex((answer) => answer.id == "6") != -1
+      ) {
+        currentForm.answers = currentForm.answers.filter(
+          (answer) => answer.id != "6"
+        );
+      }
+    } else if (id == 4) {
+      if (
+        !answers.includes("Cannabis/CBD") &&
+        currentForm.answers.findIndex((answer) => answer.id == "7") != -1
+      ) {
+        currentForm.answers = currentForm.answers.filter(
+          (answer) => answer.id != "7"
+        );
+      }
+
+      if (
+        !answers.includes("Apparel") &&
+        currentForm.answers.findIndex((answer) => answer.id == "8") != -1
+      ) {
+        currentForm.answers = currentForm.answers.filter(
+          (answer) => answer.id != "8"
+        );
+      }
+
+      if (
+        !answers.includes("Service Industry") &&
+        currentForm.answers.findIndex((answer) => answer.id == "9") != -1
+      ) {
+        currentForm.answers = currentForm.answers.filter(
+          (answer) => answer.id != "9"
+        );
+      }
+    }
+
     setAnswers([]);
     const questionIndex = questionsData.findIndex((q) => q.id === id);
     currentForm.progress = ((questionIndex + 1) / questionsData.length) * 100;
@@ -189,6 +258,15 @@ const Question = () => {
         } else {
           navigate("/question/10");
         }
+      } else if (
+        question.id == 3 ||
+        question.id == 5 ||
+        question.id == 6 ||
+        question.id == 7 ||
+        question.id == 8 ||
+        question.id == 9
+      ) {
+        navigate("/question/10");
       } else {
         navigate(`/question/${questionsData[questionIndex + 1].id}`);
       }
