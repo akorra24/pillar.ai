@@ -4,6 +4,7 @@ import IconButton from "../components/IconButton";
 import ReGenerateIcon from "../assets/re-generate.svg";
 import BackIcon from "../assets/left.svg";
 import EditIcon from "../assets/edit.svg";
+import EmailIcon from "../assets/mail.svg";
 import { getUserData } from "../services/saveLogin";
 import LogoutContainer from "../components/LogoutContainer";
 import {
@@ -11,11 +12,13 @@ import {
   updateCurrentForm,
 } from "../services/firebaseServices";
 import { uid } from "uid";
+import axios from "axios";
 
 const Calendar = () => {
   const { id } = useParams();
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [emailDialog, setEmailDialog] = useState(false);
 
   const navigate = useNavigate();
 
@@ -57,6 +60,54 @@ const Calendar = () => {
     navigate("/form-overview");
   };
 
+  const sendCalendarEmail = async () => {
+    setLoading(true);
+    const htmlMessage = `
+<table style="border: 1px solid black; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid black; padding: 5px;">Date</th>
+      <th style="border: 1px solid black; padding: 5px;">Platform</th>
+      <th style="border: 1px solid black; padding: 5px;">Content</th>
+      <th style="border: 1px solid black; padding: 5px;">Caption</th>
+      <th style="border: 1px solid black; padding: 5px;">Visual</th>
+      <th style="border: 1px solid black; padding: 5px;">Hashtags</th>
+    </tr>
+  </thead>
+  <tbody>
+    ${formData.calendar
+      .slice(1)
+      .map(
+        (row) => `
+      <tr>
+        <td style="border: 1px solid black; padding: 5px;">${row[0]}</td>
+        <td style="border: 1px solid black; padding: 5px;">${row[1]}</td>
+        <td style="border: 1px solid black; padding: 5px;">${row[2]}</td>
+        <td style="border: 1px solid black; padding: 5px;">${row[3]}</td>
+        <td style="border: 1px solid black; padding: 5px;">${row[4]}</td>
+        <td style="border: 1px solid black; padding: 5px;">${row[5]}</td>
+      </tr>
+    `
+      )
+      .join("")}
+  </tbody>
+</table>
+`;
+    await axios({
+      method: "POST",
+      url: "https://script.google.com/macros/s/AKfycbySlN9JyHl2kDyLPPPUnqMusu73MNJ_Akg0aiZpBczvEpMsbZUG7j4vB8kpUxUFlE1wQQ/exec",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      data: {
+        email: formData.answers.find((a) => a.id == "1")?.fields[3].fieldValue,
+        message: htmlMessage,
+      },
+    });
+    setLoading(false);
+    setEmailDialog(true);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col h-[80%] w-[90%] bg-black bg-opacity-75 rounded-3xl text-white">
@@ -82,6 +133,11 @@ const Calendar = () => {
             </div>
           </div>
           <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">
+            <IconButton
+              icon={EmailIcon}
+              text="Email Calendar"
+              onClick={sendCalendarEmail}
+            />
             <IconButton
               icon={ReGenerateIcon}
               text="Generate next month"
@@ -196,6 +252,23 @@ const Calendar = () => {
       {loading && (
         <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
+        </div>
+      )}
+      {emailDialog && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-10 flex flex-col justify-center items-center">
+            <h2 className="text-2xl mb-4">Email sent successfully!</h2>
+            <h3 className="mb-4">
+              We&apos;ve sent the calendar to{" "}
+              {formData.answers.find((a) => a.id == "1")?.fields[3].fieldValue}.
+            </h3>
+            <button
+              className="bg-green-500 text-white rounded px-4 py-2"
+              onClick={() => setEmailDialog(false)}
+            >
+              OK
+            </button>
+          </div>
         </div>
       )}
     </div>
