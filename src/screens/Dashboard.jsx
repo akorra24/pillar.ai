@@ -12,35 +12,15 @@ import {
   getFireStoreData,
   updateCurrentForm,
 } from "../services/firebaseServices";
+import { set } from "firebase/database";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [forms, setForms] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const handleCalendarClick = () => {
-    navigate("/calendar/1");
-  };
-
   const createNewForm = async () => {
-    // const newForm = {
-    //   id: Math.floor(Math.random() * 1000),
-    //   date: new Date().toISOString(),
-    //   brand: "OpenAsphalt",
-    //   answers: [],
-    //   calendar: [
-    //     ["Date", "Platform", "Content", "Caption", "Visual", "Hashtags"],
-    //     [
-    //       "06/01/2024",
-    //       "Instagram",
-    //       "Travel",
-    //       "Beat the traffic and park stress-free near SoFi Stadium 🌟🚗🅿️ Here's how!",
-    //       "Short clip showcasing easy parking reservations on the website",
-    //       "#Travel #ParkingHacks #SoFiStadium",
-    //     ],
-    //   ],
-    //   isArchived: false,
-    // };
+    setLoading(true);
     const newForm = {
       id: uid(),
       date: new Date().toDateString(),
@@ -59,6 +39,7 @@ const Dashboard = () => {
     localStorage.setItem("currentForm", JSON.stringify(newForm));
     await updateCurrentForm(newForm);
     navigate("/question/1");
+    setLoading(false);
   };
 
   useEffect(() => {
