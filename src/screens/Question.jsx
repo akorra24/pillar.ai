@@ -272,7 +272,43 @@ const Question = () => {
   const handlePreviousQuestion = () => {
     const questionIndex = questionsData.findIndex((q) => q.id === id);
     if (questionIndex === 0) return;
-    navigate(`/question/${questionsData[questionIndex - 1].id}`);
+    if (
+      questionIndex === 3 ||
+      questionIndex === 4 ||
+      questionIndex === 5 ||
+      questionIndex === 6
+    ) {
+      navigate(`/question/2`);
+    } else if (
+      questionIndex === 7 ||
+      questionIndex === 8 ||
+      questionIndex === 9
+    ) {
+      navigate(`/question/4`);
+    } else if (questionIndex === 10) {
+      const currentForm = JSON.parse(localStorage.getItem("currentForm"));
+      if (currentForm?.answers) {
+        if (currentForm.answers.find((a) => a.id === 9)) {
+          navigate(`/question/9`);
+        } else if (currentForm.answers.find((a) => a.id === 8)) {
+          navigate(`/question/8`);
+        } else if (currentForm.answers.find((a) => a.id === 7)) {
+          navigate(`/question/7`);
+        } else if (currentForm.answers.find((a) => a.id === 6)) {
+          navigate(`/question/6`);
+        } else if (currentForm.answers.find((a) => a.id === 5)) {
+          navigate(`/question/5`);
+        } else if (currentForm.answers.find((a) => a.id === 4)) {
+          navigate(`/question/4`);
+        } else if (currentForm.answers.find((a) => a.id === 3)) {
+          navigate(`/question/3`);
+        } else {
+          navigate(`/question/2`);
+        }
+      }
+    } else {
+      navigate(`/question/${questionsData[questionIndex - 1].id}`);
+    }
   };
 
   const renderQuestion = () => {
