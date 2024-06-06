@@ -89,9 +89,11 @@ const Dashboard = () => {
   };
 
   const handleArchiveClick = async (form) => {
+    setLoading(true);
     form.isArchived = true;
     await updateCurrentForm(form);
     setForms(forms.filter((f) => f.id !== form.id));
+    setLoading(false);
   };
 
   return (

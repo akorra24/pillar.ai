@@ -1,7 +1,6 @@
 import CalendarIcon from "../assets/calendar.svg";
 import PlusIcon from "../assets/plus.svg";
-import ArchiveIcon from "../assets/trash.svg";
-import EditIcon from "../assets/edit.svg";
+import ArchiveIcon from "../assets/restore.svg";
 import BackIcon from "../assets/left.svg";
 import { getUserData } from "../services/saveLogin";
 import { useEffect, useState } from "react";
@@ -17,30 +16,13 @@ import {
 const Archived = () => {
   const navigate = useNavigate();
   const [forms, setForms] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleCalendarClick = () => {
     navigate("/calendar/1");
   };
 
   const createNewForm = () => {
-    // const newForm = {
-    //   id: Math.floor(Math.random() * 1000),
-    //   date: new Date().toISOString(),
-    //   brand: "OpenAsphalt",
-    //   questions: [],
-    //   calendar: [
-    //     ["Date", "Platform", "Content", "Caption", "Visual", "Hashtags"],
-    //     [
-    //       "06/01/2024",
-    //       "Instagram",
-    //       "Travel",
-    //       "Beat the traffic and park stress-free near SoFi Stadium 🌟🚗🅿️ Here's how!",
-    //       "Short clip showcasing easy parking reservations on the website",
-    //       "#Travel #ParkingHacks #SoFiStadium",
-    //     ],
-    //   ],
-    //   isArchived: false,
-    // };
     const newForm = {
       id: uid(),
       date: new Date().toDateString(),
@@ -65,26 +47,19 @@ const Archived = () => {
               .filter((form) => form.isArchived)
           : [];
         setForms(userForms);
+        setLoading(false);
       }
     };
-
+    setLoading(true);
     fetchData();
   }, []);
 
-  const handleEditClick = (form) => {
-    localStorage.setItem("currentForm", JSON.stringify(form));
-    if (form.answers && form.answers.length > 0) {
-      const lastAnswer = form.answers[form.answers.length - 1];
-      navigate(`/question/${lastAnswer.id}`);
-    } else {
-      navigate(`/question/1`);
-    }
-  };
-
   const handleArchiveClick = async (form) => {
-    form.isArchived = true;
+    setLoading(true);
+    form.isArchived = false;
     await updateCurrentForm(form);
     setForms(forms.filter((f) => f.id !== form.id));
+    setLoading(false);
   };
   return (
     <div className="flex flex-col items-center justify-center h-screen">
@@ -119,7 +94,7 @@ const Archived = () => {
                 </th>
                 <th>Month</th>
                 <th>Brand</th>
-                <th className="md:w-[30%]">Action</th>
+                <th className="md:w-[30%]">Restore</th>
               </tr>
             </thead>
             <tbody>
@@ -144,15 +119,10 @@ const Archived = () => {
                         form.answers.find((a) => a.id == "1")?.fields[4]
                           .fieldValue}
                     </td>
-                    <td className="flex flex-row items-center justify-center">
-                      <img
-                        src={EditIcon}
-                        className="w-5 mr-5 cursor-pointer"
-                        onClick={() => handleEditClick(form)}
-                      />
+                    <td className="flex flex-row items-center justify-center py-5">
                       <img
                         src={ArchiveIcon}
-                        className="w-5 cursor-pointer"
+                        className="w-8 cursor-pointer"
                         onClick={() => handleArchiveClick(form)}
                       />
                     </td>
@@ -162,6 +132,11 @@ const Archived = () => {
           </table>
         </div>
       </div>
+      {loading && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
+        </div>
+      )}
     </div>
   );
 };
