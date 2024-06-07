@@ -85,7 +85,7 @@ const Archived = () => {
             <LogoutContainer />
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center w-full p-2 text-center overflow-auto hide-scrollbar">
+        <div className="flex flex-col items-center w-full p-2 text-center overflow-auto hide-scrollbar">
           <table className="w-full">
             <thead>
               <tr>
