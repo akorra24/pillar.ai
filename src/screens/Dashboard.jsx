@@ -61,7 +61,9 @@ const Dashboard = () => {
 
   const handleEditClick = (form) => {
     localStorage.setItem("currentForm", JSON.stringify(form));
-    if (form.answers && form.answers.length > 0) {
+    if (form?.calendar && form?.calendar?.length > 2) {
+      navigate("/form-overview");
+    } else if (form.answers && form.answers.length > 0) {
       const lastAnswer = form.answers[form.answers.length - 1];
       navigate(`/question/${lastAnswer.id}`);
     } else {
