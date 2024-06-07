@@ -36,6 +36,7 @@ const FormOverview = () => {
   }, []);
 
   useEffect(() => {
+    if (!loading) return;
     const interval = setInterval(() => {
       setTrainLoading((prevTrainLoading) => {
         if (prevTrainLoading < 100) {
@@ -54,13 +55,13 @@ const FormOverview = () => {
           return prevTrainLoading;
         }
       });
-    }, 200); // Increase every 0.1 seconds
+    }, 200);
 
     // Clear interval on component unmount
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [loading]);
 
   const handleSubmitForm = async () => {
     setLoading(true);
@@ -460,7 +461,7 @@ const FormOverview = () => {
       {loading && (
         <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
           {/* <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div> */}
-          <div className="mx-auto my-4 py-10 w-full max-w-[80%] bg-black rounded-lg">
+          <div className="flex flex-col justify-center h-[80%] w-[90%] bg-black rounded-3xl">
             <div className="flex pb-3">
               <div className="flex-1"></div>
 
