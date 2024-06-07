@@ -25,6 +25,7 @@ const FormOverview = () => {
   const [editData, setEditData] = useState();
   const [editAnswers, setEditAnswers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [editLoading, setEditLoading] = useState(false);
   const [formLoading, setFormLoading] = useState(100);
   const [trainLoading, setTrainLoading] = useState(20);
   const [gptLoading, setGptLoading] = useState(0);
@@ -143,7 +144,7 @@ const FormOverview = () => {
   };
 
   const handleSaveEdit = async () => {
-    setLoading(true);
+    setEditLoading(true);
     const updatedForm = currentForm;
     const categoryIndex = currentForm.answers.findIndex(
       (answer) => answer.id === editData.questionId
@@ -325,7 +326,7 @@ const FormOverview = () => {
     setCurrentForm(updatedForm);
     await updateCurrentForm(currentForm);
     setEditData(null);
-    setLoading(false);
+    setEditLoading(false);
   };
 
   return (
@@ -546,6 +547,11 @@ const FormOverview = () => {
               <div className="w-1/4">Calendar Complete</div>
             </div>
           </div>
+        </div>
+      )}
+      {editLoading && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
         </div>
       )}
     </>
