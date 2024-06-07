@@ -1,8 +1,12 @@
 import GoogleIcon from "../assets/google.svg";
 import FacebookIcon from "../assets/facebook.svg";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth, facebook, google } from "../firebase/firebase";
 import { saveUserData } from "../services/saveLogin";
 import FriendBox from "../components/FriendBox";
@@ -13,6 +17,8 @@ const Login = ({ setUserData }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [forgotPasswordPopup, setForgotPasswordPopup] = useState(0);
+  const [forgotEmail, setForgotEmail] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -71,6 +77,24 @@ const Login = ({ setUserData }) => {
         ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
         : "An error occurred";
       setError(errorMessage);
+    }
+  };
+
+  const handleForgotPasswordPopup = () => {
+    setForgotPasswordPopup(1);
+  };
+
+  const handleSendForgotEmail = async () => {
+    try {
+      if (forgotEmail) {
+        await sendPasswordResetEmail(auth, forgotEmail);
+        setForgotPasswordPopup(2);
+      } else {
+        setForgotPasswordPopup(3);
+      }
+    } catch (error) {
+      console.error("Failed to send forgot password email:", error);
+      setForgotPasswordPopup(3);
     }
   };
 
@@ -159,10 +183,62 @@ const Login = ({ setUserData }) => {
           </div>
           <div className="flex flex-row items-center ml-10">
             <p>Forgot your password?</p>
-            <p className="text-green-500 ml-2 cursor-pointer">Reset Password</p>
+            <p
+              className="text-green-500 ml-2 cursor-pointer"
+              onClick={handleForgotPasswordPopup}
+            >
+              Reset Password
+            </p>
           </div>
         </div>
       </div>
+      {forgotPasswordPopup > 0 && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-black p-5 rounded-lg">
+            <h3 className="text-2xl font-bold mb-5 text-green-500">
+              Forgot Password
+            </h3>
+            {forgotPasswordPopup === 1 && (
+              <>
+                <p className="text-green-500 mb-2">
+                  Please enter your email address to reset your password.
+                </p>
+                <input
+                  type="email"
+                  className="w-full border-b-2 border-green-500 bg-transparent text-green-500 placeholder-green-800 focus:border-b-4 focus:outline-none text-2xl"
+                  placeholder="Enter your email"
+                  value={forgotEmail}
+                  onChange={(e) => setForgotEmail(e.target.value)}
+                />
+                <button
+                  className="border-2 border-green-500 text-white bg-green-500 px-4 py-2 rounded-lg mt-5"
+                  onClick={handleSendForgotEmail}
+                >
+                  Send Reset Link
+                </button>
+              </>
+            )}
+            {forgotPasswordPopup === 2 && (
+              <p className="text-green-500">
+                A password reset link has been sent to your email successfully.
+              </p>
+            )}
+            {forgotPasswordPopup === 3 && (
+              <p className="text-red-500">
+                Failed to send the password reset link. Please try again.
+              </p>
+            )}
+            <div className="flex justify-end mt-5">
+              <button
+                className="border-2 border-green-500 text-green-500 px-4 py-2 rounded-lg"
+                onClick={() => setForgotPasswordPopup(0)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
