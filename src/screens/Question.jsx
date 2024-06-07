@@ -349,8 +349,9 @@ const Question = () => {
 
   const handlePreviousQuestion = () => {
     const questionIndex = questionsData.findIndex((q) => q.id === id);
-    if (questionIndex === 0) return;
-    if (id == 3 || id == 4 || id == 5 || id == 6) {
+    if (questionIndex === 0) {
+      navigate("/dashboard");
+    } else if (id == 3 || id == 4 || id == 5 || id == 6) {
       navigate(`/question/2`);
     } else if (id == 7 || id == 8 || id == 9) {
       navigate(`/question/4`);
