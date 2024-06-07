@@ -4,6 +4,14 @@ import LogoutContainer from "../components/LogoutContainer";
 import { useNavigate } from "react-router-dom";
 import BackIcon from "../assets/left.svg";
 import EditIcon from "../assets/edit.svg";
+import FormDoneIcon from "../assets/form_done.svg";
+import TrainDoneIcon from "../assets/train_done.svg";
+import GPTDoneIcon from "../assets/gpt_done.svg";
+import CalendarDoneIcon from "../assets/calendar_done.svg";
+import FormLoadingIcon from "../assets/form_loading.svg";
+import TrainLoadingIcon from "../assets/train_loading.svg";
+import GPTLoadingIcon from "../assets/gpt_loading.svg";
+import CalendarLoadingIcon from "../assets/calendar_loading.svg";
 import SubmitIcon from "../assets/submit.svg";
 import MultipleChoiceInput from "../components/MultipleChoiceInput";
 import questionsData from "../data/questions.json";
@@ -17,10 +25,41 @@ const FormOverview = () => {
   const [editData, setEditData] = useState();
   const [editAnswers, setEditAnswers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [formLoading, setFormLoading] = useState(100);
+  const [trainLoading, setTrainLoading] = useState(20);
+  const [gptLoading, setGptLoading] = useState(0);
+  const [calendarLoading, setCalendarLoading] = useState(0);
 
   useEffect(() => {
     const form = JSON.parse(localStorage.getItem("currentForm"));
     setCurrentForm(form);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTrainLoading((prevTrainLoading) => {
+        if (prevTrainLoading < 100) {
+          return prevTrainLoading + 1;
+        } else {
+          setGptLoading((prevGptLoading) => {
+            if (prevGptLoading < 100) {
+              return prevGptLoading + 1;
+            } else {
+              setCalendarLoading((prevCalendarLoading) =>
+                prevCalendarLoading < 100 ? prevCalendarLoading + 1 : 100
+              );
+              return prevGptLoading;
+            }
+          });
+          return prevTrainLoading;
+        }
+      });
+    }, 200); // Increase every 0.1 seconds
+
+    // Clear interval on component unmount
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   const handleSubmitForm = async () => {
@@ -420,7 +459,92 @@ const FormOverview = () => {
       )}
       {loading && (
         <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
+          {/* <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div> */}
+          <div className="mx-auto my-4 py-10 w-full max-w-[80%] bg-black rounded-lg">
+            <div className="flex pb-3">
+              <div className="flex-1"></div>
+
+              <div className="flex-1">
+                <div className="w-10 h-10 bg-green mx-auto rounded-full text-lg text-white flex items-center">
+                  <span className="text-white text-center w-full">
+                    {formLoading < 100 ? (
+                      <img src={FormLoadingIcon} className="w-10" />
+                    ) : (
+                      <img src={FormDoneIcon} className="w-10" />
+                    )}
+                  </span>
+                </div>
+              </div>
+
+              <div className="w-1/6 align-center items-center align-middle content-center flex">
+                <div className="w-full bg-gray-400 rounded items-center align-middle align-center flex-1">
+                  <div
+                    className="bg-green-500 text-xs leading-none py-1 text-center text-white rounded"
+                    style={{ width: `${trainLoading}%` }}
+                  ></div>
+                </div>
+              </div>
+
+              <div className="flex-1">
+                <div className="w-10 h-10 bg-green mx-auto rounded-full text-lg text-white flex items-center">
+                  <span className="text-white text-center w-full">
+                    {trainLoading < 100 ? (
+                      <img src={TrainLoadingIcon} className="w-10" />
+                    ) : (
+                      <img src={TrainDoneIcon} className="w-10" />
+                    )}
+                  </span>
+                </div>
+              </div>
+
+              <div className="w-1/6 align-center items-center align-middle content-center flex">
+                <div className="w-full bg-gray-400 rounded items-center align-middle align-center flex-1">
+                  <div
+                    className="bg-green-500 text-xs leading-none py-1 text-center text-white rounded"
+                    style={{ width: `${gptLoading}%` }}
+                  ></div>
+                </div>
+              </div>
+
+              <div className="flex-1">
+                <div className="w-10 h-10 bg-white mx-auto rounded-full text-lg text-white flex items-center">
+                  {gptLoading < 100 ? (
+                    <img src={GPTLoadingIcon} className="w-10" />
+                  ) : (
+                    <img src={GPTDoneIcon} className="w-10" />
+                  )}
+                </div>
+              </div>
+
+              <div className="w-1/6 align-center items-center align-middle content-center flex">
+                <div className="w-full bg-gray-400 rounded items-center align-middle align-center flex-1">
+                  <div
+                    className="bg-green-500 text-xs leading-none py-1 text-center text-white rounded"
+                    style={{ width: `${calendarLoading}%` }}
+                  ></div>
+                </div>
+              </div>
+
+              <div className="flex-1">
+                <div className="w-10 h-10 bg-white mx-auto rounded-full text-lg text-white flex items-center">
+                  {calendarLoading < 100 ? (
+                    <img src={CalendarLoadingIcon} className="w-10" />
+                  ) : (
+                    <img src={CalendarDoneIcon} className="w-10" />
+                  )}
+                </div>
+              </div>
+
+              <div className="flex-1"></div>
+            </div>
+
+            <div className="flex text-xs content-center text-center text-white">
+              <div className="w-1/4">Form Received</div>
+              <div className="w-1/4">Training Model</div>
+              <div className="w-1/4">Generating Content</div>
+              <div className="w-1/4">Calendar Complete</div>
+            </div>
+          </div>
         </div>
       )}
     </>
