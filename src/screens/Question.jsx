@@ -391,7 +391,7 @@ const Question = () => {
     if (question?.type === "multipleChoice") {
       return (
         <div className="flex flex-col items-start justify-between py-10 px-2 sm:px-10 overflow-y-scroll hide-scrollbar">
-          <h3 className="text-3xl flex flex-row items-start">
+          <h3 className="text-3xl flex flex-row items-start flex-wrap">
             {question?.id}
             <img src={RightArrowIcon} className="w-7 mx-3 mt-1" />
             {question?.title}
@@ -411,7 +411,7 @@ const Question = () => {
     } else if (question?.type === "textInput") {
       return (
         <div className="flex flex-col items-start justify-center py-10 px-10 overflow-y-scroll hide-scrollbar h-screen">
-          <h3 className="text-3xl flex flex-row items-start">
+          <h3 className="text-3xl flex flex-row items-start flex-wrap">
             {question?.id}
             <img src={RightArrowIcon} className="w-7 mx-3 mt-2" />
             {question?.title}
@@ -431,7 +431,7 @@ const Question = () => {
     } else if (question?.type === "titlePage") {
       return (
         <div className="flex flex-col justify-center py-10 px-10 h-screen">
-          <h3 className="text-3xl flex flex-row items-start">
+          <h3 className="text-3xl flex flex-row items-start flex-wrap">
             {question?.id}
             <img src={RightArrowIcon} className="w-7 mx-3 mt-1" />
             {question?.title}
