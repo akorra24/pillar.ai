@@ -23,7 +23,6 @@ const Question = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch the question based on the ID from the JSON data
     const fetchQuestion = () => {
       const fetchedQuestion = questionsData.find((q) => q.id === id);
       setQuestion(fetchedQuestion);
@@ -40,12 +39,11 @@ const Question = () => {
         (a) => a.id === question.id
       );
       if (existingAnswer !== -1) {
-        const existingField = currentForm.answers[
-          existingAnswer
-        ].fields.findIndex((f) => f.fieldTitle === question.fieldTitle);
+        const existingField = currentForm.answers[existingAnswer].fields.findIndex(
+          (f) => f.fieldTitle === question.fieldTitle
+        );
         if (existingField !== -1) {
-          currentForm.answers[existingAnswer].fields[existingField].fieldValue =
-            answers;
+          currentForm.answers[existingAnswer].fields[existingField].fieldValue = answers;
         } else {
           currentForm.answers[existingAnswer].fields.push({
             fieldTitle: question.fieldTitle,
@@ -70,12 +68,11 @@ const Question = () => {
         (a) => a.id === question.id
       );
       if (existingAnswer !== -1) {
-        const existingField = currentForm.answers[
-          existingAnswer
-        ].fields.findIndex((f) => f.fieldTitle === question.fieldTitle);
+        const existingField = currentForm.answers[existingAnswer].fields.findIndex(
+          (f) => f.fieldTitle === question.fieldTitle
+        );
         if (existingField !== -1) {
-          currentForm.answers[existingAnswer].fields[existingField].fieldValue =
-            answers[0];
+          currentForm.answers[existingAnswer].fields[existingField].fieldValue = answers[0];
         } else {
           currentForm.answers[existingAnswer].fields.push({
             fieldTitle: question.fieldTitle,
@@ -157,71 +154,34 @@ const Question = () => {
       }
     }
     if (id == 2) {
-      if (
-        !answers.includes("Influencer") &&
-        currentForm.answers.findIndex((answer) => answer.id == "3") != -1
-      ) {
+      if (!answers.includes("Influencer") && currentForm.answers.findIndex((answer) => answer.id == "3") != -1) {
+        currentForm.answers = currentForm.answers.filter((answer) => answer.id != "3");
+      }
+
+      if (!answers.includes("Brand") && currentForm.answers.findIndex((answer) => answer.id == "4") != -1) {
         currentForm.answers = currentForm.answers.filter(
-          (answer) => answer.id != "3"
+          (answer) => answer.id != "4" && answer.id != "7" && answer.id != "8" && answer.id != "9"
         );
       }
 
-      if (
-        !answers.includes("Brand") &&
-        currentForm.answers.findIndex((answer) => answer.id == "4") != -1
-      ) {
-        currentForm.answers = currentForm.answers.filter(
-          (answer) =>
-            answer.id != "4" &&
-            answer.id != "7" &&
-            answer.id != "8" &&
-            answer.id != "9"
-        );
+      if (!answers.includes("Artist/Musician") && currentForm.answers.findIndex((answer) => answer.id == "5") != -1) {
+        currentForm.answers = currentForm.answers.filter((answer) => answer.id != "5");
       }
 
-      if (
-        !answers.includes("Artist/Musician") &&
-        currentForm.answers.findIndex((answer) => answer.id == "5") != -1
-      ) {
-        currentForm.answers = currentForm.answers.filter(
-          (answer) => answer.id != "5"
-        );
-      }
-
-      if (
-        !answers.includes("Athlete") &&
-        currentForm.answers.findIndex((answer) => answer.id == "6") != -1
-      ) {
-        currentForm.answers = currentForm.answers.filter(
-          (answer) => answer.id != "6"
-        );
+      if (!answers.includes("Athlete") && currentForm.answers.findIndex((answer) => answer.id == "6") != -1) {
+        currentForm.answers = currentForm.answers.filter((answer) => answer.id != "6");
       }
     } else if (id == 4) {
-      if (
-        !answers.includes("Cannabis/CBD") &&
-        currentForm.answers.findIndex((answer) => answer.id == "7") != -1
-      ) {
-        currentForm.answers = currentForm.answers.filter(
-          (answer) => answer.id != "7"
-        );
+      if (!answers.includes("Cannabis/CBD") && currentForm.answers.findIndex((answer) => answer.id == "7") != -1) {
+        currentForm.answers = currentForm.answers.filter((answer) => answer.id != "7");
       }
 
-      if (
-        !answers.includes("Apparel") &&
-        currentForm.answers.findIndex((answer) => answer.id == "8") != -1
-      ) {
-        currentForm.answers = currentForm.answers.filter(
-          (answer) => answer.id != "8"
-        );
+      if (!answers.includes("Apparel") && currentForm.answers.findIndex((answer) => answer.id == "8") != -1) {
+        currentForm.answers = currentForm.answers.filter((answer) => answer.id != "8");
       }
 
-      if (
-        !answers.includes("Service Industry") &&
-        currentForm.answers.findIndex((answer) => answer.id == "9") != -1
-      ) {
-        currentForm.answers = currentForm.answers.filter(
-          (answer) => answer.id != "9"
-        );
+      if (!answers.includes("Service Industry") && currentForm.answers.findIndex((answer) => answer.id == "9") != -1) {
+        currentForm.answers = currentForm.answers.filter((answer) => answer.id != "9");
       }
     }
 
@@ -276,11 +236,8 @@ const Question = () => {
   useEffect(() => {
     if (question?.id == 10) {
       const currentForm = JSON.parse(localStorage.getItem("currentForm"));
-      const businessTypes = currentForm.answers.find((a) => a.id === 2)
-        ?.fields[0].fieldValue;
-      const brandTypes = currentForm.answers.find((a) => a.id === 4)?.fields[0]
-        .fieldValue;
-      //iterate through the business types check if there is a answer if not redirect to the question
+      const businessTypes = currentForm.answers.find((a) => a.id === 2)?.fields[0].fieldValue;
+      const brandTypes = currentForm.answers.find((a) => a.id === 4)?.fields[0].fieldValue;
       if (businessTypes) {
         businessTypes.forEach((type) => {
           if (type === "Influencer") {
@@ -302,7 +259,6 @@ const Question = () => {
           }
         });
       }
-      //iterate through the brand types check if there is a answer if not redirect to the question
       if (brandTypes) {
         brandTypes.forEach((type) => {
           if (type === "Cannabis/CBD") {
@@ -323,13 +279,10 @@ const Question = () => {
     }
   }, [navigate, question]);
 
-  //if the current question has answers set the answers
   useEffect(() => {
     const currentForm = JSON.parse(localStorage.getItem("currentForm"));
     if (currentForm?.answers) {
-      const currentAnswer = currentForm.answers.find(
-        (a) => a.id === question?.id
-      );
+      const currentAnswer = currentForm.answers.find((a) => a.id === question?.id);
       if (currentAnswer) {
         if (question?.type === "multipleChoice") {
           setAnswers(currentAnswer.fields[0].fieldValue);
@@ -347,37 +300,47 @@ const Question = () => {
     setLoading(false);
   }, [question]);
 
-  const handlePreviousQuestion = () => {
+  const handlePreviousQuestion = async () => {
+    setLoading(true);
     const questionIndex = questionsData.findIndex((q) => q.id === id);
     if (questionIndex === 0) {
       navigate("/dashboard");
-    } else if (id == 3 || id == 4 || id == 5 || id == 6) {
-      navigate(`/question/2`);
-    } else if (id == 7 || id == 8 || id == 9) {
-      navigate(`/question/4`);
-    } else if (id == 10) {
-      const currentForm = JSON.parse(localStorage.getItem("currentForm"));
-      if (currentForm?.answers) {
-        if (currentForm.answers.find((a) => a.id == 9)) {
-          navigate(`/question/9`);
-        } else if (currentForm.answers.find((a) => a.id == 8)) {
-          navigate(`/question/8`);
-        } else if (currentForm.answers.find((a) => a.id == 7)) {
-          navigate(`/question/7`);
-        } else if (currentForm.answers.find((a) => a.id == 6)) {
-          navigate(`/question/6`);
-        } else if (currentForm.answers.find((a) => a.id == 5)) {
-          navigate(`/question/5`);
-        } else if (currentForm.answers.find((a) => a.id == 4)) {
-          navigate(`/question/4`);
-        } else if (currentForm.answers.find((a) => a.id == 3)) {
-          navigate(`/question/3`);
-        } else {
-          navigate(`/question/2`);
-        }
-      }
     } else {
-      navigate(`/question/${questionsData[questionIndex - 1].id}`);
+      let currentForm = JSON.parse(localStorage.getItem("currentForm"));
+      currentForm.progress = ((questionIndex - 1) / questionsData.length) * 100;
+      currentForm.lastIndex = questionIndex - 1;
+      localStorage.setItem("currentForm", JSON.stringify(currentForm));
+
+      await updateCurrentForm(currentForm);
+
+      if (id == 3 || id == 4 || id == 5 || id == 6) {
+        navigate(`/question/2`);
+      } else if (id == 7 || id == 8 || id == 9) {
+        navigate(`/question/4`);
+      } else if (id == 10) {
+        const currentForm = JSON.parse(localStorage.getItem("currentForm"));
+        if (currentForm?.answers) {
+          if (currentForm.answers.find((a) => a.id == 9)) {
+            navigate(`/question/9`);
+          } else if (currentForm.answers.find((a) => a.id == 8)) {
+            navigate(`/question/8`);
+          } else if (currentForm.answers.find((a) => a.id == 7)) {
+            navigate(`/question/7`);
+          } else if (currentForm.answers.find((a) => a.id == 6)) {
+            navigate(`/question/6`);
+          } else if (currentForm.answers.find((a) => a.id == 5)) {
+            navigate(`/question/5`);
+          } else if (currentForm.answers.find((a) => a.id == 4)) {
+            navigate(`/question/4`);
+          } else if (currentForm.answers.find((a) => a.id == 3)) {
+            navigate(`/question/3`);
+          } else {
+            navigate(`/question/2`);
+          }
+        }
+      } else {
+        navigate(`/question/${questionsData[questionIndex - 1].id}`);
+      }
     }
   };
 
@@ -461,7 +424,7 @@ const Question = () => {
             />
             <TextInput
               label="Phone number"
-              placeholder="(201) 555-0123"
+              placeholder="(281) 330-8004"
               type="phone"
               value={phoneNumber}
               setValue={setPhoneNumber}
@@ -489,6 +452,7 @@ const Question = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-green-500 relative font-courier">
         {renderQuestion()}
+        <ProgressBarContainer className="absolute bottom-0 w-[calc(100%-20px)] mx-[10px]" />
         <div className="flex flex-row right-0 bottom-0 mr-10 mb-10 absolute">
           <button
             className="bg-green-500 border-r-2 p-2 rounded-l-lg transition-colors duration-300 ease-in-out hover:bg-green-700"
@@ -504,7 +468,6 @@ const Question = () => {
           </button>
         </div>
       </div>
-      <ProgressBarContainer />
       {loading && (
         <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>

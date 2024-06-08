@@ -102,7 +102,7 @@ const FormOverview = () => {
             "Instagram",
             "Travel",
             "Beat the traffic and park stress-free near SoFi Stadium 🌟🚗🅿️ Here's how!",
-            "Short clip showcasing easy parking reservations on the website",
+            "Short clip showcasing easy parking reservations on the website, how to book a spot and check-in",
             "#Travel #ParkingHacks #SoFiStadium",
           ],
         ],
