@@ -441,7 +441,7 @@ const Question = () => {
       );
     } else {
       return (
-        <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
+        <div className="flex flex-col items-start justify-between py-10 mb-10 sm:mb-auto sm:px-10 overflow-y-scroll hide-scrollbar">
           <h3 className="text-3xl flex flex-row">
             1
             <img src={RightArrowIcon} className="w-7 mx-3" />
@@ -493,7 +493,7 @@ const Question = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-t-3xl text-green-500 relative font-courier">
+      <div className="flex flex-col h-[80%] w-[90%] lg:w-[60%] bg-black bg-opacity-75 rounded-t-3xl text-green-500 relative font-courier">
         {renderQuestion()}
         <ProgressBarContainer className="absolute bottom-0 w-full" />
         <div className="flex flex-row right-0 bottom-0 mr-10 mb-10 absolute">
