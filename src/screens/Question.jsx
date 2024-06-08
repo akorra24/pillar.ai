@@ -410,13 +410,13 @@ const Question = () => {
       );
     } else if (question?.type === "textInput") {
       return (
-        <div className="flex flex-col items-start justify-center py-10 px-10 overflow-y-scroll hide-scrollbar h-screen">
+        <div className="flex flex-col items-start justify-center py-10 px-2 sm:px-10 overflow-y-scroll hide-scrollbar h-screen">
           <h3 className="text-3xl flex flex-row items-start flex-wrap">
             {question?.id}
             <img src={RightArrowIcon} className="w-7 mx-3 mt-2" />
             {question?.title}
           </h3>
-          <div className="flex flex-col justify-center sm:px-10 w-full">
+          <div className="flex flex-col justify-center px-2 sm:px-10 w-full mb-20 sm:mb-auto">
             <p className="text-xl font-thin my-5">{question?.subtitle}</p>
             <input
               type="text"
