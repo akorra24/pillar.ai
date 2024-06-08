@@ -63,7 +63,7 @@ const MultipleChoiceInput = ({ options, selected, setAnswers, popup }) => {
             <button
               key={`${option?.id}-${option?.value}`}
               onClick={() => !otherClick && setOtherClick(true)}
-              className={`w-full min-w-80 flex flex-row justify-between text-xl font-thin my-1 px-4 py-2 rounded-md text-white bg-opacity-10 bg-green-500 border-green-500 hover:bg-opacity-40 ${
+              className={`w-full sm:min-w-80 flex flex-row justify-between text-xl font-thin my-1 px-4 py-2 rounded-md text-white bg-opacity-10 bg-green-500 border-green-500 hover:bg-opacity-40 ${
                 otherAnswer ? "border-[3px]" : "border-[1px]"
               }`}
             >
@@ -107,7 +107,7 @@ const MultipleChoiceInput = ({ options, selected, setAnswers, popup }) => {
             <button
               key={`${option?.id}-${option?.value}`}
               onClick={() => handleOptionClick(option?.value)}
-              className={`w-full min-w-80 flex flex-row justify-between text-xl font-thin my-1 px-4 py-2 rounded-md text-white bg-opacity-10 bg-green-500 border-green-500 hover:bg-opacity-40 ${
+              className={`w-full sm:min-w-80 flex flex-row justify-between text-xl font-thin my-1 px-4 py-2 rounded-md text-white bg-opacity-10 bg-green-500 border-green-500 hover:bg-opacity-40 ${
                 selectedOptions.includes(option?.value)
                   ? "border-[3px]"
                   : "border-[1px]"

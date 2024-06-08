@@ -390,15 +390,15 @@ const Question = () => {
   const renderQuestion = () => {
     if (question?.type === "multipleChoice") {
       return (
-        <div className="flex flex-col items-start justify-between py-10 px-10 overflow-y-scroll hide-scrollbar">
+        <div className="flex flex-col items-start justify-between py-10 px-2 sm:px-10 overflow-y-scroll hide-scrollbar">
           <h3 className="text-3xl flex flex-row items-start">
             {question?.id}
             <img src={RightArrowIcon} className="w-7 mx-3 mt-1" />
             {question?.title}
           </h3>
-          <div className="flex flex-col justify-center px-10">
+          <div className="flex flex-col justify-center sm:px-10 max-w-[100%]">
             <label className="text-xl font-thin mt-5">{question?.label}</label>
-            <div className="flex flex-col items-start justify-center w-full">
+            <div className="flex flex-col items-start justify-center w-full mb-20 sm:mb-auto">
               <MultipleChoiceInput
                 options={question?.options}
                 selected={answers}
@@ -441,13 +441,13 @@ const Question = () => {
       );
     } else {
       return (
-        <div className="flex flex-col items-start justify-between py-10 mb-10 sm:mb-auto sm:px-10 overflow-y-scroll hide-scrollbar">
+        <div className="flex flex-col items-start justify-between py-10 mb-20 sm:mb-auto sm:px-10 overflow-y-scroll hide-scrollbar">
           <h3 className="text-3xl flex flex-row">
             1
             <img src={RightArrowIcon} className="w-7 mx-3" />
             ...
           </h3>
-          <div className="flex flex-col items-center justify-center px-10">
+          <div className="flex flex-col items-center justify-center px-2 sm:px-10">
             <p className="text-xl font-thin my-5">
               We are excited for you to join the Pillar family. Before we begin
               it&apos;s important we gather as much information about you/your
