@@ -2,6 +2,7 @@ import CalendarIcon from "../assets/calendar.svg";
 import PlusIcon from "../assets/plus.svg";
 import ArchiveIcon from "../assets/restore.svg";
 import BackIcon from "../assets/left.svg";
+import DeleteIcon from "../assets/p_delete.svg";
 import { getUserData } from "../services/saveLogin";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,7 @@ import IconButton from "../components/IconButton";
 import { uid } from "uid";
 import LogoutContainer from "../components/LogoutContainer";
 import {
+  deleteForm,
   getFireStoreData,
   updateCurrentForm,
 } from "../services/firebaseServices";
@@ -17,6 +19,7 @@ const Archived = () => {
   const navigate = useNavigate();
   const [forms, setForms] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [deleteDialog, setDeleteDialog] = useState(null);
 
   const handleCalendarClick = () => {
     navigate("/calendar/1");
@@ -61,6 +64,16 @@ const Archived = () => {
     setForms(forms.filter((f) => f.id !== form.id));
     setLoading(false);
   };
+
+  const handleDeleteClick = async () => {
+    const form = deleteDialog;
+    setDeleteDialog(null);
+    setLoading(true);
+    await deleteForm(form);
+    setForms(forms.filter((f) => f.id !== form.id));
+    setLoading(false);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-white">
@@ -85,7 +98,7 @@ const Archived = () => {
             <LogoutContainer />
           </div>
         </div>
-        <div className="flex flex-col items-center w-full p-2 text-center overflow-auto hide-scrollbar">
+        <div className="flex flex-col w-full p-2 text-center overflow-auto hide-scrollbar">
           <table className="w-full">
             <thead>
               <tr>
@@ -94,7 +107,8 @@ const Archived = () => {
                 </th>
                 <th>Month</th>
                 <th>Brand</th>
-                <th className="md:w-[30%]">Restore</th>
+                <th>Restore</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -103,7 +117,7 @@ const Archived = () => {
                   <tr key={form.id}>
                     <td className="flex flex-row items-center justify-center py-5">
                       <button
-                        className="border-2 border-green-500 text-center rounded-lg p-2 m-1"
+                        className="border-2 border-green-500 text-center rounded-lg p-2 m-1 min-w-36"
                         onClick={handleCalendarClick}
                       >
                         View Calender {index + 1}
@@ -126,6 +140,15 @@ const Archived = () => {
                         onClick={() => handleArchiveClick(form)}
                       />
                     </td>
+                    <td>
+                      <div className="flex items-center justify-center pb-5">
+                        <img
+                          src={DeleteIcon}
+                          className="w-8 cursor-pointer"
+                          onClick={() => setDeleteDialog(form)}
+                        />
+                      </div>
+                    </td>
                   </tr>
                 ))}
             </tbody>
@@ -135,6 +158,30 @@ const Archived = () => {
       {loading && (
         <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-green-500"></div>
+        </div>
+      )}
+      {deleteDialog && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-10 flex flex-col justify-center items-center">
+            <h2 className="text-2xl mb-4">Permanently Delete Item</h2>
+            <h3 className="mb-4">
+              Are you sure you want to permanently delete this item?
+            </h3>
+            <div className="flex justify-around w-full">
+              <button
+                className="bg-red-500 text-white rounded px-4 py-2"
+                onClick={handleDeleteClick}
+              >
+                Permanently Delete
+              </button>
+              <button
+                className="bg-gray-500 text-white rounded px-4 py-2"
+                onClick={() => setDeleteDialog(null)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

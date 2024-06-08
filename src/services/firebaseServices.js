@@ -61,3 +61,30 @@ export async function updateCurrentForm(currentForm) {
     console.error("Error updating current form in Firestore:", error);
   }
 }
+
+export async function deleteForm(form) {
+  try {
+    const userData = getUserData();
+    const userDoc = doc(firestore, "users", userData.uid);
+    const docSnap = await getDoc(userDoc);
+
+    if (docSnap.exists()) {
+      let userForms = docSnap.data().forms;
+      if (userForms) {
+        userForms = userForms.map((form) => JSON.parse(form));
+        const currentFormIndex = userForms.findIndex((f) => f.id === form.id);
+        if (currentFormIndex !== -1) {
+          userForms.splice(currentFormIndex, 1);
+        }
+        //stringify the form data
+        userForms = userForms.map((form) => JSON.stringify(form));
+        await setDoc(userDoc, { forms: userForms }, { merge: true });
+        console.log("Form deleted in Firestore");
+      }
+    } else {
+      console.error("No user document found");
+    }
+  } catch (error) {
+    console.error("Error deleting form in Firestore:", error);
+  }
+}
