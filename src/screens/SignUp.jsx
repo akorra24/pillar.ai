@@ -190,16 +190,16 @@ const SignUp = ({ setUserData }) => {
         </div>
         <div className="flex flex-col justify-center text-white bg-black bg-opacity-80 rounded-3xl absolute right-0 h-full w-[100%] md:w-[50%]">
           <h3 className="ml-10 mb-10 text-2xl font-bold">Sign Up</h3>
-          <div className="flex flex-row justify-evenly items-center w-full">
+          <div className="flex flex-row justify-evenly items-center w-full flex-wrap">
             <button
-              className="border-2 border-white text-center rounded-lg px-2 py-3 m-1 flex flex-row items-center"
+              className="border-2 border-white text-center rounded-lg px-2 py-3 m-1 flex flex-row items-center min-w-52"
               onClick={handleGoogleLogin}
             >
               <img src={GoogleIcon} className="w-5 mr-2" />
               Sign Up with Google
             </button>
             <button
-              className="border-2 border-white text-center rounded-lg px-2 py-3 m-1 flex flex-row items-center"
+              className="border-2 border-white text-center rounded-lg px-2 py-3 m-1 flex flex-row items-center min-w-52"
               onClick={handleFacebookLogin}
             >
               <img src={FacebookIcon} className="w-5 mr-2" />
