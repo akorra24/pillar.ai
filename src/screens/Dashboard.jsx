@@ -52,8 +52,8 @@ const Dashboard = () => {
               .filter((form) => !form.isArchived)
           : [];
         setForms(userForms);
-        setLoading(false);
       }
+      setLoading(false);
     };
     setLoading(true);
     fetchData();
