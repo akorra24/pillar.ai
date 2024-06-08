@@ -133,15 +133,17 @@ const Archived = () => {
                         form.answers.find((a) => a.id == "1")?.fields[4]
                           .fieldValue}
                     </td>
-                    <td className="flex flex-row items-center justify-center py-5">
-                      <img
-                        src={ArchiveIcon}
-                        className="w-8 cursor-pointer"
-                        onClick={() => handleArchiveClick(form)}
-                      />
+                    <td>
+                      <div className="flex items-center justify-center">
+                        <img
+                          src={ArchiveIcon}
+                          className="w-8 cursor-pointer"
+                          onClick={() => handleArchiveClick(form)}
+                        />
+                      </div>
                     </td>
                     <td>
-                      <div className="flex items-center justify-center pb-5">
+                      <div className="flex items-center justify-center">
                         <img
                           src={DeleteIcon}
                           className="w-8 cursor-pointer"
