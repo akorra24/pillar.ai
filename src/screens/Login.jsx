@@ -109,23 +109,27 @@ const Login = ({ setUserData }) => {
           <div className="max-w-[50%]">
             <h2 className="p-5 text-3xl">Our Friends</h2>
             <div className="flex flex-row flex-wrap">
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
-              <FriendBox text="Mike Tyson" />
+              <FriendBox text="Mike Tyson" url="https://en.wikipedia.org/wiki/Mike_Tyson" />
+              <FriendBox text="NFL" url="https://en.wikipedia.org/wiki/National_Football_League" />
+              <FriendBox text="Cheech & Chong" url="https://en.wikipedia.org/wiki/Cheech_%26_Chong" />
+              <FriendBox text="Julianna Peña" url="https://en.wikipedia.org/wiki/Julianna_Pe%C3%B1a" />
+              <FriendBox text="Tyson 2.0" url="https://en.wikipedia.org/wiki/Tyson_Ranch" />
+              <FriendBox text="Jim Gray" url="https://en.wikipedia.org/wiki/Jim_Gray_(sportscaster)" />
+              <FriendBox text="Ric Flair" url="https://en.wikipedia.org/wiki/Ric_Flair" />
+              <FriendBox text="Sommer Ray" url="https://en.wikipedia.org/wiki/Sommer_Ray" />
+              <FriendBox text="Whoop" url="https://en.wikipedia.org/wiki/Whoop" />
+              <FriendBox text="Fantasy Footballers" url="https://en.wikipedia.org/wiki/Fantasy_football" />
+              <FriendBox text="Hotboxin Podcast" url="https://en.wikipedia.org/wiki/Hotboxin%27_with_Mike_Tyson" />
+              <FriendBox text="Illmind" url="https://en.wikipedia.org/wiki/Illmind" />
+              <FriendBox text="CJ Anderson" url="https://en.wikipedia.org/wiki/C._J._Anderson" />
+              <FriendBox text="Alexis Texas" url="https://en.wikipedia.org/wiki/Alexis_Texas" />
+              <FriendBox text="Shawn Johnson" url="https://en.wikipedia.org/wiki/Shawn_Johnson" />
+              <FriendBox text="Wayne Brady" url="https://en.wikipedia.org/wiki/Wayne_Brady" />
+              <FriendBox text="Juju Smith Schuster" url="https://en.wikipedia.org/wiki/Juju_Smith-Schuster" />
+              <FriendBox text="Bow Wow" url="https://en.wikipedia.org/wiki/Bow_Wow_(rapper)" />
             </div>
           </div>
-        </div>
+        </div> 
         <div className="flex flex-col justify-center text-white bg-black bg-opacity-80 rounded-3xl absolute right-0 h-full w-[100%] md:w-[50%]">
           <h3 className="ml-10 mb-10 text-2xl font-bold">Login</h3>
           <div className="flex flex-row justify-evenly items-center w-full">
