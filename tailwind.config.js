@@ -8,6 +8,9 @@ export default {
         poppins: ["Poppins", "sans-serif"],
         Minecraft: ["Minecraft", "sans-serif"],
       },
+      screens: {
+        xs: "400px",
+      },
     },
   },
   plugins: [],
