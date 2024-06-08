@@ -416,7 +416,7 @@ const Question = () => {
             <img src={RightArrowIcon} className="w-7 mx-3 mt-2" />
             {question?.title}
           </h3>
-          <div className="flex flex-col justify-center px-10 w-full">
+          <div className="flex flex-col justify-center sm:px-10 w-full">
             <p className="text-xl font-thin my-5">{question?.subtitle}</p>
             <input
               type="text"
