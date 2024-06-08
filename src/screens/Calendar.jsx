@@ -147,7 +147,7 @@ const Calendar = () => {
             <LogoutContainer />
           </div>
         </div>
-        <div className="flex flex-col w-full p-2 text-center overflow-auto hide-scrollbar">
+        <div className="flex flex-col w-full p-2 text-center overflow-auto md:hide-scrollbar">
           <table className="w-full sm:text-xl">
             <thead>
               <tr>
