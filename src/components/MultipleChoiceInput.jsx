@@ -113,7 +113,7 @@ const MultipleChoiceInput = ({ options, selected, setAnswers, popup }) => {
                   : "border-[1px]"
               }`}
             >
-              <div>
+              <div className="flex flex-row items-center justify-start">
                 <span
                   className={`border-[1px] border-green-500 px-2 mr-2 ${
                     selectedOptions.includes(option?.value)
@@ -123,7 +123,7 @@ const MultipleChoiceInput = ({ options, selected, setAnswers, popup }) => {
                 >
                   {option?.id}
                 </span>
-                {option?.value}
+                <span className="text-left">{option?.value}</span>
               </div>
 
               <span className="mr-2">
