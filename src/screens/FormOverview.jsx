@@ -363,7 +363,7 @@ const FormOverview = () => {
               <LogoutContainer />
             </div>
           </div>
-          <div className="flex flex-col items-start w-full p-2 overflow-scroll hide-scrollbar px-10">
+          <div className="flex flex-col items-start w-full p-2 overflow-scroll hide-scrollbar sm:px-10">
             {currentForm &&
               Object.entries(
                 currentForm.answers.reduce((categories, answer) => {
@@ -378,7 +378,7 @@ const FormOverview = () => {
                     answer.fields.map((field, fieldIndex) => (
                       <div
                         key={`${categoryIndex}_${answerIndex}_${fieldIndex}`}
-                        className="flex items-center my-3 ml-10"
+                        className="flex items-center my-3 ml-2 sm:ml-10"
                       >
                         <img
                           src={EditIcon}
