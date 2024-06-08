@@ -132,7 +132,7 @@ const Calendar = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">
+          <div className="flex flex-row space-y-1 justify-between w-full mt-2 md:w-auto flex-wrap">
             <IconButton
               icon={EmailIcon}
               text="Email Calendar"
@@ -147,26 +147,26 @@ const Calendar = () => {
             <LogoutContainer />
           </div>
         </div>
-        <div className="flex flex-col items-center w-full p-2 text-center overflow-auto hide-scrollbar">
-          <table className="w-full text-xl">
+        <div className="flex flex-col w-full p-2 text-center overflow-auto hide-scrollbar">
+          <table className="w-full sm:text-xl">
             <thead>
               <tr>
-                <th className="text-center align-middle border-2 border-black py-4">
+                <th className="text-center align-middle border-2 border-black sm:py-4">
                   Date
                 </th>
-                <th className="text-center align-middle border-2 border-black py-4">
+                <th className="text-center align-middle border-2 border-black sm:py-4">
                   Platform
                 </th>
-                <th className="text-center align-middle border-2 border-black py-4">
+                <th className="text-center align-middle border-2 border-black sm:py-4">
                   Content
                 </th>
-                <th className="text-center align-middle border-2 border-black py-4">
+                <th className="text-center align-middle border-2 border-black sm:py-4">
                   Caption
                 </th>
-                <th className="text-center align-middle border-2 border-black py-4">
+                <th className="text-center align-middle border-2 border-black sm:py-4">
                   Visual
                 </th>
-                <th className="text-center align-middle border-2 border-black py-4">
+                <th className="text-center align-middle border-2 border-black sm:py-4">
                   Hashtags
                 </th>
               </tr>
@@ -175,22 +175,22 @@ const Calendar = () => {
               {formData.calendar &&
                 formData.calendar.slice(1).map((data, index) => (
                   <tr key={`${data[0]}_${index}`}>
-                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                    <td className="text-center align-middle border-2 border-black sm:py-5 sm:px-2">
                       {data[0]}
                     </td>
-                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                    <td className="text-center align-middle border-2 border-black sm:py-5 sm:px-2">
                       {data[1]}
                     </td>
-                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                    <td className="text-center align-middle border-2 border-black sm:py-5 sm:px-2">
                       {data[2]}
                     </td>
-                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                    <td className="text-center align-middle border-2 border-black sm:py-5 sm:px-2">
                       {data[3]}
                     </td>
-                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                    <td className="text-center align-middle border-2 border-black sm:py-5 sm:px-2">
                       {data[4]?.includes("#") && !data[5] ? "" : data[4]}
                     </td>
-                    <td className="text-center align-middle border-2 border-black py-5 px-2">
+                    <td className="text-center align-middle border-2 border-black sm:py-5 sm:px-2">
                       {data[4]?.includes("#") && !data[5]
                         ? data[4]
                         : data[5]
