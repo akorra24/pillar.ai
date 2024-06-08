@@ -84,7 +84,7 @@ const Dashboard = () => {
       <div className="flex flex-col h-[80%] w-[90%] md:w-[60%] bg-black bg-opacity-75 rounded-3xl text-white">
         <div className="flex flex-row items-start justify-between p-4 flex-wrap">
           <h3 className="text-3xl md:ml-10">Welcome</h3>
-          <div className="flex flex-row space-x-5 justify-between w-full mt-2 md:w-auto">
+          <div className="flex flex-row justify-end items-start w-full mt-2 md:w-auto flex-wrap">
             <IconButton
               icon={PlusIcon}
               text="start New"
@@ -98,7 +98,7 @@ const Dashboard = () => {
             <LogoutContainer />
           </div>
         </div>
-        <div className="flex flex-col items-center w-full p-2 text-center overflow-auto hide-scrollbar">
+        <div className="flex flex-col w-full p-2 text-center overflow-auto hide-scrollbar">
           <table className="w-full">
             <thead>
               <tr>
@@ -116,7 +116,7 @@ const Dashboard = () => {
                   <tr key={form.id}>
                     <td className="flex flex-row items-center justify-center py-5">
                       <button
-                        className="border-2 border-green-500 text-center rounded-lg p-2 m-1"
+                        className="border-2 border-green-500 text-center rounded-lg p-2 m-1 min-w-36"
                         onClick={() => navigate(`/calendar/${form.id}`)}
                       >
                         View Calender {index + 1}
