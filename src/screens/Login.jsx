@@ -33,8 +33,22 @@ const Login = ({ setUserData }) => {
       });
       navigate("/dashboard");
     } catch (error) {
+      if (
+        error instanceof TypeError &&
+        error?.message === "setUserData is not a function"
+      ) {
+        navigate("/");
+      }
       const errorMessage = error?.message
-        ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
+        ? (() => {
+            const splitBySlash = error.message.split("/");
+            if (splitBySlash.length < 2) return "Unexpected error format";
+
+            const splitByParenthesis = splitBySlash[1].split(")");
+            if (splitByParenthesis.length < 1) return "Unexpected error format";
+
+            return splitByParenthesis[0].replace(/-/g, " ");
+          })()
         : "An error occurred";
       setError(errorMessage);
     }
@@ -53,8 +67,22 @@ const Login = ({ setUserData }) => {
       });
       navigate("/dashboard");
     } catch (error) {
+      if (
+        error instanceof TypeError &&
+        error?.message === "setUserData is not a function"
+      ) {
+        navigate("/");
+      }
       const errorMessage = error?.message
-        ? error?.message.split("/")[1].split(")")[0].replace(/-/g, " ")
+        ? (() => {
+            const splitBySlash = error.message.split("/");
+            if (splitBySlash.length < 2) return "Unexpected error format";
+
+            const splitByParenthesis = splitBySlash[1].split(")");
+            if (splitByParenthesis.length < 1) return "Unexpected error format";
+
+            return splitByParenthesis[0].replace(/-/g, " ");
+          })()
         : "An error occurred";
       setError(errorMessage);
     }
