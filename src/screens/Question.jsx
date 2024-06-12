@@ -441,7 +441,7 @@ const Question = () => {
       );
     } else {
       return (
-        <div className="flex flex-col items-start justify-between py-10 mb-20 sm:mb-auto sm:px-10 overflow-y-scroll hide-scrollbar">
+        <div className="flex flex-col items-start justify-between py-10 mb-20 sm:mb-auto px-2 sm:px-10 overflow-y-scroll hide-scrollbar">
           <h3 className="text-3xl flex flex-row">
             1
             <img src={RightArrowIcon} className="w-7 mx-3" />
