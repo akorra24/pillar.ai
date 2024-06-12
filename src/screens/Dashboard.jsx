@@ -104,9 +104,9 @@ const Dashboard = () => {
                 <th className="flex flex-row items-center justify-center py-10">
                   <img src={CalendarIcon} className="w-10 mr-2" /> Calendar
                 </th>
-                <th>Month</th>
-                <th>Brand</th>
-                <th className="md:w-[30%]">Action</th>
+                <th className="px-3">Month</th>
+                <th className="px-3">Brand</th>
+                <th className="md:w-[30%] px-3">Action</th>
               </tr>
             </thead>
             <tbody>
