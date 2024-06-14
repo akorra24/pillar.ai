@@ -37,7 +37,7 @@ const Login = ({ setUserData }) => {
         error instanceof TypeError &&
         error?.message === "setUserData is not a function"
       ) {
-        navigate("/");
+        navigate("/dashboard");
       }
       const errorMessage = error?.message
         ? (() => {
@@ -71,7 +71,7 @@ const Login = ({ setUserData }) => {
         error instanceof TypeError &&
         error?.message === "setUserData is not a function"
       ) {
-        navigate("/");
+        navigate("/dashboard");
       }
       const errorMessage = error?.message
         ? (() => {
