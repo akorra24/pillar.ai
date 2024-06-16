@@ -17,15 +17,6 @@
   src: url("./assets/Minecraft.ttf");
 }
 
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 /* For Chrome and Safari */
 ::-webkit-scrollbar {
   width: 12px; /* width of the entire scrollbar */
@@ -42,6 +33,15 @@
 }
 
 @media (min-width: 768px) {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
   .md\:hide-scrollbar {
     @apply hide-scrollbar;
   }
